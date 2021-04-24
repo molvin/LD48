@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public int PlayerId;
     public GameController GameController;
-    public InputFrame CurrentInput;
+    public LDInputFrame CurrentInput;
 
     private void Update()
     {

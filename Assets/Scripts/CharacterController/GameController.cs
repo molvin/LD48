@@ -32,9 +32,9 @@ public class GameController : MonoBehaviour
 
     public Vector2Int GridSize;
     public bool DrawGizmos;
-    public Character[] Characters;
+    public LDCharacter[] Characters;
     public Color[] Colors;
-    public Block GameData;
+    public LDBlock GameData;
     public int[] DefaultGridPositions;
 
     private Grid grid;
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
         //TEMP
         Init(GameData, -1);
     }
-    private void Init(Block gamedata, int frame)
+    private void Init(LDBlock gamedata, int frame)
     {
         grid = new Grid(GridSize);
         for(int x = 0; x < grid.Size.x; x++)
@@ -86,10 +86,10 @@ public class GameController : MonoBehaviour
             Init(GameData, -1);
     }
 
-    public void AppendInput(int character, InputFrame input)
+    public void AppendInput(int character, LDInputFrame input)
     {
         //Note: dont mind how terrible this code is
-        List<InputFrame> inputs = Characters[character].timeLine.ToList();
+        List<LDInputFrame> inputs = Characters[character].timeLine.ToList();
         if(FrameId != inputs.Count - 1)
         {
             Debug.LogError($"Cannot append input when not at present frame Frame:{FrameId}, Input length: {inputs.Count}");
@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
                 //Character out of inputs;
                 continue;
             }
-            InputFrame input = Characters[i].timeLine[FrameId];
+            LDInputFrame input = Characters[i].timeLine[FrameId];
             //TEMP
             if(input.action == 0)   //Move action
             {
