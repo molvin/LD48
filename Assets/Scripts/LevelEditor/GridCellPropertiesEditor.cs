@@ -15,7 +15,7 @@ public class GridCellPropertiesEditor : Editor
 
         if (GUILayout.Button("Print"))
         {
-            Debug.Log(script.flags);
+            Debug.Log(script.flags.HasFlag(GridCellProperties.props.Obstacle));
         }
     }
 }
