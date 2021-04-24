@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b21531da3f7525e4d839d1b4d95e873b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - AbilityTag: {fileID: 11400000, guid: 6b5fee5589429604bbf7b0dfdbc52e63, type: 2}
+  - AppliedEffect: {instanceID: 0}
+  - Cost: {instanceID: 0}
+  - Cooldown: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
