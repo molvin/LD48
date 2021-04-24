@@ -22,7 +22,8 @@ public class GridGenerator : MonoBehaviour
     private int gridSizeX;
     private int gridSizeZ;
     public List<SquareChooser> path;
-    public float nodeRadius;
+    private float nodeGizRadius = 0.5f;
+    
     public void GenerateLevel()
     {
 
@@ -190,7 +191,7 @@ public class GridGenerator : MonoBehaviour
 
 
 
-/*
+
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridSizeX, 1, gridSizeZ));
@@ -199,17 +200,19 @@ public class GridGenerator : MonoBehaviour
         {
             foreach (SquareChooser n in childrenByPosition)
             {
-                if (n.obstacle)
+                if (n.node.obstacle)
                     Gizmos.color = Color.red;
                 else
                     Gizmos.color = Color.white;
 
                 if (path != null && path.Contains(n))
                     Gizmos.color = Color.black;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeRadius));
+                Vector3 abitUp = n.transform.position;
+                abitUp.y += 0.5f;
+                Gizmos.DrawCube(abitUp, Vector3.one * (nodeGizRadius));
 
             }
         }
     }
-*/
+
 }
