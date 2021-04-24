@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using UnityEditor;
+
 
 public class SquareChooser : MonoBehaviour
 {
@@ -23,12 +25,29 @@ public class SquareChooser : MonoBehaviour
         }
     }
     [HideInInspector]
-    public List<string> MyList = new List<string>(new string[] { "niklas", "DanielF", "Daniel≈" });
+    public List<string> MyList = new List<string>();
 
-    
+    public void selectFirst()
+    {
+        readFromDirectory();
+        listIdx = 0;
+    }
+
     protected void onListIndexChange ()
     {
-        Debug.Log("it worked");
+        if (!Application.isEditor)
+            return;
+        for (int i = transform.childCount - 1; i > -1; i--)
+        {
+            Object.DestroyImmediate(transform.GetChild(i).gameObject);
+        }
+        GameObject ob = PrefabUtility.InstantiatePrefab((GameObject)Resources.Load(getSelectedObjectFilePath()), transform) as GameObject;
+        Debug.Log("it worked: " + getSelectedObjectFilePath());
+    }
+
+    private string getSelectedObjectFilePath()
+    {
+        return "Squares/" + MyList[_listIdx];
     }
 
     public void readFromDirectory()
