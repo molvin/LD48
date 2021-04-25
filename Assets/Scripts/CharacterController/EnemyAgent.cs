@@ -16,8 +16,7 @@ public class EnemyAgent : TickAgent
 
     public override void Initialize(LDBlock _data)
     {
-        Vector3Int Pos = GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
-        GridPos = new Vector2Int(Pos.x, Pos.z);
+        GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
         Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         CharacterDataTemplate Data = CharacterDataTemplate.Load();

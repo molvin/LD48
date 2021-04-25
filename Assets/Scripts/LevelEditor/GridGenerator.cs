@@ -89,6 +89,8 @@ public class GridGenerator : MonoBehaviour
     public List<Vector3Int> findPath(Vector3Int start, Vector3Int target)
     {
         List<GridCellProperties> uselessShit = findPath(childrenByPosition[start.x, start.y], childrenByPosition[target.x, target.y]);
+        if (uselessShit == null)
+            return null;
         return uselessShit.Select((g) => new Vector3Int(g.GridX, g.GridZ, 0)).ToList();
     }
     public Vector3Int WorldToCell(Vector3 worldPos)
