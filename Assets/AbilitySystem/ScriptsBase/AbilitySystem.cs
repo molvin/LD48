@@ -260,7 +260,7 @@ namespace GameplayAbilitySystem
 
         public bool CanActivateTargetAbilityByTag(TypeTag Tag, Vector2Int TargetPos)
         {
-            return CanActivateTargetAbilityByTag(Tag, TargetPos);
+            return CanActivateTargetAbilityByTag(Tag.GetType(), TargetPos);
         }
         public bool CanActivateTargetAbilityByTag(Type Tag, Vector2Int TargetPos)
         {

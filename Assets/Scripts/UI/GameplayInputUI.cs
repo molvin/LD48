@@ -16,14 +16,9 @@ public class GameplayInputUI : MonoBehaviour
     private Button[] m_ActionButtons;
     private Button[] m_InventoryButtons;
 
-    private Dictionary<int, TypeTag> m_AbilityButtonMapping;
-    private Dictionary<int, TypeTag> m_InventoryButtonMapping;
+    private Dictionary<int, TypeTag> m_AbilityButtonMapping = new Dictionary<int, TypeTag>();
+    private Dictionary<int, TypeTag> m_InventoryButtonMapping = new Dictionary<int, TypeTag>();
 
-
-
-    //private Dictionary<uint, Button> m_ActionButtons;
-
-    // Start is called before the first frame update
     void Start()
     {
         m_Canvas = GetComponent<Canvas>();
@@ -35,21 +30,23 @@ public class GameplayInputUI : MonoBehaviour
 
 
         m_ActionButtons = m_ActionBar.GetComponentsInChildren<Button>();
-        for (uint i = 0; i < m_ActionButtons.Length; i++)
+        for (int i = 0; i < m_ActionButtons.Length; i++)
         {
-            uint j = i;
+            int j = i;
             m_ActionButtons[i].onClick.AddListener(delegate { SelectAction(j); });
         }
 
 
         m_InventoryButtons = m_InventoryBar.GetComponentsInChildren<Button>();
-        for (uint i = 0; i < m_InventoryButtons.Length; i++)
+        for (int i = 0; i < m_InventoryButtons.Length; i++)
         {
-            uint j = i;
+            int j = i;
             m_InventoryButtons[i].onClick.AddListener(delegate { SelectInventoryItem(j); });
 
         }
 
+        LoadAbilities(GameStateManager.Instance.PlayerAgent.AbilitySystem);
+        LoadInventory();
     }
 
     public void LoadAbilities(AbilitySystem ability_owner)
@@ -59,17 +56,25 @@ public class GameplayInputUI : MonoBehaviour
         for (int i = 0; i < m_ActionButtons.Length; i++)
         {
             Button button = m_ActionButtons[i];
-            if (type_tags.Count > i)
+            if (type_tags.Count > i && i > 0)
             {
                 TypeTag ability_tag = type_tags[i];
                 button.GetComponent<Image>().sprite = ability_tag.Icon;
-                GetComponentInChildren<TMPro.TextMeshProUGUI>().text = ability_tag.Name;
+                button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = ability_tag.Name;
                 m_AbilityButtonMapping.Add(i, ability_tag);
             }
             else
             {
                 button.gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void LoadInventory()
+    {
+        for(int i = 0; i < m_InventoryButtons.Length; i++)
+        {
+            m_InventoryButtons[i].gameObject.SetActive(false);
         }
     }
 
@@ -81,15 +86,19 @@ public class GameplayInputUI : MonoBehaviour
 
     public void SelectMove()
     {
-        GameStateManager.Instance.GoToActionState(0);
+        GameStateManager.Instance.GoToActionState(TypeTag.MoveAbility);
     }
 
-    public void SelectAction(uint index)
+    public void SelectAction(int index)
     {
+        if (!m_AbilityButtonMapping.ContainsKey(index))
+            return; 
+
+        GameStateManager.Instance.GoToActionState(m_AbilityButtonMapping[index].GetType());
         Debug.Log("Clicked action: " + index);
     }
 
-    public void SelectInventoryItem(uint index)
+    public void SelectInventoryItem(int index)
     {
         Debug.Log("Clicked inventory item: " + index);
     }
