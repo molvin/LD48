@@ -36,6 +36,17 @@ public class PlayableAgent : TickAgent
         Conversion = LDConversionTable.Load();
     }
 
+    public void AppendInput(TypeTag GameplayTag, Vector2Int Position)
+    {
+        AppendInput(GameplayTag.GetType(), Position);
+    }
+    public void AppendInput(System.Type GameplayTag, Vector2Int Position)
+    {
+        int X = GameStateManager.Instance.GetGridManager().xWidth;
+        ushort Cell = (ushort)(Position.x + Position.y * X);
+        AppendInput(Conversion.GameplayTagToLD(GameplayTag, Cell));
+    }
+
     public void AppendInput(LDInputFrame input)
     {
         TimeLine.Add(input);

@@ -15,5 +15,13 @@ namespace GameplayAbilitySystem
         public Sprite Icon;
         public string Name;
         public string Description;
+
+        public static Type StrengthAbility => typeof(StrengthAbilityTag); 
+        public static Type DexterityAbility => typeof(StrengthAbilityTag); 
+        public static Type IntelligenceAbility => typeof(StrengthAbilityTag); 
     }
+
+    public abstract class StrengthAbilityTag : TypeTag { }
+    public abstract class DexterityAbilityTag : TypeTag { }
+    public abstract class IntelligenceAbilityTag : TypeTag { }
 }
