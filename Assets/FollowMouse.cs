@@ -22,8 +22,8 @@ public class FollowMouse : MonoBehaviour
         
         Vector3 world = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int iso = gridGen.WorldToCell(new Vector3(world.x, 0, world.z));
-     
-
+        iso.x = Mathf.Clamp(iso.x, 0, gridGen.xWidth);
+        iso.y = Mathf.Clamp(iso.x, 0, gridGen.zWidth);
         bool can_cast = GameStateManager.Instance.PlayerAgent.AbilitySystem.CanActivateTargetAbilityByTag(AbilityType, (Vector2Int)iso);
 
         if(!can_cast)
