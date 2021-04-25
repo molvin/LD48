@@ -41,6 +41,12 @@ public class GameStateAction : State
     }
     public override State SelectTransition() 
     {
+        if(GameStateManager.Instance.ShouldEndTurn)
+        {
+            GameStateManager.Instance.ShouldDoAction = false;
+            return GameStateManager.Instance.EndTurnState;
+        }
+
         if(!GameStateManager.Instance.ShouldDoAction)
         {
             return GameStateManager.Instance.IdleState;
