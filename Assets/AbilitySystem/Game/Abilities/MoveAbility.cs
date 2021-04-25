@@ -11,7 +11,7 @@ public class MoveAbility : GameplayAbility
         Commit(Owner);
         Owner.OwnerAgent.GridID = Owner.CurrentTarget;
         int Pos = Owner.OwnerAgent.GridID;
-        Owner.OwnerAgent.transform.position = new Vector3((Pos % 10) * 10, 0, (Pos / 10) * 10);
+        CoroutineRunner.Instance.StartCoroutine(Move(Owner.OwnerAgent, new Vector3((Pos % 10) * 10, 0, (Pos / 10) * 10)));
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
@@ -26,5 +26,20 @@ public class MoveAbility : GameplayAbility
             return false;
         }
         return true;
+    }
+
+    public IEnumerator Move(TickAgent OwnerAgent, Vector3 NewPos)
+    {
+        OwnerAgent.Animator.SetFloat("Velocity", 1.0f, Ticker.TickVisualTime / 4.0f, Time.deltaTime);
+        Vector3 OriginalPos = OwnerAgent.transform.position;
+        float time = 0.0f;
+        while (time < Ticker.TickVisualTime)
+        {
+            time += Time.deltaTime;
+            OwnerAgent.transform.position = Vector3.Lerp(OriginalPos, NewPos, time / Ticker.TickVisualTime);
+            yield return null;
+        }
+        OwnerAgent.transform.position = NewPos;
+        OwnerAgent.Animator.SetFloat("Velocity", 0.0f, Ticker.TickVisualTime / 4.0f, Time.deltaTime);
     }
 }

@@ -1,4 +1,5 @@
 using GameStructure;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class Ticker : MonoBehaviour
 {
     public static LDBlock currentBlock;
+    public static float TickVisualTime = 0.5f;
+
     public List<TickAgent> tickAgents;
 
     private int CurrentTick;
@@ -21,12 +24,7 @@ public class Ticker : MonoBehaviour
     }
     public void Tick()
     {
-        tickAgents.OrderBy((x) => { return x.initiative; });
-        for(int i = 0;i< tickAgents.Count; i++)
-        {
-            tickAgents[i].Tick(CurrentTick, false);
-        }
-        CurrentTick++;
+        StartCoroutine(TickOverTime());
     }
     public void Scrum(int toFrame)
     {
@@ -43,5 +41,15 @@ public class Ticker : MonoBehaviour
             }
             CurrentTick++;
         }
+    }
+    public IEnumerator TickOverTime()
+    {
+        tickAgents.OrderBy((x) => { return x.initiative; });
+        for(int i = 0;i< tickAgents.Count; i++)
+        {
+            tickAgents[i].Tick(CurrentTick, false);
+            yield return new WaitForSeconds(TickVisualTime);
+        }
+        CurrentTick++;
     }
 }
