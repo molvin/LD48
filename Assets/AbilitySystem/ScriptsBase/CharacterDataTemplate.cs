@@ -15,8 +15,11 @@ namespace GameplayAbilitySystem
         public CharacterTemplate Necromanacer;
 
         [Header("Monsters")]
-        public CharacterTemplate BlobMan;
-        public CharacterTemplate Cultist;
+        public CharacterTemplate BlobManA;
+        public CharacterTemplate BlobManB;
+        public CharacterTemplate CultistA;
+        public CharacterTemplate CultistB;
+        public CharacterTemplate CultistC;
 
         public List<GameplayAbility> GetAbilities(CharacterRole Role)
         {
@@ -58,8 +61,11 @@ namespace GameplayAbilitySystem
         {
             switch (Role)
             {
-                case MonsterRole.BlobMan: return BlobMan.StartingAbilities;
-                case MonsterRole.Cultist: return Cultist.StartingAbilities;
+                case MonsterRole.BlobManA: return BlobManA.StartingAbilities;
+                case MonsterRole.BlobManB: return BlobManB.StartingAbilities;
+                case MonsterRole.CultistA: return CultistA.StartingAbilities;
+                case MonsterRole.CultistB: return CultistB.StartingAbilities;
+                case MonsterRole.CultistC: return CultistC.StartingAbilities;
             }
 
             Debug.Assert(false, "Bad role");
@@ -70,8 +76,11 @@ namespace GameplayAbilitySystem
         {
             switch (Role)
             {
-                case MonsterRole.BlobMan: return BlobMan.StartingAttributeSet;
-                case MonsterRole.Cultist: return Cultist.StartingAttributeSet;
+                case MonsterRole.BlobManA: return BlobManA.StartingAttributeSet;
+                case MonsterRole.BlobManB: return BlobManB.StartingAttributeSet;
+                case MonsterRole.CultistA: return CultistA.StartingAttributeSet;
+                case MonsterRole.CultistB: return CultistB.StartingAttributeSet;
+                case MonsterRole.CultistC: return CultistC.StartingAttributeSet;
             }
 
             Debug.Assert(false, "Bad role");
@@ -82,8 +91,11 @@ namespace GameplayAbilitySystem
         {
             switch (Role)
             {
-                case MonsterRole.BlobMan: return BlobMan.StartingEffects;
-                case MonsterRole.Cultist: return Cultist.StartingEffects;
+                case MonsterRole.BlobManA: return BlobManA.StartingEffects;
+                case MonsterRole.BlobManB: return BlobManB.StartingEffects;
+                case MonsterRole.CultistA: return CultistA.StartingEffects;
+                case MonsterRole.CultistB: return CultistB.StartingEffects;
+                case MonsterRole.CultistC: return CultistC.StartingEffects;
             }
 
             Debug.Assert(false, "Bad role");

@@ -6,8 +6,11 @@ using GameplayAbilitySystem;
 
 public enum MonsterRole
 {
-    BlobMan,
-    Cultist,
+    BlobManA,
+    BlobManB,
+    CultistA,
+    CultistB,
+    CultistC,
 }
 
 public class EnemyAgent : TickAgent
