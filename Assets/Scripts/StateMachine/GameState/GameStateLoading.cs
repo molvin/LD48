@@ -6,7 +6,7 @@ public class GameStateLoading : State
 {
     public override void Enter()
     {
-        GridManager.Instance.LoadGridByIndex(GameStateManager.Instance.GridIndex);
+       
     }
     public override void Tick()
     {

@@ -1,3 +1,4 @@
+using GameplayAbilitySystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +9,30 @@ public class FollowMouse : MonoBehaviour
 {
     public GridGenerator gridGen;
     public Action<Vector3Int> CellSelected;
+    public System.Type AbilityType;
     // Update is called once per frame
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     void Update()
     {
+        
         Vector3 world = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int iso = gridGen.WorldToCell(new Vector3(world.x, 0, world.z));
-        transform.position = gridGen.CellToWorld(iso);
+     
 
+        bool can_cast = GameStateManager.Instance.PlayerAgent.AbilitySystem.CanActivateTargetAbilityByTag(AbilityType, (Vector2Int)iso);
+
+        if(!can_cast)
+        {
+            //TODO: Make read instead!
+            return;
+        }
+
+        transform.position = gridGen.CellToWorld(iso);
         //make callback
         if (Input.GetMouseButtonUp(0))
         {
@@ -23,4 +41,5 @@ public class FollowMouse : MonoBehaviour
             Debug.Log($"for iso x:{iso.x} y:{iso.y}  i got:{hej}");
         }
     }
+
 }

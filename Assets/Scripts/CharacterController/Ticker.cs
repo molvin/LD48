@@ -15,9 +15,14 @@ public class Ticker : MonoBehaviour
 
     private int CurrentTick;
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+        Instance = this;
+    }
+
     public void Initialize()
     {
-        Instance = this;
         CurrentTick = 0;
         tickAgents = FindObjectsOfType<TickAgent>().ToList();
         for (int i = 0; i < tickAgents.Count; i++)
