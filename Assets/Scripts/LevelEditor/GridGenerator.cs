@@ -9,7 +9,7 @@ public class GridGenerator : MonoBehaviour
     public int xWidth;
     public int zWidth;
     public string Name;
-    private string mapFolderPath = "Prefabs/Maps";
+    private string mapFolderPath = "Resources/Maps";
     private string _mapFolderPath
     {
         get => Application.dataPath + "/"+ mapFolderPath + "/" + Name + ".prefab";
@@ -21,7 +21,7 @@ public class GridGenerator : MonoBehaviour
 
     private int gridSizeX;
     private int gridSizeZ;
-    public List<SquareChooser> path;
+    private List<SquareChooser> path;
     private float nodeGizRadius = 0.5f;
     
     public void GenerateLevel()
@@ -113,8 +113,13 @@ public class GridGenerator : MonoBehaviour
     }
 
 
+    public List<SquareChooser> findPath(Vector2Int start, Vector2Int target)
+    {
+        return findPath(childrenByPosition[start.x, start.y], childrenByPosition[target.x, target.y]);
+    }
 
-    public void findPath(SquareChooser start, SquareChooser target)
+
+    public List<SquareChooser> findPath(SquareChooser start, SquareChooser target)
     {
         List<SquareChooser> openSet = new List<SquareChooser>();
         HashSet<SquareChooser> closedSet = new HashSet<SquareChooser>();
@@ -123,11 +128,7 @@ public class GridGenerator : MonoBehaviour
         //calculates path for pathfinding
         while (openSet.Count > 0)
         {
-
-        
             SquareChooser node = openSet[0];
-        
-
             openSet.Remove(node);
             closedSet.Add(node);
 
@@ -135,7 +136,7 @@ public class GridGenerator : MonoBehaviour
             if (node == target)
             {
                 RetracePath(start, target);
-                return;
+                return path;
             }
 
             //adds neighbor nodes to openSet
@@ -159,6 +160,7 @@ public class GridGenerator : MonoBehaviour
                 }
             }
         }
+        return null;
     }
 
     int GetDistance(SquareChooser nodeA, SquareChooser nodeB)
@@ -187,10 +189,13 @@ public class GridGenerator : MonoBehaviour
 
     }
 
+    public GridCellProperties.props GetSquareType(Vector2Int pos)
+    {
+        if (pos.x >= gridSizeX || pos.x < 0 || pos.y >= gridSizeZ || pos.y < 0)
+            return GridCellProperties.props.Nan;
 
-
-
-
+        return childrenByPosition[pos.x, pos.y].node.flags;
+    }
 
     void OnDrawGizmos()
     {

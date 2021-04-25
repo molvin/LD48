@@ -7,10 +7,12 @@ public class GridCellProperties : MonoBehaviour
 {
     public enum props
     {
-        Walkable = 1 << 0,
-        Water = 1 << 1,
-        Fire = 1 << 2,
-        Obstacle = 1 << 3,
+        Nan         = 0,
+        Walkable    = 1 << 0,
+        Water       = 1 << 1,
+        Fire        = 1 << 2,
+        Obstacle    = 1 << 3,
+        Occupied    = 1 << 4,
     }
     [HideInInspector]
     public props flags;
