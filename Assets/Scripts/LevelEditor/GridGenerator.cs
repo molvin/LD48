@@ -117,7 +117,7 @@ public class GridGenerator : MonoBehaviour
         if(occupied)
             childrenByPosition[pos.x, pos.y].flags |= BlockStatus.Occupied;
         else
-            childrenByPosition[pos.x, pos.y].flags &= BlockStatus.Occupied;
+            childrenByPosition[pos.x, pos.y].flags &= ~BlockStatus.Occupied;
     }
 
     private List<GridCellProperties> getNeighbors(GridCellProperties node)
@@ -162,8 +162,6 @@ public class GridGenerator : MonoBehaviour
                 return path;
             }
 
-            //adds neighbor nodes to openSet
-            Debug.Log(node);
             foreach (GridCellProperties neighbour in getNeighbors(node))
             {
                 if (neighbour.flags.HasFlag(BlockStatus.Occupied) || !neighbour.flags.HasFlag(BlockStatus.Walkable) || closedSet.Contains(neighbour))
