@@ -53,6 +53,7 @@ public class PlayableAgent : TickAgent
             }
         }
 
+        Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;
         Color = (CharacterColor)OwningCharacter.color;
