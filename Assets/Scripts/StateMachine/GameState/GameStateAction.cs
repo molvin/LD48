@@ -23,7 +23,7 @@ public class GameStateAction : State
     private void OnCellSelected(Vector3Int pos)
     {
         GameStateManager.Instance.ShouldDoAction = false;
-     //   GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
+        GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
         Ticker.Instance.Tick();
         Debug.Log("Action done");
     }

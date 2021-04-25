@@ -9,6 +9,7 @@ public class FollowMouse : MonoBehaviour
 {
     public GridGenerator gridGen;
     public Action<Vector3Int> OnCellSelected;
+    public GameObject selectionGrid;
     public System.Type AbilityType;
     // Update is called once per frame
 
