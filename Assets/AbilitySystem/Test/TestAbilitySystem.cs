@@ -18,6 +18,9 @@ namespace GameplayAbilitySystem
         public GameplayEffect BlockedEffect;
         public GameplayEffect ApplyBlockedEffect;
 
+        public TypeTag StrengthTag;
+        public TypeTag Strength2Tag;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -79,6 +82,14 @@ namespace GameplayAbilitySystem
             Debug.Assert(AbilitySystem.TryApplyEffectToSelf(BlockedEffect));
             AbilitySystem.TryApplyEffectToSelf(ApplyBlockedEffect);
             Debug.Assert(!AbilitySystem.TryApplyEffectToSelf(BlockedEffect));
+
+            Debug.Assert(StrengthTag.Is(TypeTag.StrengthAbility)); 
+            Debug.Assert(TypeTag.StrengthAbility.Is(StrengthTag)); 
+            Debug.Assert(!StrengthTag.Is(TypeTag.DexterityAbility)); 
+
+            Debug.Assert(Strength2Tag.Is(TypeTag.StrengthAbility)); 
+            Debug.Assert(StrengthTag.Is(Strength2Tag)); 
+            Debug.Assert(!Strength2Tag.Is(TypeTag.DexterityAbility)); 
         }
 
         public int ArmorCalculation(int Value)

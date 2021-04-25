@@ -19,6 +19,21 @@ namespace GameplayAbilitySystem
         public abstract void Activate(AbilitySystem Owner);
         public abstract bool IsTargetValid(AbilitySystem Owner);
 
+        protected void ApplyEffectToTarget(AbilitySystem Owner, AbilitySystem Target)
+        {
+            int PowerModifier = 0;
+            if (AbilityTag.Is(TypeTag.StrengthAbility))
+            {
+
+            }
+
+            if (AppliedEffect != null)
+            {
+                GameplayEffect Instance = Instantiate(AppliedEffect);
+
+            }
+        }
+
         public void Commit(AbilitySystem Owner)
         {
             if (Cost != null)
