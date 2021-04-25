@@ -8,8 +8,7 @@ using static GridGenerator;
 public class FollowMouse : MonoBehaviour
 {
     public GridGenerator gridGen;
-    public GameObject selectionGrid;
-    public Action<Vector3Int> CellSelected;
+    public Action<Vector3Int> OnCellSelected;
     public System.Type AbilityType;
     // Update is called once per frame
 
@@ -44,7 +43,7 @@ public class FollowMouse : MonoBehaviour
         //make callback
         if (Input.GetMouseButtonUp(0))
         {
-            CellSelected?.Invoke(iso);
+            OnCellSelected?.Invoke(iso);
             BlockStatus hej = gridGen.GetCellStatus(new Vector2Int(iso.x, iso.y));
             Debug.Log($"for iso x:{iso.x} y:{iso.y}  i got:{hej}");
         }
