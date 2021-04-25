@@ -107,6 +107,18 @@ public class GridGenerator : MonoBehaviour
             return BlockStatus.Nan;
         return childrenByPosition[pos.x, pos.y].flags;
     }
+    public bool isPathObstructed(List<Vector3Int> path)
+    {
+        return !path.Select(v => childrenByPosition[v.x, v.y])
+                    .Any(GCP => GCP.flags.HasFlag(BlockStatus.Obstacle));
+    }
+    public void setOccupied(Vector3Int pos, bool occupied)
+    {
+        if(occupied)
+            childrenByPosition[pos.x, pos.y].flags |= BlockStatus.Occupied;
+        else
+            childrenByPosition[pos.x, pos.y].flags &= BlockStatus.Occupied;
+    }
 
     private List<GridCellProperties> getNeighbors(GridCellProperties node)
     {
@@ -154,7 +166,7 @@ public class GridGenerator : MonoBehaviour
             Debug.Log(node);
             foreach (GridCellProperties neighbour in getNeighbors(node))
             {
-                if (neighbour.flags.HasFlag(BlockStatus.Occupied) || neighbour.flags.HasFlag(BlockStatus.Obstacle) || closedSet.Contains(neighbour))
+                if (neighbour.flags.HasFlag(BlockStatus.Occupied) || !neighbour.flags.HasFlag(BlockStatus.Walkable) || closedSet.Contains(neighbour))
                 {
                     continue;
                 }

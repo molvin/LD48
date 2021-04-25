@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,6 +279,7 @@ MonoBehaviour:
   ActionState: {fileID: 11400000, guid: 9fdb5f59b9deea7499e9039037123f34, type: 2}
   IdleState: {fileID: 11400000, guid: 91a59f1cc7f61184b8ff3e55e4daa3b9, type: 2}
   LoadingState: {fileID: 11400000, guid: 192bc90ef278dcc468850251635556c7, type: 2}
+  GameOverState: {fileID: 11400000, guid: 192bc90ef278dcc468850251635556c7, type: 2}
   Role: 1
   PlayerAgent: {fileID: 0}
   GridIndex: -1

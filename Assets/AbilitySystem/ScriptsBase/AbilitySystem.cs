@@ -26,7 +26,9 @@ namespace GameplayAbilitySystem
         {
             this.OwnerAgent = OwnerAgent;
 
+            RegisterOnAttributeChanged(Attribute.Health, (x) => OwnerAgent.IsAlive = x > 0);
             RegisterOnAttributeChanged(Attribute.Health, HealthCap);
+            RegisterOnAttributeChanged(Attribute.Mana, ManaCap);
         }
 
         public List<TypeTag> GetGrantedAbilityTypes()
@@ -328,6 +330,13 @@ namespace GameplayAbilitySystem
         // Attribute Calculations
         private void HealthCap(int Value)
         {
+            int MaxValue = GetAttributeValue(Attribute.MaxHealth).Value;
+            Value = Mathf.Clamp(Value, 0, MaxValue);
+        }
+        private void ManaCap(int Value)
+        {
+            int MaxValue = GetAttributeValue(Attribute.MaxMana).Value;
+            Value = Mathf.Clamp(Value, 0, MaxValue);
         }
     }
 }
