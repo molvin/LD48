@@ -533,13 +533,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907968966}
-<<<<<<< HEAD
   m_LocalRotation: {x: 0.18260464, y: -0, z: -0, w: 0.9831865}
   m_LocalPosition: {x: 0, y: 4.26, z: -9.26}
-=======
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.94, y: 2.39, z: -0.35}
->>>>>>> 21b11dbcc38a00b9a89a78b22c092a64f39bb950
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1295,7 +1290,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoneShield
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 9200714023734234789, guid: 53631b5394142ea498090f6cc7135a80,
         type: 3}
       propertyPath: m_IsActive
@@ -1317,8 +1311,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 01c9e850f46017c439c2fb0f05e80d0f, type: 2}
-=======
->>>>>>> 21b11dbcc38a00b9a89a78b22c092a64f39bb950
     - target: {fileID: 9200714023734234791, guid: 53631b5394142ea498090f6cc7135a80,
         type: 3}
       propertyPath: RotationBySpeedModule.x.scalar
