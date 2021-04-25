@@ -18,7 +18,7 @@ namespace GameplayAbilitySystem
         public Dictionary<Type, int> ActiveTags = new Dictionary<Type, int>();
 
         public TickAgent OwnerAgent;
-        public ushort CurrentTarget;
+        public Vector2Int CurrentTarget;
         public bool IsScrumming;
 
 
@@ -235,6 +235,48 @@ namespace GameplayAbilitySystem
         public void RevokeAbility(Type AbilityTag)
         {
             GrantedAbilities.Remove(AbilityTag);
+        }
+
+        public bool CanActivateAbilityByTag(TypeTag Tag)
+        {
+            return CanActivateAbilityByTag(Tag.GetType());
+        }
+
+        public bool CanActivateAbilityByTag(Type Tag)
+        {
+            GameplayAbility Ability;
+            if (GrantedAbilities.TryGetValue(Tag, out Ability))
+            {
+                if (!IsBlocked(Ability.BlockedByTags) && HasRequired(Ability.RequiredTags))
+                {
+                    if (Ability.CanActivate(this, true))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool CanActivateTargetAbilityByTag(TypeTag Tag, Vector2Int TargetPos)
+        {
+            return CanActivateTargetAbilityByTag(Tag, TargetPos);
+        }
+        public bool CanActivateTargetAbilityByTag(Type Tag, Vector2Int TargetPos)
+        {
+            GameplayAbility Ability;
+            if (GrantedAbilities.TryGetValue(Tag, out Ability))
+            {
+                if (!IsBlocked(Ability.BlockedByTags) && HasRequired(Ability.RequiredTags))
+                {
+                    CurrentTarget = TargetPos;
+                    if (Ability.CanActivate(this, false))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public bool TryActivateAbilityByTag(TypeTag Tag)

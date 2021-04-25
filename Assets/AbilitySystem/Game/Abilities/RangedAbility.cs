@@ -10,8 +10,7 @@ public class RangedAbility : GameplayAbility
     public override void Activate(AbilitySystem Owner)
     {
         Commit(Owner);
-        Owner.OwnerAgent.GridID = Owner.CurrentTarget;
-        int Pos = Owner.OwnerAgent.GridID;
+        Debug.LogError("Not Implemented");
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
@@ -19,8 +18,7 @@ public class RangedAbility : GameplayAbility
 
         int CurrentTile = Owner.OwnerAgent.GridID;
         Vector2Int TilePos = new Vector2Int(CurrentTile % 10, CurrentTile / 10);
-        int TargetTile = Owner.CurrentTarget;
-        Vector2Int TargetPos = new Vector2Int(TargetTile % 10, TargetTile / 10);
+        Vector2Int TargetPos = Owner.CurrentTarget;
 
         return Mathf.Abs(TilePos.x - TargetPos.x) + Mathf.Abs(TilePos.y - TargetPos.y) > Range;
     }
