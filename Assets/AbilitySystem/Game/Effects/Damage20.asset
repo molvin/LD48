@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a49d49efbed249a42b187118b6567908, type: 3}
-  m_Name: UseBlocked
+  m_Name: Damage20
   m_EditorClassIdentifier: 
   EffectType: 0
   Duration: 0
-  InitialAttribute: {fileID: 0}
-  InitialValue: 0
+  RevertInitialChangeWhenRemoved: 0
+  InitialAttribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+  InitialValue: 20
   TickAttribute: {fileID: 0}
   TickValue: 0
   AppliedTags: []
-  BlockedByTags:
-  - {fileID: 11400000, guid: 5bd5f920e9994f844861a952217c2619, type: 2}
+  BlockedByTags: []
   RequiredTags: []
