@@ -6,6 +6,7 @@ using UnityEngine;
 public class FollowMouse : MonoBehaviour
 {
     public GridLayout grid;
+    public GridGenerator gridGen;
     public Action<Vector3Int> CellSelected;
     // Update is called once per frame
     void Update()
@@ -16,6 +17,10 @@ public class FollowMouse : MonoBehaviour
 
         //make callback
         if (Input.GetMouseButtonUp(0))
+        {
             CellSelected?.Invoke(iso);
+            GridCellProperties.props hej = gridGen.GetSquareType(new Vector2Int(iso.x, iso.y));
+            Debug.Log($"for iso x:{iso.x} y:{iso.y}  i got:{hej}");
+        }
     }
 }
