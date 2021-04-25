@@ -6,8 +6,11 @@ using GameplayAbilitySystem;
 
 public enum MonsterRole
 {
-    BlobMan,
-    Cultist,
+    BlobManA,
+    BlobManB,
+    CultistA,
+    CultistB,
+    CultistC,
 }
 
 public class EnemyAgent : TickAgent
@@ -17,6 +20,9 @@ public class EnemyAgent : TickAgent
     public override void Initialize(LDBlock _data)
     {
         GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
+        transform.position = GameStateManager.Instance.GetGridManager().CellToWorld((Vector3Int)GridPos);
+        GameStateManager.Instance.GetGridManager().setOccupied((Vector3Int)GridPos, true);
+
         Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         CharacterDataTemplate Data = CharacterDataTemplate.Load();
@@ -31,5 +37,10 @@ public class EnemyAgent : TickAgent
     public override void Tick(int Frame, bool Scrum)
     {
         Debug.LogError("This monster doesn't have a brain, very sadge :(");
+    }
+
+    public void AddActions()
+    {
+
     }
 }

@@ -6,11 +6,26 @@ using GameplayAbilitySystem;
 [CreateAssetMenu(menuName = "Ability System/Ability/RangeAttack")]
 public class RangedAbility : GameplayAbility
 {
-    public uint Range;
+    public int Range;
+
     public override void Activate(AbilitySystem Owner)
     {
         Commit(Owner);
-        Debug.LogError("Not Implemented");
+
+        AbilitySystem Target = GetEnemyInTile(Owner, Owner.CurrentTarget);
+        if (Target == null)
+        {
+            return;
+        }
+        
+        if (Ticker.ShouldVisualize)
+        {
+          CoroutineRunner.Instance.StartCoroutine(ApplyEffectVisualized(Owner, Target));
+        }
+        else
+        {
+            ApplyEffectToTarget(Owner, Target);
+        }
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
@@ -18,19 +33,21 @@ public class RangedAbility : GameplayAbility
         Vector2Int TilePos = Owner.OwnerAgent.GridPos;
         Vector2Int TargetPos = Owner.CurrentTarget;
 
-        return Mathf.Abs(TilePos.x - TargetPos.x) + Mathf.Abs(TilePos.y - TargetPos.y) > Range;
-    }
-    /*
-    public IEnumerator DoRangeAttack(TickAgent OwnerAgent, Vector3 NewPos)
-    {
-        OwnerAgent.Animator.SetFloat("Velocity", 1.0f);
-        Vector3 OriginalPos = OwnerAgent.transform.position;
-        float time = 0.0f;
-        while (time < Ticker.TickVisualTime)
+        if (TilePos == TargetPos)
         {
-            time += Time.deltaTime;
-            OwnerAgent.transform.position = Vector3.Lerp(OriginalPos, NewPos, time / Ticker.TickVisualTime);
-            yield return null;
+            return false;
         }
-    }*/
+
+        if (TilePos.x != TargetPos.x && TilePos.y != TargetPos.y)
+        {
+            return false;
+        }
+
+        if (!IsTileOccupiedByEnemy(Owner, TargetPos))
+        {
+            return false;
+        }
+
+        return Vector2Int.Distance(TilePos, TargetPos) <= Range;
+    }
 }

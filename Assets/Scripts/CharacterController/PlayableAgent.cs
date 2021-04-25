@@ -64,6 +64,9 @@ public class PlayableAgent : TickAgent
         }
 
         GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
+        transform.position = GameStateManager.Instance.GetGridManager().CellToWorld((Vector3Int)GridPos);
+        GameStateManager.Instance.GetGridManager().setOccupied((Vector3Int)GridPos, true);
+
         Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;

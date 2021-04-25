@@ -15,6 +15,9 @@ public class Ticker : MonoBehaviour
 
     private int CurrentTick;
 
+    bool m_IsTicking;
+    public bool IsTicking { get => m_IsTicking; }
+
     public void Awake()
     {
         DontDestroyOnLoad(this);
@@ -54,6 +57,7 @@ public class Ticker : MonoBehaviour
     }
     public IEnumerator TickOverTime()
     {
+        m_IsTicking = true;
         tickAgents.OrderBy((x) => { return x.initiative; });
         for(int i = 0;i< tickAgents.Count; i++)
         {
@@ -61,5 +65,6 @@ public class Ticker : MonoBehaviour
             yield return new WaitForSeconds(TickVisualTime);
         }
         CurrentTick++;
+        m_IsTicking = false;
     }
 }

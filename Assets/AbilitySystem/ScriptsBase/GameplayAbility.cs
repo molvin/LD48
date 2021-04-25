@@ -14,6 +14,11 @@ namespace GameplayAbilitySystem
         public List<TypeTag> BlockedByTags;
         public List<TypeTag> RequiredTags;
 
+        [Header("Animation")]
+        public int AbilityIndex;
+        public float MomentOfExecution;
+        public ParticleSystem ParticleSystem;
+
         public GridGenerator Grid => GameStateManager.Instance.GetGridManager();
 
         public abstract void Activate(AbilitySystem Owner);
@@ -21,17 +26,102 @@ namespace GameplayAbilitySystem
 
         protected void ApplyEffectToTarget(AbilitySystem Owner, AbilitySystem Target)
         {
-            int PowerModifier = 0;
+            int? PowerModifier = null;
             if (AbilityTag.Is(TypeTag.StrengthAbility))
             {
-
+                PowerModifier = Owner.GetAttributeValue(Attribute.Strength);
+            }
+            else if (AbilityTag.Is(TypeTag.DexterityAbility))
+            {
+                PowerModifier = Owner.GetAttributeValue(Attribute.Dexterity);
+            }
+            else if (AbilityTag.Is(TypeTag.IntelligenceAbility))
+            {
+                PowerModifier = Owner.GetAttributeValue(Attribute.Intelligence);
             }
 
             if (AppliedEffect != null)
             {
                 GameplayEffect Instance = Instantiate(AppliedEffect);
+                if (PowerModifier.HasValue)
+                {
+                    if (Instance.InitialAttribute != null)
+                    {
+                        Instance.InitialValue += PowerModifier.Value / 2;
+                    }
+                    if (Instance.TickAttribute != null)
+                    {
+                        Instance.TickValue += PowerModifier.Value / 6;
+                    }
+                }
 
+                int? AddedDamage = Owner.GetAttributeValue(Attribute.AddedDamage);
+                if (AddedDamage.HasValue && Owner != Target)
+                {
+                    if (Instance.InitialAttribute != null && Instance.InitialAttribute.Is(Attribute.Health))
+                    {
+                        Instance.InitialValue += AddedDamage.Value;
+                    }
+                    if (Instance.TickAttribute != null && Instance.TickAttribute.Is(Attribute.Health))
+                    {
+                        Instance.TickValue += AddedDamage.Value / 3;
+                    }
+                }
+
+                Target.TryApplyEffectToSelf(Instance);
             }
+        }
+
+        protected bool IsTileOccupiedByEnemy(AbilitySystem Owner, Vector2Int TargetPos)
+        {
+            return GetEnemyInTile(Owner, TargetPos) != null;
+        }
+
+        protected AbilitySystem GetEnemyInTile(AbilitySystem Owner, Vector2Int TargetPos)
+        {
+            TickAgent TargetAgent = null;
+            foreach (TickAgent Agent in Ticker.Instance.tickAgents)
+            {
+                if (Agent.IsAlive && Agent.GridPos == TargetPos)
+                {
+                    TargetAgent = Agent;
+                    break;
+                }
+            }
+
+            if (TargetAgent == null)
+            {
+                return null;
+            }
+
+            if (Owner.OwnerAgent.GetType() == TargetAgent.GetType())
+            {
+                return null;
+            }
+
+            return TargetAgent.AbilitySystem;
+        }
+
+        protected IEnumerator ApplyEffectVisualized(AbilitySystem Owner, AbilitySystem Target)
+        {
+            Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
+            Owner.OwnerAgent.Animator.SetTrigger("Ability");
+
+            yield return new WaitForSeconds(MomentOfExecution);
+
+            if (ParticleSystem != null)
+            {
+                Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
+                ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
+                Instance.Play();
+
+                while(Instance.isPlaying)
+                {
+                    yield return null;
+                }
+            }
+
+            ApplyEffectToTarget(Owner, Target);
         }
 
         public void Commit(AbilitySystem Owner)
