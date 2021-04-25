@@ -1,0 +1,888 @@
+fileFormatVersion: 2
+guid: 9b7c45a1d19da2f4baf61c125f577dcd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8248270160644365273
+    second: isometric_tileset_0
+  - first:
+      213: -7403280921667566363
+    second: isometric_tileset_1
+  - first:
+      213: 4392766251153142848
+    second: isometric_tileset_2
+  - first:
+      213: -8087516257957922361
+    second: isometric_tileset_3
+  - first:
+      213: 7931056383092617311
+    second: isometric_tileset_4
+  - first:
+      213: -5617585318091164296
+    second: isometric_tileset_5
+  - first:
+      213: -5630035265106040595
+    second: isometric_tileset_6
+  - first:
+      213: -7792338563265134753
+    second: isometric_tileset_7
+  - first:
+      213: 8503757669395489988
+    second: isometric_tileset_8
+  - first:
+      213: -6464142585328044833
+    second: isometric_tileset_9
+  - first:
+      213: -4358201102347319034
+    second: isometric_tileset_10
+  - first:
+      213: -9161768448937896153
+    second: isometric_tileset_11
+  - first:
+      213: -8718272070206393874
+    second: isometric_tileset_12
+  - first:
+      213: -8337233261834728840
+    second: isometric_tileset_13
+  - first:
+      213: -971891912618382458
+    second: isometric_tileset_14
+  - first:
+      213: 5524868748900453345
+    second: isometric_tileset_15
+  - first:
+      213: -3529743065936242168
+    second: isometric_tileset_16
+  - first:
+      213: 8932294220237614238
+    second: isometric_tileset_17
+  - first:
+      213: 4331170896249895971
+    second: isometric_tileset_18
+  - first:
+      213: 7217844593415484207
+    second: isometric_tileset_19
+  - first:
+      213: -1384770237317794124
+    second: isometric_tileset_20
+  - first:
+      213: 6019736019862378307
+    second: isometric_tileset_21
+  - first:
+      213: -6253322045294585499
+    second: isometric_tileset_22
+  - first:
+      213: -5659297975226250266
+    second: isometric_tileset_23
+  - first:
+      213: -2088389943625063261
+    second: isometric_tileset_24
+  - first:
+      213: -4501858231074186645
+    second: isometric_tileset_25
+  - first:
+      213: -5169768704733337771
+    second: isometric_tileset_26
+  - first:
+      213: -7024136536098545935
+    second: isometric_tileset_27
+  - first:
+      213: 797336776772759499
+    second: isometric_tileset_28
+  - first:
+      213: 3092709101139603479
+    second: isometric_tileset_29
+  - first:
+      213: 7517651841717354336
+    second: isometric_tileset_30
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 220
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: isometric_tileset_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 2227
+        width: 223
+        height: 270
+      alignment: 9
+      pivot: {x: 0.48791847, y: 0.689596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724a6577df1488d80800000000000000
+      internalID: -8248270160644365273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 2223
+        width: 223
+        height: 267
+      alignment: 9
+      pivot: {x: 0.4939593, y: 0.6765905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4049bd933424990800000000000000
+      internalID: -7403280921667566363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_2
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1757
+        width: 258
+        height: 269
+      alignment: 9
+      pivot: {x: 0.55221415, y: 0.26963606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044be4da1ad36fc30800000000000000
+      internalID: 4392766251153142848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_3
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 2220
+        width: 222
+        height: 267
+      alignment: 9
+      pivot: {x: 0.48179585, y: 0.6513626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c9b83910de53cf80800000000000000
+      internalID: -8087516257957922361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_4
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 2223
+        width: 226
+        height: 267
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6715449}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5074d782c5c01e60800000000000000
+      internalID: 7931056383092617311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1955
+        width: 231
+        height: 267
+      alignment: 9
+      pivot: {x: 0.50583225, y: 0.6917254}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875f9bb9ae35a02b0800000000000000
+      internalID: -5617585318091164296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_6
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 1946
+        width: 243
+        height: 268
+      alignment: 9
+      pivot: {x: 0.46119434, y: 0.7060902}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8ae6e61c81ed1b0800000000000000
+      internalID: -5630035265106040595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1785
+        width: 237
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ff00fbc5d0cd390800000000000000
+      internalID: -7792338563265134753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_8
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 1189
+        width: 355
+        height: 604
+      alignment: 9
+      pivot: {x: 0.31405836, y: 0.136454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c46254ab8a630670800000000000000
+      internalID: 8503757669395489988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_9
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1467
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.27380326}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd4fb003190ca46a0800000000000000
+      internalID: -6464142585328044833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_10
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 1467
+        width: 225
+        height: 268
+      alignment: 9
+      pivot: {x: 0.48802558, y: 0.27883}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6094fda203f8483c0800000000000000
+      internalID: -4358201102347319034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_11
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 1468
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.49390477, y: 0.25872347}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727dca6032cdad080800000000000000
+      internalID: -9161768448937896153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_12
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1468
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2687765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee173285eb9720780800000000000000
+      internalID: -8718272070206393874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_13
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 1190
+        width: 345
+        height: 438
+      alignment: 9
+      pivot: {x: 0.3438112, y: 0.1739828}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a05ca55823c4c80800000000000000
+      internalID: -8337233261834728840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_14
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 1461
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b6e4c64752382f0800000000000000
+      internalID: -971891912618382458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_15
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1182
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.2888835}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb4ed8ead64cac40800000000000000
+      internalID: 5524868748900453345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_16
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 1182
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.4939042, y: 0.28385675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ad8760265d30fc0800000000000000
+      internalID: -3529743065936242168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_17
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 1182
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.48780927, y: 0.29893607}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ca98a9442e5fb70800000000000000
+      internalID: 8932294220237614238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_18
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1189
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.4878087, y: 0.3089891}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c3c7c8bf86b1c30800000000000000
+      internalID: 4331170896249895971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_19
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 1414
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23f08a7a6fea2460800000000000000
+      internalID: 7217844593415484207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_20
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1189
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.50609636, y: 0.28888303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6b3255ece48cce0800000000000000
+      internalID: -1384770237317794124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_21
+      rect:
+        serializedVersion: 2
+        x: 2136
+        y: 1184
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.49390534, y: 0.2536972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 347558124066a8350800000000000000
+      internalID: 6019736019862378307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_22
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 844
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.4878093, y: 0.2838565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569d8183bbcb739a0800000000000000
+      internalID: -6253322045294585499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_23
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 844
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.49390477, y: 0.29893652}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb4d8cc9722671b0800000000000000
+      internalID: -5659297975226250266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_24
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 844
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.4878087, y: 0.30396304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4eab9396c8403e0800000000000000
+      internalID: -2088389943625063261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_25
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 848
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.50609577, y: 0.68598413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a97ab6acf2681c0800000000000000
+      internalID: -4501858231074186645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_26
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 848
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.4939042, y: 0.68598413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 557207fe0ca4148b0800000000000000
+      internalID: -5169768704733337771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_27
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 829
+        width: 221
+        height: 268
+      alignment: 9
+      pivot: {x: 0.48780897, y: 0.6910104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fed0003901458e90800000000000000
+      internalID: -7024136536098545935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_28
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1754
+        width: 221
+        height: 186
+      alignment: 9
+      pivot: {x: 0.50609565, y: 0.41308856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf25e1f295b01b00800000000000000
+      internalID: 797336776772759499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_29
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1757
+        width: 213
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7103b07aa828bea20800000000000000
+      internalID: 3092709101139603479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tileset_30
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 2010
+        width: 336
+        height: 209
+      alignment: 9
+      pivot: {x: 0.5074363, y: 0.52780515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fbf921580145860800000000000000
+      internalID: 7517651841717354336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8ddcdbc26d1a5fb458cba53c867a90ed
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
