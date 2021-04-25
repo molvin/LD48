@@ -90,7 +90,8 @@ public class PlayableAgent : TickAgent
     {
         AbilitySystem.IsScrumming = Scrum;
         TypeTag Action = Conversion.LDToGameplayTag(TimeLine[CurrentFrame].action);
-        AbilitySystem.CurrentTarget = TimeLine[CurrentFrame].cell;
+        Vector2Int TargetPos = new Vector2Int(TimeLine[CurrentFrame].cell % 10, TimeLine[CurrentFrame].cell / 10);
+        AbilitySystem.CurrentTarget = TargetPos;
         AbilitySystem.TryActivateAbilityByTag(Action);
         AbilitySystem.Tick();
         AbilitySystem.IsScrumming = false;

@@ -9,9 +9,8 @@ public class MoveAbility : GameplayAbility
     public override void Activate(AbilitySystem Owner)
     {
         Commit(Owner);
-        Owner.OwnerAgent.GridID = Owner.CurrentTarget;
-        int Pos = Owner.OwnerAgent.GridID;
-        Vector3 NewPos = new Vector3((Pos % 10) * 10, 0, (Pos / 10) * 10);
+        Vector2Int Pos = Owner.CurrentTarget;
+        Vector3 NewPos = new Vector3(Pos.x * 10, 0, Pos.y * 10);
         if (Ticker.ShouldVisualize)
         {
             CoroutineRunner.Instance.StartCoroutine(Move(Owner.OwnerAgent, NewPos));
@@ -27,8 +26,7 @@ public class MoveAbility : GameplayAbility
         int MoveDistance = Owner.GetAttributeValue(Attribute.MovementDistance).Value;
         int CurrentTile = Owner.OwnerAgent.GridID;
         Vector2Int TilePos = new Vector2Int(CurrentTile % 10, CurrentTile / 10);
-        int TargetTile = Owner.CurrentTarget;
-        Vector2Int TargetPos = new Vector2Int(TargetTile % 10, TargetTile / 10);
+        Vector2Int TargetPos = Owner.CurrentTarget; 
         if (Mathf.Abs(TilePos.x - TargetPos.x) + Mathf.Abs(TilePos.y - TargetPos.y) > MoveDistance)
         {
             return false;

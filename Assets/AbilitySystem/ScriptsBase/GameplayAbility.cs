@@ -29,14 +29,14 @@ namespace GameplayAbilitySystem
             }
         }    
 
-        public bool CanActivate(AbilitySystem Owner)
+        public bool CanActivate(AbilitySystem Owner, bool IgnoreTarget = false)
         {
             if (Owner.IsBlocked(BlockedByTags) || !Owner.HasRequired(RequiredTags))
             {
                 return false;
             }
 
-            if (!IsTargetValid(Owner))
+            if (!IgnoreTarget && !IsTargetValid(Owner))
             {
                 return false;
             }
