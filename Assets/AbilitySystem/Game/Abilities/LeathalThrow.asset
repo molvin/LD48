@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: c0d38a5f1846b5249a42fcda6586e026, type: 2}
   AppliedEffect: {fileID: 0}
-  Cost: {fileID: 11400000, guid: 265780b3a2413604e9330fd7b71615ec, type: 2}
-  Cooldown: {fileID: 11400000, guid: 079b4f0b1f076e24bbbf5b2de5a04923, type: 2}
+  Cost: {fileID: 0}
+  Cooldown: {fileID: 0}
   BlockedByTags: []
   RequiredTags: []
+  AbilityIndex: 1
+  MomentOfExecution: 0.5
+  ParticleSystem: {fileID: 75888656195952045, guid: a5bfc675e3dbc254d9e2023cc26a705f,
+    type: 3}
   Range: 4

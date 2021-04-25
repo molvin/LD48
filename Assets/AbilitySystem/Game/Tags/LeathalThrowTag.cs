@@ -4,4 +4,4 @@ using UnityEngine;
 using GameplayAbilitySystem;
 
 [CreateAssetMenu(menuName = "Ability System/Tag/LeathalThrowTag")]
-public class LeathalThrowTag : TypeTag { }
+public class LeathalThrowTag : DexterityAbilityTag { }

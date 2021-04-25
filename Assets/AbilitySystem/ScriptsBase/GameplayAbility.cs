@@ -14,6 +14,11 @@ namespace GameplayAbilitySystem
         public List<TypeTag> BlockedByTags;
         public List<TypeTag> RequiredTags;
 
+        [Header("Animation")]
+        public int AbilityIndex;
+        public float MomentOfExecution;
+        public ParticleSystem ParticleSystem;
+
         public GridGenerator Grid => GameStateManager.Instance.GetGridManager();
 
         public abstract void Activate(AbilitySystem Owner);
@@ -65,6 +70,61 @@ namespace GameplayAbilitySystem
 
                 Target.TryApplyEffectToSelf(Instance);
             }
+        }
+
+        protected bool IsTileOccupiedByEnemy(AbilitySystem Owner, Vector2Int TargetPos)
+        {
+            return GetEnemyInTile(Owner, TargetPos) != null;
+        }
+
+        protected AbilitySystem GetEnemyInTile(AbilitySystem Owner, Vector2Int TargetPos)
+        {
+            TickAgent TargetAgent = null;
+            foreach (TickAgent Agent in Ticker.Instance.tickAgents)
+            {
+                if (Agent.IsAlive && Agent.GridPos == TargetPos)
+                {
+                    TargetAgent = Agent;
+                    break;
+                }
+            }
+
+            if (TargetAgent == null)
+            {
+                return null;
+            }
+
+            PlayableAgent Player = (PlayableAgent)Owner.OwnerAgent;
+            PlayableAgent Enemy = (PlayableAgent)TargetAgent;
+
+            if ((Player == null && Enemy == null) || (Player != null && Enemy != null))
+            {
+                return null;
+            }
+
+            return TargetAgent.AbilitySystem;
+        }
+
+        protected IEnumerator ApplyEffectVisualized(AbilitySystem Owner, AbilitySystem Target)
+        {
+            Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
+            Owner.OwnerAgent.Animator.SetTrigger("Ability");
+
+            yield return new WaitForSeconds(MomentOfExecution);
+
+            if (ParticleSystem != null)
+            {
+                Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
+                ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
+                Instance.Play();
+
+                while(Instance.isPlaying)
+                {
+                    yield return null;
+                }
+            }
+
+            ApplyEffectToTarget(Owner, Target);
         }
 
         public void Commit(AbilitySystem Owner)
