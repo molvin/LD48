@@ -564,16 +564,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CHAR_Necromancer
       objectReference: {fileID: 0}
-    - target: {fileID: 7408524585649148986, guid: dfa31c433b3a9a442a6df2c81f7fe448,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: a942f7a2767825149ab156c953f432ad, type: 2}
-    - target: {fileID: 7408524585649148986, guid: dfa31c433b3a9a442a6df2c81f7fe448,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfa31c433b3a9a442a6df2c81f7fe448, type: 3}
 --- !u!1001 &7661971206075780342
@@ -587,16 +577,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CHAR_Assassin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268954630575310276, guid: b100bb71ca2dc1741a50346c68439809,
-        type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 0652048c528c1cb4cb26d710427775ac, type: 3}
-    - target: {fileID: 4268954630575310276, guid: b100bb71ca2dc1741a50346c68439809,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6425222590805972472, guid: b100bb71ca2dc1741a50346c68439809,
         type: 3}
