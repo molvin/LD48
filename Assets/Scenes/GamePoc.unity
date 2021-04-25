@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 4268954630029844203}
-  GridID: 0
+  GridPos: {x: 0, y: 0}
   initiative: 0
   Role: 1
   Name: 

@@ -13,6 +13,7 @@ public class GameStateManager : MonoBehaviour
     public GameStateAction ActionState;
     public GameStateIdle IdleState;
     public GameStateLoading LoadingState;
+    public GameStateLoading GameOverState;
 
     private StateMachine m_GameStateMachine;
 

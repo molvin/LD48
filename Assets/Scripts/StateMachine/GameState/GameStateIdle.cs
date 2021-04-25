@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game State/IdleState")]
 public class GameStateIdle : State
 {
+    protected override void Initialize() { }
     public override void Enter()
     {
        
@@ -18,11 +19,27 @@ public class GameStateIdle : State
     }
     public override State SelectTransition() 
     {
+        bool all_enemies_killed = true;
+        foreach (EnemyAgent enemy in FindObjectsOfType<EnemyAgent>())
+        {
+            if (enemy.IsAlive)
+            {
+                all_enemies_killed = false;
+                break;
+            }
+        }
+
+        if (all_enemies_killed)
+            return GameStateManager.Instance.LoadingState;
+
+        if(!GameStateManager.Instance.PlayerAgent.IsAlive)
+        {
+            return GameStateManager.Instance.GameOverState;
+        }
+
         if (GameStateManager.Instance.ShouldGoToActionState())
             return GameStateManager.Instance.ActionState;
 
         return null;
     }
-
-    protected override void Initialize() { }
 }
