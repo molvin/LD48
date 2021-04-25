@@ -23,7 +23,6 @@ public enum CharacterRole
 public class PlayableAgent : TickAgent
 {
     public CharacterRole Role;
-
     [HideInInspector]
     public string Name;
     [HideInInspector]
@@ -35,6 +34,17 @@ public class PlayableAgent : TickAgent
     private void Awake()
     {
         Conversion = LDConversionTable.Load();
+    }
+
+    public void AppendInput(TypeTag GameplayTag, Vector2Int Position)
+    {
+        AppendInput(GameplayTag.GetType(), Position);
+    }
+    public void AppendInput(System.Type GameplayTag, Vector2Int Position)
+    {
+        int X = GameStateManager.Instance.GetGridManager().xWidth;
+        ushort Cell = (ushort)(Position.x + Position.y * X);
+        AppendInput(Conversion.GameplayTagToLD(GameplayTag, Cell));
     }
 
     public void AppendInput(LDInputFrame input)
@@ -53,6 +63,10 @@ public class PlayableAgent : TickAgent
             }
         }
 
+        GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
+        transform.position = GameStateManager.Instance.GetGridManager().CellToWorld((Vector3Int)GridPos);
+        GameStateManager.Instance.GetGridManager().setOccupied((Vector3Int)GridPos, true);
+
         Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;
@@ -68,7 +82,7 @@ public class PlayableAgent : TickAgent
 
         CharacterDataTemplate Data = CharacterDataTemplate.Load();
 
-        if (OwningCharacter.attributes.Length == 0)
+        if (OwningCharacter.attributes == null || OwningCharacter.attributes.Length == 0)
         {
             // NOTE: First time, Playing from start!
             Data.GetStartingAttributes(Role)
@@ -90,7 +104,8 @@ public class PlayableAgent : TickAgent
     {
         AbilitySystem.IsScrumming = Scrum;
         TypeTag Action = Conversion.LDToGameplayTag(TimeLine[CurrentFrame].action);
-        Vector2Int TargetPos = new Vector2Int(TimeLine[CurrentFrame].cell % 10, TimeLine[CurrentFrame].cell / 10);
+        int X = GameStateManager.Instance.GetGridManager().xWidth;
+        Vector2Int TargetPos = new Vector2Int(TimeLine[CurrentFrame].cell % X, TimeLine[CurrentFrame].cell / X);
         AbilitySystem.CurrentTarget = TargetPos;
         AbilitySystem.TryActivateAbilityByTag(Action);
         AbilitySystem.Tick();
@@ -102,7 +117,6 @@ public class PlayableAgent : TickAgent
         return new LDCharacter
         {
             name = Name,
-            GridId = GridID,
             color = (byte)Color,
             role = (byte)Role,
             attributes = AbilitySystem.GetLDAttributes(),

@@ -14,8 +14,9 @@ public class EnemyAgent : TickAgent
 {
     public MonsterRole Role;
 
-    public override void Initialize(LDBlock data)
+    public override void Initialize(LDBlock _data)
     {
+        GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
         Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         CharacterDataTemplate Data = CharacterDataTemplate.Load();

@@ -1,17 +1,13 @@
-using GameplayAbilitySystem;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game State/ActionState")]
 public class GameStateAction : State
 {
     public System.Type AbilityType;
-    
     public override void Enter() 
     {
         GameStateManager.Instance.GetFolowMouse().gameObject.SetActive(true);
-        GameStateManager.Instance.GetFolowMouse().CellSelected += CellSelected;
+        GameStateManager.Instance.GetFolowMouse().OnCellSelected += OnCellSelected;
         GameStateManager.Instance.GetFolowMouse().AbilityType = AbilityType;
         Debug.Log("Enter action");
     }
@@ -24,15 +20,17 @@ public class GameStateAction : State
         }
     }
 
-    private void CellSelected(Vector3Int pos)
+    private void OnCellSelected(Vector3Int pos)
     {
         GameStateManager.Instance.ShouldDoAction = false;
+        GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
+        Ticker.Instance.Tick();
         Debug.Log("Action done");
     }
 
     public override void Exit() 
     {
-        GameStateManager.Instance.GetFolowMouse().CellSelected -= CellSelected;
+        GameStateManager.Instance.GetFolowMouse().OnCellSelected -= OnCellSelected;
         GameStateManager.Instance.GetFolowMouse().gameObject.SetActive(false);
     }
     public override State SelectTransition() 
@@ -44,5 +42,5 @@ public class GameStateAction : State
         return null;
     }
 
-    protected override void Initialize() { }
+    protected override void Initialize(){}
 }

@@ -16,23 +16,97 @@ MonoBehaviour:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
     StartingEffects: []
-    StartingAttributeSet: []
+    StartingAttributeSet:
+    - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+      Value: 100
+    - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
+      Value: 100
+    - Attribute: {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
+      Value: 10
+    - Attribute: {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}
+      Value: 10
+    - Attribute: {fileID: 11400000, guid: 55b22490e3b56be4faf907d34c995971, type: 2}
+      Value: 12
+    - Attribute: {fileID: 11400000, guid: 3ae3f0da953efff498193fa7813fda1b, type: 2}
+      Value: 6
+    - Attribute: {fileID: 11400000, guid: b4c4df153eb76da469b0fd07ffa3af3d, type: 2}
+      Value: 18
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 4
+    - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
+      Value: 0
   Assassin:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
     - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
     StartingEffects: []
-    StartingAttributeSet: []
+    StartingAttributeSet:
+    - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+      Value: 70
+    - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
+      Value: 70
+    - Attribute: {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
+      Value: 20
+    - Attribute: {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}
+      Value: 20
+    - Attribute: {fileID: 11400000, guid: 55b22490e3b56be4faf907d34c995971, type: 2}
+      Value: 18
+    - Attribute: {fileID: 11400000, guid: 3ae3f0da953efff498193fa7813fda1b, type: 2}
+      Value: 12
+    - Attribute: {fileID: 11400000, guid: b4c4df153eb76da469b0fd07ffa3af3d, type: 2}
+      Value: 6
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 3
+    - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
+      Value: 0
   Necromanacer:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
     StartingEffects: []
-    StartingAttributeSet: []
+    StartingAttributeSet:
+    - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+      Value: 150
+    - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
+      Value: 150
+    - Attribute: {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
+      Value: 0
+    - Attribute: {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}
+      Value: 0
+    - Attribute: {fileID: 11400000, guid: 55b22490e3b56be4faf907d34c995971, type: 2}
+      Value: 6
+    - Attribute: {fileID: 11400000, guid: 3ae3f0da953efff498193fa7813fda1b, type: 2}
+      Value: 18
+    - Attribute: {fileID: 11400000, guid: b4c4df153eb76da469b0fd07ffa3af3d, type: 2}
+      Value: 12
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 2
+    - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
+      Value: 0
   BlobMan:
     StartingAbilities: []
     StartingEffects: []
-    StartingAttributeSet: []
+    StartingAttributeSet:
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 3
+    - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+      Value: 30
+    - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
+      Value: 30
+    - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
+      Value: 0
   Cultist:
     StartingAbilities: []
     StartingEffects: []
-    StartingAttributeSet: []
+    StartingAttributeSet:
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 1
+    - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+      Value: 50
+    - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
+      Value: 50
+    - Attribute: {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
+      Value: 15
+    - Attribute: {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}
+      Value: 15
+    - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
+      Value: 0

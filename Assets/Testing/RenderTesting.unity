@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84048847}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1083078af78b1c24fb6b6e46212fc195, type: 3}
   m_Name: 
@@ -162,6 +162,8 @@ MonoBehaviour:
     type: 2}
   BlockedEffect: {fileID: 11400000, guid: 76053fd8bad4bd24b8e3cf8a000200b9, type: 2}
   ApplyBlockedEffect: {fileID: 11400000, guid: 916954aca2d80d04e9a2a057a077b690, type: 2}
+  StrengthTag: {fileID: 11400000, guid: 6a184cf136804234dbdacb05c9fc877f, type: 2}
+  Strength2Tag: {fileID: 11400000, guid: bf72264ddfa3d96469b04d59fa115f30, type: 2}
 --- !u!4 &84048849
 Transform:
   m_ObjectHideFlags: 0
@@ -297,6 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 263213202}
   - component: {fileID: 263213201}
+  - component: {fileID: 263213203}
   m_Layer: 0
   m_Name: TestAgent
   m_TagString: Untagged
@@ -311,12 +314,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263213200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cfc649197b13f441a692253616d49a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barbarian: {fileID: 1229709124}
+  Ticker: {fileID: 263213203}
+  Controling: 0
 --- !u!4 &263213202
 Transform:
   m_ObjectHideFlags: 0
@@ -331,6 +335,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263213203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263213200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8890f6f6c1548c4fbe4859ca344af92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickAgents: []
 --- !u!1 &390887498
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +716,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf7d5cf2b1b5447bb97f55982146fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridID: 0
+  Animator: {fileID: 0}
+  GridPos: {x: 0, y: 0}
+  IsAlive: 1
   initiative: 0
   Role: 0
   Name: 
