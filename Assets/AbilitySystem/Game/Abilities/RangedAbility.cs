@@ -20,7 +20,7 @@ public class RangedAbility : GameplayAbility
         
         if (Ticker.ShouldVisualize)
         {
-            ApplyEffectVisualized(Owner, Target);
+          CoroutineRunner.Instance.StartCoroutine(ApplyEffectVisualized(Owner, Target));
         }
         else
         {
