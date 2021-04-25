@@ -9,28 +9,35 @@ public class MoveAbility : GameplayAbility
     public override void Activate(AbilitySystem Owner)
     {
         Commit(Owner);
-        Vector2Int Pos = Owner.CurrentTarget;
-        Vector3 NewPos = new Vector3(Pos.x * 10, 0, Pos.y * 10);
+
+        Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
+
         if (Ticker.ShouldVisualize)
         {
-            CoroutineRunner.Instance.StartCoroutine(Move(Owner.OwnerAgent, NewPos));
+            CoroutineRunner.Instance.StartCoroutine(Move(Owner.OwnerAgent, WorldPos));
         }
         else
         {
-            Owner.OwnerAgent.transform.position = NewPos;
+            Owner.OwnerAgent.transform.position = WorldPos;
         }
+
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
     {
-        int MoveDistance = Owner.GetAttributeValue(Attribute.MovementDistance).Value;
-        int CurrentTile = Owner.OwnerAgent.GridID;
-        Vector2Int TilePos = new Vector2Int(CurrentTile % 10, CurrentTile / 10);
-        Vector2Int TargetPos = Owner.CurrentTarget; 
-        if (Mathf.Abs(TilePos.x - TargetPos.x) + Mathf.Abs(TilePos.y - TargetPos.y) > MoveDistance)
+        if (Owner.OwnerAgent.GridPos == Owner.CurrentTarget)
         {
             return false;
         }
+
+        int MoveDistance = Owner.GetAttributeValue(Attribute.MovementDistance).Value;
+        List<Vector3Int> Path = Grid.findPath((Vector3Int)Owner.OwnerAgent.GridPos, (Vector3Int)Owner.CurrentTarget);
+
+        if (Path == null || Path.Count > MoveDistance)
+        {
+            return false;
+        }
+
         return true;
     }
 

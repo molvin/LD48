@@ -24,10 +24,8 @@ public class GridGenerator : MonoBehaviour
     [HideInInspector]
     [SerializeField]
     private GridCellProperties[,] childrenByPosition;
-
-    private int gridSizeX;
-    private int gridSizeZ;
     private List<GridCellProperties> path;
+
     public float nodeGizRadius = 0.16f;
     public void Start()
     {
@@ -49,9 +47,6 @@ public class GridGenerator : MonoBehaviour
             Debug.LogWarning("You may not use this function outside of edit mode");
             return;
         }
-
-        gridSizeX = xWidth;
-        gridSizeZ = zWidth;
         for (int x = 0; x < xWidth; x++)
         {
             for(int z = 0; z < zWidth; z++)
@@ -106,9 +101,21 @@ public class GridGenerator : MonoBehaviour
     }
     public BlockStatus GetCellStatus(Vector2Int pos)
     {
-        if (pos.x >= gridSizeX || pos.x < 0 || pos.y >= gridSizeZ || pos.y < 0)
+        if (pos.x >= xWidth || pos.x < 0 || pos.y >= zWidth || pos.y < 0)
             return BlockStatus.Nan;
         return childrenByPosition[pos.x, pos.y].flags;
+    }
+    public bool isPathObstructed(List<Vector3Int> path)
+    {
+        return !path.Select(v => childrenByPosition[v.x, v.y])
+                    .Any(GCP => GCP.flags.HasFlag(BlockStatus.Obstacle));
+    }
+    public void setOccupied(Vector3Int pos, bool occupied)
+    {
+        if(occupied)
+            childrenByPosition[pos.x, pos.y].flags |= BlockStatus.Occupied;
+        else
+            childrenByPosition[pos.x, pos.y].flags &= BlockStatus.Occupied;
     }
 
     private List<GridCellProperties> getNeighbors(GridCellProperties node)
@@ -116,19 +123,19 @@ public class GridGenerator : MonoBehaviour
         List<GridCellProperties> neighbors = new List<GridCellProperties>();
 
         //checks and adds top neighbor
-        if (node.GridX >= 0 && node.GridX < gridSizeX && node.GridZ + 1 >= 0 && node.GridZ + 1 < gridSizeZ)
+        if (node.GridX >= 0 && node.GridX < xWidth && node.GridZ + 1 >= 0 && node.GridZ + 1 < zWidth)
             neighbors.Add(childrenByPosition[node.GridX, node.GridZ + 1]);
         
         //checks and adds bottom neighbor
-        if (node.GridX >= 0 && node.GridX < gridSizeX && node.GridZ - 1 >= 0 && node.GridZ - 1 < gridSizeZ)
+        if (node.GridX >= 0 && node.GridX < xWidth && node.GridZ - 1 >= 0 && node.GridZ - 1 < zWidth)
             neighbors.Add(childrenByPosition[node.GridX, node.GridZ - 1]);
         
         //checks and adds right neighbor
-        if (node.GridX + 1 >= 0 && node.GridX + 1 < gridSizeX && node.GridZ >= 0 && node.GridZ < gridSizeZ)
+        if (node.GridX + 1 >= 0 && node.GridX + 1 < xWidth && node.GridZ >= 0 && node.GridZ < zWidth)
             neighbors.Add(childrenByPosition[node.GridX + 1, node.GridZ]);
         
         //checks and adds left neighbor
-        if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridZ >= 0 && node.GridZ < gridSizeZ)
+        if (node.GridX - 1 >= 0 && node.GridX - 1 < xWidth && node.GridZ >= 0 && node.GridZ < zWidth)
             neighbors.Add(childrenByPosition[node.GridX - 1, node.GridZ]);
         
         return neighbors;
@@ -157,7 +164,7 @@ public class GridGenerator : MonoBehaviour
             Debug.Log(node);
             foreach (GridCellProperties neighbour in getNeighbors(node))
             {
-                if (neighbour.flags.HasFlag(BlockStatus.Occupied) || neighbour.flags.HasFlag(BlockStatus.Obstacle) || closedSet.Contains(neighbour))
+                if (neighbour.flags.HasFlag(BlockStatus.Occupied) || !neighbour.flags.HasFlag(BlockStatus.Walkable) || closedSet.Contains(neighbour))
                 {
                     continue;
                 }
@@ -204,7 +211,10 @@ public class GridGenerator : MonoBehaviour
         {
             foreach (GridCellProperties n in childrenByPosition)
             {
-                Gizmos.color = n.flags.HasFlag(BlockStatus.Obstacle) ? new Color(255, 0, 0, 200) : Color.white;
+                bool obs = n.flags.HasFlag(BlockStatus.Obstacle);
+                bool walk = n.flags.HasFlag(BlockStatus.Walkable);
+                bool occ = n.flags.HasFlag(BlockStatus.Occupied);
+                Gizmos.color = new Color(obs ? 255 : 0, walk ? 255 : 0, occ ? 255 : 0, 200);
                 if (path != null && path.Contains(n))
                     Gizmos.color = Color.black;
                 Gizmos.DrawWireSphere(n.transform.position, nodeGizRadius);

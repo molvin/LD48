@@ -53,6 +53,8 @@ public class PlayableAgent : TickAgent
             }
         }
 
+        Vector3Int Pos = GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
+        GridPos = new Vector2Int(Pos.x, Pos.z);
         Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;
@@ -68,7 +70,7 @@ public class PlayableAgent : TickAgent
 
         CharacterDataTemplate Data = CharacterDataTemplate.Load();
 
-        if (OwningCharacter.attributes.Length == 0)
+        if (OwningCharacter.attributes == null || OwningCharacter.attributes.Length == 0)
         {
             // NOTE: First time, Playing from start!
             Data.GetStartingAttributes(Role)
@@ -90,7 +92,8 @@ public class PlayableAgent : TickAgent
     {
         AbilitySystem.IsScrumming = Scrum;
         TypeTag Action = Conversion.LDToGameplayTag(TimeLine[CurrentFrame].action);
-        Vector2Int TargetPos = new Vector2Int(TimeLine[CurrentFrame].cell % 10, TimeLine[CurrentFrame].cell / 10);
+        int X = GameStateManager.Instance.GetGridManager().xWidth;
+        Vector2Int TargetPos = new Vector2Int(TimeLine[CurrentFrame].cell % X, TimeLine[CurrentFrame].cell / X);
         AbilitySystem.CurrentTarget = TargetPos;
         AbilitySystem.TryActivateAbilityByTag(Action);
         AbilitySystem.Tick();
@@ -102,7 +105,6 @@ public class PlayableAgent : TickAgent
         return new LDCharacter
         {
             name = Name,
-            GridId = GridID,
             color = (byte)Color,
             role = (byte)Role,
             attributes = AbilitySystem.GetLDAttributes(),
