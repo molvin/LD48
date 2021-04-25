@@ -1,3 +1,4 @@
+using GameplayAbilitySystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,14 @@ public class GameplayInputUI : MonoBehaviour
     [SerializeField] private HorizontalLayoutGroup m_ActionBar;
     [SerializeField] private HorizontalLayoutGroup m_InventoryBar;
 
+    private Button[] m_ActionButtons;
+    private Button[] m_InventoryButtons;
+
+    private Dictionary<int, TypeTag> m_AbilityButtonMapping;
+    private Dictionary<int, TypeTag> m_InventoryButtonMapping;
+
+
+
     //private Dictionary<uint, Button> m_ActionButtons;
 
     // Start is called before the first frame update
@@ -25,22 +34,43 @@ public class GameplayInputUI : MonoBehaviour
         m_CharacterPortrait.onClick.AddListener(delegate { ClickedCharacterPortrait(); });
 
 
-        Button[] action_buttons = m_ActionBar.GetComponentsInChildren<Button>();
-        for (uint i = 0; i < action_buttons.Length; i++)
+        m_ActionButtons = m_ActionBar.GetComponentsInChildren<Button>();
+        for (uint i = 0; i < m_ActionButtons.Length; i++)
         {
             uint j = i;
-            action_buttons[i].onClick.AddListener(delegate { SelectAction(j); });
+            m_ActionButtons[i].onClick.AddListener(delegate { SelectAction(j); });
         }
-           
 
-        Button[] inventory_buttons = m_InventoryBar.GetComponentsInChildren<Button>();
-        for (uint i = 0; i < inventory_buttons.Length; i++)
+
+        m_InventoryButtons = m_InventoryBar.GetComponentsInChildren<Button>();
+        for (uint i = 0; i < m_InventoryButtons.Length; i++)
         {
             uint j = i;
-            inventory_buttons[i].onClick.AddListener(delegate { SelectInventoryItem(j); });
+            m_InventoryButtons[i].onClick.AddListener(delegate { SelectInventoryItem(j); });
 
         }
 
+    }
+
+    public void LoadAbilities(AbilitySystem ability_owner)
+    {
+        List<TypeTag> type_tags = ability_owner.GetGrantedAbilityTypes();
+        
+        for (int i = 0; i < m_ActionButtons.Length; i++)
+        {
+            Button button = m_ActionButtons[i];
+            if (type_tags.Count > i)
+            {
+                TypeTag ability_tag = type_tags[i];
+                button.GetComponent<Image>().sprite = ability_tag.Icon;
+                GetComponentInChildren<TMPro.TextMeshProUGUI>().text = ability_tag.Name;
+                m_AbilityButtonMapping.Add(i, ability_tag);
+            }
+            else
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
