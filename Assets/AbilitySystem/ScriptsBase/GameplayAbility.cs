@@ -36,14 +36,14 @@ namespace GameplayAbilitySystem
                 return false;
             }
 
-            if (Cost == null)
-            {
-                return true;
-            }
-
             if (!IsTargetValid(Owner))
             {
                 return false;
+            }
+
+            if (Cost == null)
+            {
+                return true;
             }
 
             return Owner.CanApplyFullEffectToSelf(Cost);

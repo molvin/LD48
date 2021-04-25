@@ -10,7 +10,7 @@ public class Ticker : MonoBehaviour
 
     private int CurrentTick;
 
-    void Start()
+    public void Initialize()
     {
         CurrentTick = 0;
         tickAgents = FindObjectsOfType<TickAgent>().ToList();

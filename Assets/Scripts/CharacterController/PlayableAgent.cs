@@ -9,6 +9,8 @@ public enum CharacterColor
 {
     None,
     Blue,
+    Black,
+    Red,
 }
 
 public enum CharacterRole

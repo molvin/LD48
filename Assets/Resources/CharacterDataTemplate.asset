@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: CharacterDataTemplate
   m_EditorClassIdentifier: 
   Barbarian:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
   Assassin:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
   Necromanacer:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public abstract class TickAgent : MonoBehaviour
 {
-    [HideInInspector]
     public int GridID;
 
     public int initiative = 0;
