@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06f1bbbc5077504ca47a0eb9741f6be, type: 3}
+  m_Name: ComfySocks
+  m_EditorClassIdentifier: 
+  itemName: Comfy Socks
+  itemImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemDescription: 
+  maxHealthChange: 0
+  manaChange: 0
+  healthRegenChange: 0
+  manaRegenChange: 0
+  strengthChange: 0
+  dexterityChange: 3
+  intelligenceChange: 0
+  movementSpeedChange: 0
+  debuffImmunity: 0
+  debuffDurationChange: 0
+  meleeDamageChange: 0
+  poisonDamageChange: 0
+  magicDamageChange: 0
+  incomingDamageChange: 0
+  incomingRangedDamageChange: 0
+  incomingFireDamageChange: 0
+  addedFireDamage: 0
+  addedPhysicalDamage: 0
+  addedLigthningDamage: 0
+  abilityRangeChange: 0
+  itemSlotsChange: 0
+  isCool: 0
+  isBland: 0
+  isBanana: 0
+  silenceWhenDamaged: 0
+  thirdAbilityActivatedTwice: 0
+  empowerOnMagicHit: 0
+  rerollConsumables: 0
+  blindOnMeleeDamage: 0
+  addedCleaveAttack: 0
+  itemEffectTripled: 0
+  onlyActEveryOtherRound: 0
+  immuneToBlind: 0
+  depowerEveryThirdRound: 0

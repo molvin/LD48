@@ -13,8 +13,8 @@ public class InventorySlotController : MonoBehaviour
     private void Start()
     {
         displayText = transform.Find("Text").GetComponent<Text>();
-        transform.Find("Image").GetComponent<Image>();
-
+        displayImage = transform.Find("Image").GetComponent<Image>();
+        
         UpdateInformation();
     }
 
