@@ -44,7 +44,7 @@ public class Server
         catch (SocketException e){ Debug.Log("SocketException: {0}");}
         return timeline;
     }
-    public static bool PushTimeLine(LDTimeLine TimeLine)
+    public static bool PushTimeLine(LDTimeLineBranchRequest branch)
     {
         bool success = false;
         try
@@ -54,7 +54,7 @@ public class Server
             TcpClient client = new TcpClient(ipAdress, port);
 
             // Send request message to server
-            WritableSystem.Write(mem, TimeLine);
+            WritableSystem.Write(mem, branch);
             int pos = (int)mem.Position;
             mem.Seek(0, SeekOrigin.Begin);
             int length = mem.Read(buffer, 0, pos);

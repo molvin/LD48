@@ -25,12 +25,15 @@ namespace GameStructure
     public struct LDCharacter
     {
         public string name;
-        public int Id;
-        public int GridId;
         public byte color;
         public byte role;
         public LDAttribute[] attributes;
         public LDInputFrame[] timeLine;
+
+        [SkipIndex]
+        public int Id;
+        [SkipIndex]
+        public int GridId;
     }
     [Writable]
     public struct LDAttribute
