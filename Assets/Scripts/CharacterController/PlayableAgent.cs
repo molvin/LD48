@@ -8,6 +8,7 @@ using System.Linq;
 public enum CharacterColor
 {
     None,
+    Blue,
 }
 
 public enum CharacterRole
@@ -32,7 +33,7 @@ public class PlayableAgent : TickAgent
     List<LDInputFrame> TimeLine;
     private LDConversionTable Conversion;
 
-    private void Start()
+    private void Awake()
     {
         Conversion = LDConversionTable.Load();
     }
@@ -56,7 +57,14 @@ public class PlayableAgent : TickAgent
         AbilitySystem = new AbilitySystem();
         Name = OwningCharacter.name;
         Color = (CharacterColor)OwningCharacter.color;
-        TimeLine = OwningCharacter.timeLine.ToList();
+        if (OwningCharacter.timeLine != null)
+        {
+            TimeLine = OwningCharacter.timeLine.ToList();
+        }
+        else
+        {
+            TimeLine = new List<LDInputFrame>();
+        }
         AbilitySystem.RegisterLDAttributes(OwningCharacter.attributes);
         CharacterDataTemplate.
             Load().
