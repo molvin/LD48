@@ -10,6 +10,7 @@ public class GameplayInputUI : MonoBehaviour
     [Header("Interaction Buttons")]
     [SerializeField] private Button m_MoveActionButton;
     [SerializeField] private Button m_CharacterPortrait;
+    [SerializeField] private Button m_EndTurnButton;
     [SerializeField] private HorizontalLayoutGroup m_ActionBar;
     [SerializeField] private HorizontalLayoutGroup m_InventoryBar;
 
@@ -25,9 +26,12 @@ public class GameplayInputUI : MonoBehaviour
         if (!m_Canvas)
             Debug.LogAssertion("There is no canvas");
 
+        GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;
+        GameStateManager.Instance.OnHasMovedUpdate      += UpdateMoveButton;
+
         m_MoveActionButton.onClick.AddListener(delegate { SelectMove(); });
         m_CharacterPortrait.onClick.AddListener(delegate { ClickedCharacterPortrait(); });
-
+        m_EndTurnButton.onClick.AddListener(delegate { SelectEndTurn(); });
 
         m_ActionButtons = m_ActionBar.GetComponentsInChildren<Button>();
         for (int i = 0; i < m_ActionButtons.Length; i++)
@@ -97,6 +101,10 @@ public class GameplayInputUI : MonoBehaviour
         GameStateManager.Instance.GoToActionState(m_AbilityButtonMapping[index].GetType());
         Debug.Log("Clicked action: " + index);
     }
+    public void SelectEndTurn()
+    {
+        GameStateManager.Instance.GoToEndTurnState();
+    }
 
     public void SelectInventoryItem(int index)
     {
@@ -106,5 +114,23 @@ public class GameplayInputUI : MonoBehaviour
     public void ClickedCharacterPortrait()
     {
         Debug.Log("Clicked character portrait");
+    }
+
+    public void UpdateActionButtons(bool has_done_ability)
+    {
+        for (int i = 0; i < m_ActionButtons.Length; i++)
+        {
+            Button button = m_ActionButtons[i];
+            if (!button.gameObject.activeSelf)
+                continue;
+
+            button.interactable = !has_done_ability;
+           
+        }
+    }
+
+    public void UpdateMoveButton(bool has_moved)
+    {
+        m_MoveActionButton.interactable = !has_moved;
     }
 }

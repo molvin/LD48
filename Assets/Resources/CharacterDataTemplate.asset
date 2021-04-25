@@ -82,31 +82,39 @@ MonoBehaviour:
       Value: 2
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
-  BlobMan:
+  BlobManA:
     StartingAbilities: []
     StartingEffects: []
     StartingAttributeSet:
-    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
-      Value: 3
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
       Value: 30
     - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
       Value: 30
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 2
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
-  Cultist:
+  BlobManB:
     StartingAbilities: []
     StartingEffects: []
     StartingAttributeSet:
-    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
-      Value: 1
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
-      Value: 50
+      Value: 30
     - Attribute: {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
-      Value: 50
-    - Attribute: {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
-      Value: 15
-    - Attribute: {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}
-      Value: 15
+      Value: 30
+    - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+      Value: 2
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
+  CultistA:
+    StartingAbilities: []
+    StartingEffects: []
+    StartingAttributeSet: []
+  CultistB:
+    StartingAbilities: []
+    StartingEffects: []
+    StartingAttributeSet: []
+  CultistC:
+    StartingAbilities: []
+    StartingEffects: []
+    StartingAttributeSet: []

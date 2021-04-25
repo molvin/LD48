@@ -279,7 +279,8 @@ MonoBehaviour:
   ActionState: {fileID: 11400000, guid: 9fdb5f59b9deea7499e9039037123f34, type: 2}
   IdleState: {fileID: 11400000, guid: 91a59f1cc7f61184b8ff3e55e4daa3b9, type: 2}
   LoadingState: {fileID: 11400000, guid: 192bc90ef278dcc468850251635556c7, type: 2}
-  GameOverState: {fileID: 0}
+  GameOverState: {fileID: 11400000, guid: 6616be12daec78345b9745b1ccd241f8, type: 2}
+  EndTurnState: {fileID: 11400000, guid: 8a410772d113f714ba20d3db66207db2, type: 2}
   Role: 1
   PlayerAgent: {fileID: 0}
   GridIndex: -1

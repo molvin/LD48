@@ -16,6 +16,7 @@ namespace GameplayAbilitySystem
         public string Name;
         public string Description;
 
+        public static Type NoAction => typeof(NoActionTag);
         public static Type StrengthAbility => typeof(StrengthAbilityTag); 
         public static Type DexterityAbility => typeof(DexterityAbilityTag); 
         public static Type IntelligenceAbility => typeof(IntelligenceAbilityTag); 

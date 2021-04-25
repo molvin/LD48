@@ -6,8 +6,11 @@ using GameplayAbilitySystem;
 
 public enum MonsterRole
 {
-    BlobMan,
-    Cultist,
+    BlobManA,
+    BlobManB,
+    CultistA,
+    CultistB,
+    CultistC,
 }
 
 public class EnemyAgent : TickAgent
@@ -31,5 +34,10 @@ public class EnemyAgent : TickAgent
     public override void Tick(int Frame, bool Scrum)
     {
         Debug.LogError("This monster doesn't have a brain, very sadge :(");
+    }
+
+    public void AddActions()
+    {
+
     }
 }
