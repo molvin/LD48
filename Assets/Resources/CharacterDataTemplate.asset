@@ -15,9 +15,24 @@ MonoBehaviour:
   Barbarian:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    StartingEffects: []
+    StartingAttributeSet: []
   Assassin:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
+    StartingEffects: []
+    StartingAttributeSet: []
   Necromanacer:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    StartingEffects: []
+    StartingAttributeSet: []
+  BlobMan:
+    StartingAbilities: []
+    StartingEffects: []
+    StartingAttributeSet: []
+  Cultist:
+    StartingAbilities: []
+    StartingEffects: []
+    StartingAttributeSet: []
