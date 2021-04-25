@@ -11,5 +11,9 @@ namespace GameplayAbilitySystem
         public bool Is(Type Other) => Other.IsAssignableFrom(GetType());
 
         public static Type MoveAbility => typeof(MoveAbilityTag);
+
+        public Sprite Icon;
+        public string Name;
+        public string Description;
     }
 }

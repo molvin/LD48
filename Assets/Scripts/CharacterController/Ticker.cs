@@ -7,6 +7,7 @@ using UnityEngine;
 public class Ticker : MonoBehaviour
 {
     public static LDBlock currentBlock;
+    public static Ticker Instance;
     public static float TickVisualTime = 0.5f;
     public static bool ShouldVisualize;
 
@@ -16,6 +17,7 @@ public class Ticker : MonoBehaviour
 
     public void Initialize()
     {
+        Instance = this;
         CurrentTick = 0;
         tickAgents = FindObjectsOfType<TickAgent>().ToList();
         for (int i = 0; i < tickAgents.Count; i++)
