@@ -18,4 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
   - {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}
   - {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
+  - {fileID: 11400000, guid: b4c4df153eb76da469b0fd07ffa3af3d, type: 2}
+  - {fileID: 11400000, guid: 3ae3f0da953efff498193fa7813fda1b, type: 2}
+  - {fileID: 11400000, guid: 55b22490e3b56be4faf907d34c995971, type: 2}
   GameplayTags: []
