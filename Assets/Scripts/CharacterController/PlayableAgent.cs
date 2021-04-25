@@ -25,8 +25,6 @@ public class PlayableAgent : TickAgent
     [HideInInspector]
     public string Name;
     [HideInInspector]
-    public int GridID;
-    [HideInInspector]
     public CharacterColor Color;
 
     public AbilitySystem AbilitySystem;
@@ -54,7 +52,7 @@ public class PlayableAgent : TickAgent
             }
         }
 
-        AbilitySystem = new AbilitySystem();
+        AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;
         Color = (CharacterColor)OwningCharacter.color;
         if (OwningCharacter.timeLine != null)

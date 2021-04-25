@@ -17,8 +17,15 @@ namespace GameplayAbilitySystem
         public List<GameplayEffect> ActiveGameplayEffects = new List<GameplayEffect>();
         public Dictionary<Type, int> ActiveTags = new Dictionary<Type, int>();
 
+        public TickAgent OwnerAgent;
         public ushort CurrentTarget;
         public bool IsScrumming;
+
+
+        public AbilitySystem(TickAgent OwnerAgent)
+        {
+            this.OwnerAgent = OwnerAgent;
+        }
 
         // Tick
         public void Tick()
