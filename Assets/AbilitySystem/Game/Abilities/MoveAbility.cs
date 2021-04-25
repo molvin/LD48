@@ -30,7 +30,7 @@ public class MoveAbility : GameplayAbility
 
     public IEnumerator Move(TickAgent OwnerAgent, Vector3 NewPos)
     {
-        OwnerAgent.Animator.SetFloat("Velocity", 1.0f, Ticker.TickVisualTime / 4.0f, Time.deltaTime);
+        OwnerAgent.Animator.SetFloat("Velocity", 1.0f);
         Vector3 OriginalPos = OwnerAgent.transform.position;
         float time = 0.0f;
         while (time < Ticker.TickVisualTime)
@@ -40,6 +40,6 @@ public class MoveAbility : GameplayAbility
             yield return null;
         }
         OwnerAgent.transform.position = NewPos;
-        OwnerAgent.Animator.SetFloat("Velocity", 0.0f, Ticker.TickVisualTime / 4.0f, Time.deltaTime);
+        OwnerAgent.Animator.SetFloat("Velocity", 0.0f);
     }
 }
