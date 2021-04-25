@@ -19,6 +19,9 @@ public class GameStateIdle : State
     }
     public override State SelectTransition() 
     {
+        if (Ticker.Instance.IsTicking)
+            return null;
+
         bool all_enemies_killed = FindObjectsOfType<EnemyAgent>().Length > 0;
         foreach (EnemyAgent enemy in FindObjectsOfType<EnemyAgent>())
         {
