@@ -14,6 +14,8 @@ namespace GameplayAbilitySystem
         public List<TypeTag> BlockedByTags;
         public List<TypeTag> RequiredTags;
 
+        public GridGenerator Grid => GameStateManager.Instance.GetGridManager();
+
         public abstract void Activate(AbilitySystem Owner);
         public abstract bool IsTargetValid(AbilitySystem Owner);
 

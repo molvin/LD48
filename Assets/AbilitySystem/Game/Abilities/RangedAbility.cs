@@ -15,9 +15,7 @@ public class RangedAbility : GameplayAbility
 
     public override bool IsTargetValid(AbilitySystem Owner)
     {
-
-        int CurrentTile = Owner.OwnerAgent.GridID;
-        Vector2Int TilePos = new Vector2Int(CurrentTile % 10, CurrentTile / 10);
+        Vector2Int TilePos = Owner.OwnerAgent.GridPos;
         Vector2Int TargetPos = Owner.CurrentTarget;
 
         return Mathf.Abs(TilePos.x - TargetPos.x) + Mathf.Abs(TilePos.y - TargetPos.y) > Range;
