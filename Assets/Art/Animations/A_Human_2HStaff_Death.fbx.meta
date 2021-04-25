@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: c02fed2e570be264caa07375cdc8e4b3
+guid: 229311e7fd39cce4c8908922862f70b8
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Human_2HStaff_Idle
+    second: Human_2HStaff_Death
   externalObjects: {}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Human_2HStaff_Idle
+      name: Human_2HStaff_Death
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -80,7 +80,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
@@ -117,7 +117,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Char_SkinnedMesh
       parentName: SKM_BaseHumanoid_v2(Clone)
-      position: {x: -0, y: -0.21121322, z: 0}
+      position: {x: -0, y: -0.21121325, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_root
@@ -127,57 +127,57 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_pelvis
       parentName: LD48_CharacterRig_root
-      position: {x: -0, y: 3.567741, z: 0}
+      position: {x: -0, y: 3.5677414, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_hip_l
       parentName: LD48_CharacterRig_pelvis
-      position: {x: -0.39798877, y: -0.2375152, z: 0.051062662}
+      position: {x: -0.39798877, y: -0.23751521, z: 0.05106267}
       rotation: {x: -0.000000027738079, y: -0.000000028016268, z: 0.7035699, w: 0.71062607}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_knee_l
       parentName: LD48_CharacterRig_hip_l
-      position: {x: -1.4954993, y: -0.0149241695, z: 0.08840762}
+      position: {x: -1.4954993, y: -0.01492417, z: 0.08840763}
       rotation: {x: 0, y: 0, z: -0.00919094, w: 0.9999578}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_foot_l
       parentName: LD48_CharacterRig_knee_l
-      position: {x: -1.3344288, y: -0.03785613, z: -0.08840762}
+      position: {x: -1.3344289, y: -0.037856136, z: -0.08840763}
       rotation: {x: 0.000000027476673, y: 0.000000028267209, z: -0.69700885, w: 0.71706253}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_toe_l
       parentName: LD48_CharacterRig_foot_l
-      position: {x: -4.1846e-15, y: -0.42214447, z: 0.5003235}
+      position: {x: -4.1846007e-15, y: -0.42214453, z: 0.50032353}
       rotation: {x: 0, y: 0, z: -7.2858386e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_hip_r
       parentName: LD48_CharacterRig_pelvis
-      position: {x: 0.39798838, y: -0.23751315, z: 0.051062636}
+      position: {x: 0.39798844, y: -0.23751317, z: 0.05106264}
       rotation: {x: 0.71062607, y: -0.7035699, z: -0.000000007413313, w: 0.000000007487663}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_knee_r
       parentName: LD48_CharacterRig_hip_r
-      position: {x: 1.4954973, y: 0.014924139, z: -0.08840762}
+      position: {x: 1.4954975, y: 0.01492414, z: -0.08840763}
       rotation: {x: -1.1592932e-17, y: 1.06552786e-19, z: -0.00919094, w: 0.9999578}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_foot_r
       parentName: LD48_CharacterRig_knee_r
-      position: {x: 1.3344331, y: 0.03785626, z: 0.08840762}
+      position: {x: 1.3344331, y: 0.03785626, z: 0.08840763}
       rotation: {x: -8.3063075e-15, y: -9.1962265e-15, z: -0.69700885, w: 0.71706253}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_toe_r
       parentName: LD48_CharacterRig_foot_r
-      position: {x: -0.000000010542993, y: 0.42214403, z: -0.50032294}
+      position: {x: -0.000000010542994, y: 0.42214406, z: -0.50032294}
       rotation: {x: 4.440892e-16, y: -1.23954285e-14, z: 1.7347231e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_spine
       parentName: LD48_CharacterRig_pelvis
-      position: {x: -0, y: 0.4937987, z: 0.07031454}
+      position: {x: -0, y: 0.49379873, z: 0.07031455}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_chest
       parentName: LD48_CharacterRig_spine
-      position: {x: -0, y: 0.47708228, z: 0.0118413605}
+      position: {x: -0, y: 0.4770823, z: 0.011841361}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_clavicle_l
@@ -187,77 +187,77 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_shoulder_l
       parentName: LD48_CharacterRig_clavicle_l
-      position: {x: -0.5959363, y: -0.13477834, z: -0.117102124}
+      position: {x: -0.59593636, y: -0.13477834, z: -0.117102124}
       rotation: {x: 0.012667246, y: 0.036944978, z: 0.027358143, w: 0.99886245}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_elbow_l
       parentName: LD48_CharacterRig_shoulder_l
-      position: {x: -1.1675564, y: 7.1903065e-17, z: -0.093867294}
+      position: {x: -1.1675564, y: 7.1903065e-17, z: -0.0938673}
       rotation: {x: -0.0011786986, y: -0.041470386, z: -0.014147732, w: 0.99903893}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_hand_l
       parentName: LD48_CharacterRig_elbow_l
-      position: {x: -1.126673, y: -5.32907e-16, z: 0.093867294}
+      position: {x: -1.1266731, y: -5.32907e-16, z: 0.0938673}
       rotation: {x: 0, y: 0, z: 0.0781335, w: 0.99694294}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_fingers_l
       parentName: LD48_CharacterRig_hand_l
-      position: {x: -0.35543567, y: -1.1574074e-15, z: 8.326672e-18}
+      position: {x: -0.3554357, y: -1.1574076e-15, z: 8.326672e-18}
       rotation: {x: 0, y: 0, z: -5.551115e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_thumb01_l
       parentName: LD48_CharacterRig_hand_l
-      position: {x: -0.23517616, y: -0.017516991, z: 0.19224751}
+      position: {x: -0.23517618, y: -0.017516993, z: 0.19224752}
       rotation: {x: 0.036014516, y: 0.4201753, z: -0.030856416, w: 0.90620285}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_thumb02_l
       parentName: LD48_CharacterRig_thumb01_l
-      position: {x: -0.13566378, y: -1.065814e-15, z: 0}
+      position: {x: -0.13566379, y: -1.065814e-15, z: 0}
       rotation: {x: -4.1633363e-17, y: -8.326673e-17, z: 5.551115e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_clavicle_r
       parentName: LD48_CharacterRig_chest
-      position: {x: 0.13479479, y: 1.0312258, z: 0.00000005142533}
+      position: {x: 0.1347948, y: 1.0312258, z: 0.000000051425335}
       rotation: {x: 1, y: 0, z: -0, w: 6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_shoulder_r
       parentName: LD48_CharacterRig_clavicle_r
-      position: {x: 0.5959356, y: 0.13478398, z: 0.117102236}
+      position: {x: 0.59593564, y: 0.134784, z: 0.11710225}
       rotation: {x: 0.012667257, y: 0.03694494, z: 0.02735964, w: 0.99886245}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_elbow_r
       parentName: LD48_CharacterRig_shoulder_r
-      position: {x: 1.1675553, y: -0.000003238354, z: 0.093867294}
+      position: {x: 1.1675555, y: -0.000003238354, z: 0.0938673}
       rotation: {x: -0.0011786864, y: -0.041471172, z: -0.014150135, w: 0.9990388}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_hand_r
       parentName: LD48_CharacterRig_elbow_r
-      position: {x: 1.1266699, y: 0.000006179262, z: -0.093867294}
+      position: {x: 1.1266699, y: 0.0000061792625, z: -0.0938673}
       rotation: {x: 6.424001e-18, y: 2.5165545e-18, z: 0.0781335, w: 0.99694294}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_fingers_r
       parentName: LD48_CharacterRig_hand_r
-      position: {x: 0.35543934, y: -0.000010706992, z: -2.9143353e-17}
+      position: {x: 0.3554394, y: -0.000010706993, z: -2.9143356e-17}
       rotation: {x: -1.2246469e-16, y: 4.4645955e-17, z: -5.551115e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_thumb01_r
       parentName: LD48_CharacterRig_hand_r
-      position: {x: 0.23517929, y: 0.017506517, z: -0.19224706}
+      position: {x: 0.23517932, y: 0.01750652, z: -0.1922471}
       rotation: {x: 0.03601627, y: 0.42018044, z: -0.030876663, w: 0.90619963}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_thumb02_r
       parentName: LD48_CharacterRig_thumb01_r
-      position: {x: 0.13566917, y: 0.0000056637896, z: 0.0000020167577}
+      position: {x: 0.13566917, y: 0.00000566379, z: 0.0000020167577}
       rotation: {x: -4.1633363e-17, y: -5.551115e-17, z: 5.551115e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_weapon1
       parentName: LD48_CharacterRig_elbow_r
-      position: {x: 1.5904158, y: 4.7399907, z: -1.3288134}
+      position: {x: 1.590416, y: 4.7399907, z: -1.3288134}
       rotation: {x: 0.94594276, y: -0.3243337, z: -1.9859711e-17, w: 5.792229e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_neck
       parentName: LD48_CharacterRig_chest
-      position: {x: -0, y: 1.3228709, z: -0.18611252}
+      position: {x: -0, y: 1.322871, z: -0.18611254}
       rotation: {x: 0.16747291, y: 0, z: -0, w: 0.9858767}
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_head
@@ -267,7 +267,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: LD48_CharacterRig_weapon2
       parentName: LD48_CharacterRig_root
-      position: {x: 0.00000003520633, y: -0.00000015353314, z: 2.3999999}
+      position: {x: 0.000000035206334, y: -0.00000015353314, z: 2.3999999}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
