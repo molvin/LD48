@@ -94,10 +94,7 @@ namespace GameplayAbilitySystem
                 return null;
             }
 
-            PlayableAgent Player = (PlayableAgent)Owner.OwnerAgent;
-            PlayableAgent Enemy = (PlayableAgent)TargetAgent;
-
-            if ((Player == null && Enemy == null) || (Player != null && Enemy != null))
+            if (Owner.OwnerAgent.GetType() == TargetAgent.GetType())
             {
                 return null;
             }
