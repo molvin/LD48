@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectType: 0
   Duration: 0
+  RevertInitialChangeWhenRemoved: 0
   InitialAttribute: {fileID: 0}
   InitialValue: 0
   TickAttribute: {fileID: 0}

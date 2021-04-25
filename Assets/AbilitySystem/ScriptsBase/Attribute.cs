@@ -15,5 +15,6 @@ namespace GameplayAbilitySystem
         public static Type MaxHealth => typeof(MaxHealthAttribute);
         public static Type Mana => typeof(ManaAttribute);
         public static Type MaxMana => typeof(MaxManaAttribute);
+        public static Type MovementDistance => typeof(MovementDistanceAttribute);
     }
 }

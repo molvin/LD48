@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: 1c2e48fa83cc0684d8e8303d11d1e97d, type: 2}
   AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
+  Cost: {fileID: 11400000, guid: 4f1788855e3fa424688b0cd0f94971f4, type: 2}
   Cooldown: {fileID: 11400000, guid: 079b4f0b1f076e24bbbf5b2de5a04923, type: 2}
   BlockedByTags:
   - {fileID: 11400000, guid: 1c2e48fa83cc0684d8e8303d11d1e97d, type: 2}
