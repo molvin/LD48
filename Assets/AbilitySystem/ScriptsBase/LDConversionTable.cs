@@ -34,6 +34,29 @@ namespace GameplayAbilitySystem
             return Attributes[LDAttribute];
         }
 
+        public byte GameplayTagToLDID(TypeTag tag)
+        {
+            return GameplayTagToLDID(tag.GetType());
+        }    
+        public byte GameplayTagToLDID(Type tag)
+        {
+            int ID = -1;
+            for (int i = 0; i < GameplayTags.Count; i++)
+            {
+                if (GameplayTags[i].GetType() == tag)
+                {
+                    ID = i; 
+                }
+            }
+
+            Debug.Assert(ID != -1, "Missing tag in conversion table");
+            return (byte)ID;
+        }
+
+        public LDInputFrame GameplayTagToLD(TypeTag tag, ushort cell)
+        {
+            return GameplayTagToLD(tag.GetType(), cell);
+        }
         public LDInputFrame GameplayTagToLD(Type tag, ushort cell)
         {
             int ID = -1;
@@ -45,6 +68,7 @@ namespace GameplayAbilitySystem
                 }
             }
 
+            Debug.Assert(ID != -1, "Missing tag in conversion table");
             return new LDInputFrame { action = (byte)ID, cell = cell };
         }
 

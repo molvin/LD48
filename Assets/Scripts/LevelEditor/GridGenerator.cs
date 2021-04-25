@@ -1,30 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class GridGenerator : MonoBehaviour
 {
+    public enum BlockStatus
+    {
+        Nan = 0,
+        Walkable = 1 << 0,
+        Water = 1 << 1,
+        Fire = 1 << 2,
+        Obstacle = 1 << 3,
+        Occupied = 1 << 4,
+    }
+
     public GridLayout Grid;
     public int xWidth;
     public int zWidth;
-    public string Name;
-    private string mapFolderPath = "Resources/Maps";
-    private string _mapFolderPath
-    {
-        get => Application.dataPath + "/"+ mapFolderPath + "/" + Name + ".prefab";
-    }
 
     [HideInInspector]
     [SerializeField]
-    private SquareChooser[,] childrenByPosition;
+    private GridCellProperties[,] childrenByPosition;
 
     private int gridSizeX;
     private int gridSizeZ;
-    private List<SquareChooser> path;
-    private float nodeGizRadius = 0.5f;
-    
+    private List<GridCellProperties> path;
+    public float nodeGizRadius = 0.16f;
+    public void Start()
+    {
+        CreateGridData();
+    }
+    public void CreateGridData()
+    {
+        childrenByPosition = new GridCellProperties[xWidth, zWidth];
+        GridCellProperties[] children = transform.GetComponentsInChildren<GridCellProperties>();
+        foreach (GridCellProperties gp in children)
+        {
+            childrenByPosition[gp.GridX, gp.GridZ] = gp;
+        }
+    }
     public void GenerateLevel()
     {
         if (!Application.isEditor)
@@ -35,26 +52,20 @@ public class GridGenerator : MonoBehaviour
 
         gridSizeX = xWidth;
         gridSizeZ = zWidth;
-        childrenByPosition = new SquareChooser[xWidth, zWidth];
         for (int x = 0; x < xWidth; x++)
         {
-            
             for(int z = 0; z < zWidth; z++)
             {
-                
-                GameObject ob = PrefabUtility.InstantiatePrefab((GameObject)Resources.Load("SquareChooser"), transform) as GameObject;
+                GameObject ob = PrefabUtility.InstantiatePrefab((GameObject)Resources.Load("GridCell"), transform) as GameObject;
                 ob.transform.position = Grid.CellToWorld(new Vector3Int(x,z,0));
-
-                SquareChooser gCPRef = ob.GetComponent<SquareChooser>();
+                GridCellProperties gCPRef = ob.GetComponent<GridCellProperties>();
                 gCPRef.GridX = x;
                 gCPRef.GridZ = z;
-                childrenByPosition[x, z] = gCPRef;
-                gCPRef.onListIndexChange();
             }
         }
+        CreateGridData();
 
     }
-
     public void ResetLevel()
     {
         if (Application.isEditor)
@@ -63,73 +74,75 @@ public class GridGenerator : MonoBehaviour
             {
                 Object.DestroyImmediate(transform.GetChild(i).gameObject);
             }
+            childrenByPosition = null;
         } else
         {
             Debug.LogWarning("You may not use this function outside of edit mode");
         }
     }
-
-    public void SaveLevel()
-    {
-        if(Name == null)
-        {
-            Debug.LogWarning("You need to name you level");
-        }
-        PrefabUtility.SaveAsPrefabAsset(this.gameObject, _mapFolderPath);
-    }
-
     public void test()
     {
-        SquareChooser start = childrenByPosition[Mathf.FloorToInt(Random.Range(0,xWidth-1)), Mathf.FloorToInt(Random.Range(0, zWidth - 1))];
-        SquareChooser target = childrenByPosition[Mathf.FloorToInt(Random.Range(0, xWidth - 1)), Mathf.FloorToInt(Random.Range(0, zWidth - 1))];
-        Debug.Log(start.GridX + " " + start.GridZ);
-        Debug.Log(target.GridX + " " + target.GridZ);
+        GridCellProperties start = childrenByPosition[0, 0];
+        GridCellProperties target = childrenByPosition[xWidth - 1, zWidth - 1];
         findPath(start, target);
 
         path.ForEach(step => Debug.Log(step.GridX + " " + step.GridZ));
     }
 
 
-    private List<SquareChooser> getNeighbors(SquareChooser node)
+    //Sick method
+    public List<Vector3Int> findPath(Vector3Int start, Vector3Int target)
     {
-        List<SquareChooser> neighbors = new List<SquareChooser>();
+        List<GridCellProperties> uselessShit = findPath(childrenByPosition[start.x, start.y], childrenByPosition[target.x, target.y]);
+        return uselessShit.Select((g) => new Vector3Int(g.GridX, g.GridZ, 0)).ToList();
+    }
+    public Vector3Int WorldToCell(Vector3 worldPos)
+    {
+        return Grid.WorldToCell(new Vector3(worldPos.x, 0, worldPos.z));
+    }
+    public Vector3 CellToWorld(Vector3Int cellPos)
+    {
+        return Grid.CellToWorld(cellPos);
+    }
+    public BlockStatus GetCellStatus(Vector2Int pos)
+    {
+        if (pos.x >= gridSizeX || pos.x < 0 || pos.y >= gridSizeZ || pos.y < 0)
+            return BlockStatus.Nan;
+        return childrenByPosition[pos.x, pos.y].flags;
+    }
+
+    private List<GridCellProperties> getNeighbors(GridCellProperties node)
+    {
+        List<GridCellProperties> neighbors = new List<GridCellProperties>();
 
         //checks and adds top neighbor
-        if (node.node.GridX >= 0 && node.node.GridX < gridSizeX && node.node.GridZ + 1 >= 0 && node.node.GridZ + 1 < gridSizeZ)
-            neighbors.Add(childrenByPosition[node.node.GridX, node.node.GridZ + 1]);
+        if (node.GridX >= 0 && node.GridX < gridSizeX && node.GridZ + 1 >= 0 && node.GridZ + 1 < gridSizeZ)
+            neighbors.Add(childrenByPosition[node.GridX, node.GridZ + 1]);
         
         //checks and adds bottom neighbor
-        if (node.node.GridX >= 0 && node.node.GridX < gridSizeX && node.node.GridZ - 1 >= 0 && node.node.GridZ - 1 < gridSizeZ)
-            neighbors.Add(childrenByPosition[node.node.GridX, node.node.GridZ - 1]);
+        if (node.GridX >= 0 && node.GridX < gridSizeX && node.GridZ - 1 >= 0 && node.GridZ - 1 < gridSizeZ)
+            neighbors.Add(childrenByPosition[node.GridX, node.GridZ - 1]);
         
         //checks and adds right neighbor
-        if (node.node.GridX + 1 >= 0 && node.node.GridX + 1 < gridSizeX && node.node.GridZ >= 0 && node.node.GridZ < gridSizeZ)
-            neighbors.Add(childrenByPosition[node.node.GridX + 1, node.node.GridZ]);
+        if (node.GridX + 1 >= 0 && node.GridX + 1 < gridSizeX && node.GridZ >= 0 && node.GridZ < gridSizeZ)
+            neighbors.Add(childrenByPosition[node.GridX + 1, node.GridZ]);
         
         //checks and adds left neighbor
-        if (node.node.GridX - 1 >= 0 && node.node.GridX - 1 < gridSizeX && node.node.GridZ >= 0 && node.node.GridZ < gridSizeZ)
-            neighbors.Add(childrenByPosition[node.node.GridX - 1, node.node.GridZ]);
+        if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridZ >= 0 && node.GridZ < gridSizeZ)
+            neighbors.Add(childrenByPosition[node.GridX - 1, node.GridZ]);
         
         return neighbors;
     }
-
-
-    public List<SquareChooser> findPath(Vector2Int start, Vector2Int target)
+    private List<GridCellProperties> findPath(GridCellProperties start, GridCellProperties target)
     {
-        return findPath(childrenByPosition[start.x, start.y], childrenByPosition[target.x, target.y]);
-    }
-
-
-    public List<SquareChooser> findPath(SquareChooser start, SquareChooser target)
-    {
-        List<SquareChooser> openSet = new List<SquareChooser>();
-        HashSet<SquareChooser> closedSet = new HashSet<SquareChooser>();
+        List<GridCellProperties> openSet = new List<GridCellProperties>();
+        HashSet<GridCellProperties> closedSet = new HashSet<GridCellProperties>();
         openSet.Add(start);
 
-        //calculates path for pathfinding
+        //calculates path for path finding
         while (openSet.Count > 0)
         {
-            SquareChooser node = openSet[0];
+            GridCellProperties node = openSet[0];
             openSet.Remove(node);
             closedSet.Add(node);
 
@@ -142,19 +155,19 @@ public class GridGenerator : MonoBehaviour
 
             //adds neighbor nodes to openSet
             Debug.Log(node);
-            foreach (SquareChooser neighbour in getNeighbors(node))
+            foreach (GridCellProperties neighbour in getNeighbors(node))
             {
-                if (neighbour.node.obstacle || closedSet.Contains(neighbour))
+                if (neighbour.flags.HasFlag(BlockStatus.Occupied) || neighbour.flags.HasFlag(BlockStatus.Obstacle) || closedSet.Contains(neighbour))
                 {
                     continue;
                 }
 
                 int newCostToNeighbour =  GetDistance(node, neighbour);
-                if (newCostToNeighbour < neighbour.node.cost || !openSet.Contains(neighbour))
+                if (newCostToNeighbour < neighbour.cost || !openSet.Contains(neighbour))
                 {
                     
-                    neighbour.node.cost = GetDistance(neighbour, target);
-                    neighbour.node.parent = node;
+                    neighbour.cost = GetDistance(neighbour, target);
+                    neighbour.parent = node;
 
                     if (!openSet.Contains(neighbour))
                         openSet.Add(neighbour);
@@ -163,62 +176,43 @@ public class GridGenerator : MonoBehaviour
         }
         return null;
     }
-
-    int GetDistance(SquareChooser nodeA, SquareChooser nodeB)
+    private int GetDistance(GridCellProperties nodeA, GridCellProperties nodeB)
     {
-        int dstX = Mathf.Abs(nodeA.node.GridX - nodeB.node.GridX);
-        int dstY = Mathf.Abs(nodeA.node.GridZ - nodeB.node.GridZ);
+        int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);
+        int dstY = Mathf.Abs(nodeA.GridZ - nodeB.GridZ);
 
         if (dstX > dstY)
             return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
     }
-
-    void RetracePath(SquareChooser startNode, SquareChooser endNode)
+    private void RetracePath(GridCellProperties startNode, GridCellProperties endNode)
     {
-        List<SquareChooser> newPath = new List<SquareChooser>();
-        SquareChooser currentNode = endNode;
+        List<GridCellProperties> newPath = new List<GridCellProperties>();
+        GridCellProperties currentNode = endNode;
 
         while (currentNode != startNode)
         {
             newPath.Add(currentNode);
-            currentNode = currentNode.node.parent;
+            currentNode = currentNode.parent;
         }
         newPath.Reverse();
-
         path = newPath;
-
     }
-
-    public GridCellProperties.props GetSquareType(Vector2Int pos)
-    {
-        if (pos.x >= gridSizeX || pos.x < 0 || pos.y >= gridSizeZ || pos.y < 0)
-            return GridCellProperties.props.Nan;
-
-        return childrenByPosition[pos.x, pos.y].node.flags;
-    }
-
     void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridSizeX, 1, gridSizeZ));
-
+    { 
         if (childrenByPosition != null)
         {
-            foreach (SquareChooser n in childrenByPosition)
+            foreach (GridCellProperties n in childrenByPosition)
             {
-                if (n.node.obstacle)
-                    Gizmos.color = Color.red;
-                else
-                    Gizmos.color = Color.white;
-
+                Gizmos.color = n.flags.HasFlag(BlockStatus.Obstacle) ? new Color(255, 0, 0, 200) : Color.white;
                 if (path != null && path.Contains(n))
                     Gizmos.color = Color.black;
-                Vector3 abitUp = n.transform.position;
-                abitUp.y += 0.5f;
-                Gizmos.DrawCube(abitUp, Vector3.one * (nodeGizRadius));
-
+                Gizmos.DrawWireSphere(n.transform.position, nodeGizRadius);
             }
         }
+        else
+        {
+            CreateGridData();
+        }
     }
-
 }
