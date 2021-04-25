@@ -5,6 +5,15 @@ TextureImporter:
   - first:
       213: 8160708253570749826
     second: isometric_tilemap_test_0
+  - first:
+      213: -2743759522926124438
+    second: isometric_tilemap_test_1
+  - first:
+      213: 5486212939397775143
+    second: isometric_tilemap_test_2
+  - first:
+      213: 1442779525874596333
+    second: isometric_tilemap_test_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,12 +142,12 @@ TextureImporter:
       name: isometric_tilemap_test_0
       rect:
         serializedVersion: 2
-        x: 470
-        y: 65
-        width: 222
-        height: 269
+        x: 6
+        y: 731
+        width: 221
+        height: 268
       alignment: 9
-      pivot: {x: 0.50376576, y: 0.70512766}
+      pivot: {x: 0.5, y: 0.2989361}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,6 +155,69 @@ TextureImporter:
       bones: []
       spriteID: 285dea95be8a04170800000000000000
       internalID: 8160708253570749826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tilemap_test_1
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 731
+        width: 223
+        height: 269
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6983132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a62a4ee30453ce9d0800000000000000
+      internalID: -2743759522926124438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tilemap_test_2
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 838
+        width: 221
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72fb4f6e991f22c40800000000000000
+      internalID: 5486212939397775143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_tilemap_test_3
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 730
+        width: 224
+        height: 269
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2989361}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de936f8a558c50410800000000000000
+      internalID: 1442779525874596333
       vertices: []
       indices: 
       edges: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: isometric_tilemap_test_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 8160708253570749826, guid: 5aaf5ea516017c742b111bf64b2333e8,
+  m_Sprite: {fileID: -2743759522926124438, guid: 5aaf5ea516017c742b111bf64b2333e8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
