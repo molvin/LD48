@@ -8,24 +8,37 @@ using UnityEditor;
 
 public class SquareChooser : MonoBehaviour
 {
-    public string prefabFolderPath;
+    
     private string path
     {
-        get => Application.dataPath + "/" + prefabFolderPath;
+        get => Application.dataPath + "/Resources/Squares";
     }
     [HideInInspector]
-    private int _listIdx;
+    [SerializeField]
+    private int _listIdx = 0;
     public int listIdx
     {
         get => _listIdx;
         set
         {
-            _listIdx = value;
-            onListIndexChange();
+            if(_listIdx != value)
+            {
+                _listIdx = value;
+                onListIndexChange();
+            }
+            
         }
     }
     [HideInInspector]
     public List<string> MyList = new List<string>();
+
+
+    [HideInInspector]
+    public GridCellProperties node;
+    [HideInInspector]
+    public int GridX;
+    [HideInInspector]
+    public int GridZ;
 
     public void selectFirst()
     {
@@ -33,16 +46,20 @@ public class SquareChooser : MonoBehaviour
         listIdx = 0;
     }
 
-    protected void onListIndexChange ()
+    public void onListIndexChange ()
     {
         if (!Application.isEditor)
             return;
+        Debug.Log("a");
         for (int i = transform.childCount - 1; i > -1; i--)
         {
             Object.DestroyImmediate(transform.GetChild(i).gameObject);
         }
         GameObject ob = PrefabUtility.InstantiatePrefab((GameObject)Resources.Load(getSelectedObjectFilePath()), transform) as GameObject;
-        Debug.Log("it worked: " + getSelectedObjectFilePath());
+        node = ob.GetComponent<GridCellProperties>();
+        Debug.Log(node);
+        node.GridX = this.GridX;
+        node.GridZ = this.GridZ;
     }
 
     private string getSelectedObjectFilePath()

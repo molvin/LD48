@@ -23,5 +23,9 @@ public class GridGeneratorEditor : Editor
             script.SaveLevel();
         }
 
+        if (GUILayout.Button("TestPathFinding"))
+        {
+            script.test();
+        }
     }
 }

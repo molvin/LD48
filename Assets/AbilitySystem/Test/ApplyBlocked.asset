@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49d49efbed249a42b187118b6567908, type: 3}
+  m_Name: ApplyBlocked
+  m_EditorClassIdentifier: 
+  EffectType: 0
+  Duration: 0
+  InitialAttribute: {fileID: 0}
+  InitialValue: 0
+  TickAttribute: {fileID: 0}
+  TickValue: 0
+  AppliedTags:
+  - {fileID: 11400000, guid: 5bd5f920e9994f844861a952217c2619, type: 2}
+  BlockedByTags: []
+  RequiredTags: []
