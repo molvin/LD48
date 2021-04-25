@@ -8,6 +8,7 @@ public class Ticker : MonoBehaviour
 {
     public static LDBlock currentBlock;
     public static float TickVisualTime = 0.5f;
+    public static bool ShouldVisualize;
 
     public List<TickAgent> tickAgents;
 
@@ -24,10 +25,12 @@ public class Ticker : MonoBehaviour
     }
     public void Tick()
     {
+        ShouldVisualize = true;
         StartCoroutine(TickOverTime());
     }
     public void Scrum(int toFrame)
     {
+        ShouldVisualize = false;
         CurrentTick = 0;
         for (int i = 0; i < tickAgents.Count; i++)
         {

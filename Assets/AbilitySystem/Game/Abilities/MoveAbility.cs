@@ -11,7 +11,15 @@ public class MoveAbility : GameplayAbility
         Commit(Owner);
         Owner.OwnerAgent.GridID = Owner.CurrentTarget;
         int Pos = Owner.OwnerAgent.GridID;
-        CoroutineRunner.Instance.StartCoroutine(Move(Owner.OwnerAgent, new Vector3((Pos % 10) * 10, 0, (Pos / 10) * 10)));
+        Vector3 NewPos = new Vector3((Pos % 10) * 10, 0, (Pos / 10) * 10);
+        if (Ticker.ShouldVisualize)
+        {
+            CoroutineRunner.Instance.StartCoroutine(Move(Owner.OwnerAgent, NewPos));
+        }
+        else
+        {
+            Owner.OwnerAgent.transform.position = NewPos;
+        }
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
