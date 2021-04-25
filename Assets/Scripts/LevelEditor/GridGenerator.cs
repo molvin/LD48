@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class GridGenerator : MonoBehaviour
 {
+    public GridLayout Grid;
     public int xWidth;
     public int zWidth;
     public string Name;
@@ -26,7 +27,6 @@ public class GridGenerator : MonoBehaviour
     
     public void GenerateLevel()
     {
-
         if (!Application.isEditor)
         {
             Debug.LogWarning("You may not use this function outside of edit mode");
@@ -43,7 +43,8 @@ public class GridGenerator : MonoBehaviour
             {
                 
                 GameObject ob = PrefabUtility.InstantiatePrefab((GameObject)Resources.Load("SquareChooser"), transform) as GameObject;
-                ob.transform.SetPositionAndRotation(new Vector3(x, 0, z), Quaternion.identity);
+                ob.transform.position = Grid.CellToWorld(new Vector3Int(x,z,0));
+
                 SquareChooser gCPRef = ob.GetComponent<SquareChooser>();
                 gCPRef.GridX = x;
                 gCPRef.GridZ = z;

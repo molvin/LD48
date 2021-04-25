@@ -51,5 +51,6 @@ public class DrainLifeTarget : MonoBehaviour
             }
         }
         system.SetParticles(particles, count);
+        
     }
 }
