@@ -27,6 +27,7 @@ public class GameStateAction : State
     private void CellSelected(Vector3Int pos)
     {
         GameStateManager.Instance.ShouldDoAction = false;
+        Ticker.Instance.Tick();
         Debug.Log("Action done");
     }
 

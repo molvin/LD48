@@ -19,7 +19,7 @@ public class GameStateIdle : State
     }
     public override State SelectTransition() 
     {
-        bool all_enemies_killed = true;
+        bool all_enemies_killed = FindObjectsOfType<EnemyAgent>().Length > 0;
         foreach (EnemyAgent enemy in FindObjectsOfType<EnemyAgent>())
         {
             if (enemy.IsAlive)
