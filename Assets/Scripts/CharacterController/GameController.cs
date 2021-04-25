@@ -36,10 +36,8 @@ public class GameController : MonoBehaviour
     public Color[] Colors;
     public LDBlock GameData;
     public int[] DefaultGridPositions;
-
     private Grid grid;
     private int FrameId = -1;
-
     private void Start()
     {
         //TEMP
@@ -85,7 +83,6 @@ public class GameController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
             Init(GameData, -1);
     }
-
     public void AppendInput(int character, LDInputFrame input)
     {
         //Note: dont mind how terrible this code is
@@ -117,7 +114,6 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
     private void OnDrawGizmos()
     {
         if(!DrawGizmos)
