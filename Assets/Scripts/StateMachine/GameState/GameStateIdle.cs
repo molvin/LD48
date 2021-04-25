@@ -37,6 +37,9 @@ public class GameStateIdle : State
             return GameStateManager.Instance.GameOverState;
         }
 
+        if (GameStateManager.Instance.ShouldEndTurn)
+            return GameStateManager.Instance.EndTurnState;
+
         if (GameStateManager.Instance.ShouldGoToActionState())
             return GameStateManager.Instance.ActionState;
 

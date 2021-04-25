@@ -1,3 +1,4 @@
+using GameplayAbilitySystem;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game State/ActionState")]
@@ -22,6 +23,11 @@ public class GameStateAction : State
 
     private void OnCellSelected(Vector3Int pos)
     {
+    if (AbilityType.Is(TypeTag.MoveAbility))
+        GameStateManager.Instance.HasMoved = true;
+    else
+        GameStateManager.Instance.HasDoneAction = true;
+
         GameStateManager.Instance.ShouldDoAction = false;
         GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
         Ticker.Instance.Tick();
