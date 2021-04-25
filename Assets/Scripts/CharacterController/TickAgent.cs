@@ -7,6 +7,5 @@ public abstract class TickAgent : MonoBehaviour
 {
     public int initiative = 0;
     public abstract void Initialize(LDBlock data);
-    public abstract void Tick();
-    public abstract void Scrum(int toFrame);
+    public abstract void Tick(int Frame, bool Scrum);
 }

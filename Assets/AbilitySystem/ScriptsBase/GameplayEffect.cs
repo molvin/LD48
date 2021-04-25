@@ -15,6 +15,7 @@ namespace GameplayAbilitySystem
     {
         public EffectDurationType EffectType;
         public int Duration;
+        public bool RevertInitialChangeWhenRemoved;
 
         [Header("Initial")]
         public Attribute InitialAttribute;

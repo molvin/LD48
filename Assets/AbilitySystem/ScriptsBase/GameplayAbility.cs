@@ -15,6 +15,7 @@ namespace GameplayAbilitySystem
         public List<TypeTag> RequiredTags;
 
         public abstract void Activate(AbilitySystem Owner);
+        public abstract bool IsTargetValid(AbilitySystem Owner);
 
         public void Commit(AbilitySystem Owner)
         {
@@ -38,6 +39,11 @@ namespace GameplayAbilitySystem
             if (Cost == null)
             {
                 return true;
+            }
+
+            if (!IsTargetValid(Owner))
+            {
+                return false;
             }
 
             return Owner.CanApplyFullEffectToSelf(Cost);

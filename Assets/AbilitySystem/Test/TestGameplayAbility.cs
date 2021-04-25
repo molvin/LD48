@@ -14,5 +14,10 @@ namespace GameplayAbilitySystem
 
             Debug.Log("Activating Test Ability: " + name);
         }
+
+        public override bool IsTargetValid(AbilitySystem Owner)
+        {
+            return true;
+        }
     }
 }

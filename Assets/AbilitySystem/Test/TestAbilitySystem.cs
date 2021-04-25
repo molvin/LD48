@@ -59,6 +59,7 @@ namespace GameplayAbilitySystem
             AbilitySystem.GrantAbility(Ability4);
 
             Debug.Assert(AbilitySystem.TryActivateAbilityByTag(Ability4.AbilityTag));
+            Debug.Assert(AbilitySystem.GetAttributeValue(typeof(TestManaAttribute)).Value == 0);
             AbilitySystem.Tick();
 
             Debug.Assert(!AbilitySystem.TryActivateAbilityByTag(Ability4.AbilityTag));
@@ -66,6 +67,8 @@ namespace GameplayAbilitySystem
 
             Debug.Assert(!AbilitySystem.TryActivateAbilityByTag(Ability4.AbilityTag));
             AbilitySystem.Tick();
+
+            Debug.Assert(AbilitySystem.GetAttributeValue(typeof(TestManaAttribute)).Value == 10);
 
             Debug.Assert(AbilitySystem.TryActivateAbilityByTag(Ability4.AbilityTag));
 

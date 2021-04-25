@@ -17,6 +17,8 @@ namespace GameplayAbilitySystem
         public List<GameplayEffect> ActiveGameplayEffects = new List<GameplayEffect>();
         public Dictionary<Type, int> ActiveTags = new Dictionary<Type, int>();
 
+        public ushort CurrentTarget;
+        public bool IsScrumming;
 
         // Tick
         public void Tick()
@@ -34,6 +36,11 @@ namespace GameplayAbilitySystem
                 Effect.Duration--;
                 if (Effect.Duration <= 0)
                 {
+                    if (Effect.RevertInitialChangeWhenRemoved && Effect.InitialAttribute != null)
+                    {
+                        TryApplyAttributeChange(Effect.InitialAttribute.GetType(), -Effect.InitialValue);
+                    }
+
                     foreach (TypeTag Tag in Effect.AppliedTags)
                     {
                         ActiveTags[Tag.GetType()] = ActiveTags[Tag.GetType()] - 1;
@@ -141,7 +148,7 @@ namespace GameplayAbilitySystem
                 return false;
             }
 
-            return Value.Value - Effect.InitialValue > 0;
+            return Value.Value - Effect.InitialValue >= 0;
         }
 
         public bool TryApplyEffectToSelf(GameplayEffect Effect)
@@ -245,6 +252,16 @@ namespace GameplayAbilitySystem
                 LDAttributes.Add(Conversion.AttributeToLD(AttributePair.Key, AttributePair.Value));
             }
             return LDAttributes.ToArray();
+        }
+
+        public void RegisterLDAttributes(LDAttribute[] LDAttributes)
+        {
+            LDConversionTable Conversion = LDConversionTable.Load();
+            foreach (LDAttribute LDAttribute in LDAttributes)
+            {
+                Attribute attribute = Conversion.LDToAttribute(LDAttribute.type);
+                RegisterAttribute(attribute, LDAttribute.value);
+            }
         }
     }
 }
