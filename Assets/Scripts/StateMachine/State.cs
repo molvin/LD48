@@ -14,9 +14,9 @@ public abstract class State : ScriptableObject
         Initialize();
     }
 
-    public virtual void Enter() { }
-    public virtual void Tick() { }
-    public virtual void Exit() { }
+    public virtual void Enter() {}
+    public virtual void Tick() {}
+    public virtual void Exit() {}
     public virtual State SelectTransition() { return null; }
 
     protected virtual void Initialize() { }

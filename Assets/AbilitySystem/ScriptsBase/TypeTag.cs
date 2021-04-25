@@ -10,7 +10,6 @@ namespace GameplayAbilitySystem
         public bool Is(TypeTag Other) => Other.GetType().IsAssignableFrom(GetType());
         public bool Is(Type Other) => Other.IsAssignableFrom(GetType());
 
-        // EXAMPLE
-        // public static Type Burning => typeof(BurningTag);
+        public static Type MoveAbility => typeof(MoveAbilityTag);
     }
 }

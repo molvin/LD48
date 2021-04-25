@@ -9,6 +9,8 @@ public enum CharacterColor
 {
     None,
     Blue,
+    Black,
+    Red,
 }
 
 public enum CharacterRole
@@ -25,11 +27,8 @@ public class PlayableAgent : TickAgent
     [HideInInspector]
     public string Name;
     [HideInInspector]
-    public int GridID;
-    [HideInInspector]
     public CharacterColor Color;
 
-    public AbilitySystem AbilitySystem;
     List<LDInputFrame> TimeLine;
     private LDConversionTable Conversion;
 
@@ -54,7 +53,8 @@ public class PlayableAgent : TickAgent
             }
         }
 
-        AbilitySystem = new AbilitySystem();
+        Animator = GetComponentInChildren<Animator>();
+        AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;
         Color = (CharacterColor)OwningCharacter.color;
         if (OwningCharacter.timeLine != null)

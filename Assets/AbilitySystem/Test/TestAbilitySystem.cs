@@ -6,7 +6,7 @@ namespace GameplayAbilitySystem
 {
     public class TestAbilitySystem : MonoBehaviour
     {
-        AbilitySystem AbilitySystem = new AbilitySystem();
+        AbilitySystem AbilitySystem = new AbilitySystem(null);
 
         public GameplayAbility Ability1;
         public GameplayAbility Ability2;
