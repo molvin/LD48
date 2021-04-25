@@ -9,7 +9,7 @@ public class GridGenerator : MonoBehaviour
     public int xWidth;
     public int zWidth;
     public string Name;
-    private string mapFolderPath = "Prefabs/Maps";
+    private string mapFolderPath = "Resources/Maps";
     private string _mapFolderPath
     {
         get => Application.dataPath + "/"+ mapFolderPath + "/" + Name + ".prefab";
@@ -187,6 +187,14 @@ public class GridGenerator : MonoBehaviour
 
         path = newPath;
 
+    }
+
+    public GridCellProperties.props GetSquareType(Vector2Int pos)
+    {
+        if (pos.x >= gridSizeX || pos.x < 0 || pos.y >= gridSizeZ || pos.y < 0)
+            return GridCellProperties.props.Nan;
+
+        return childrenByPosition[pos.x, pos.y].node.flags;
     }
 
     void OnDrawGizmos()

@@ -9,12 +9,14 @@ public class GameStateManager : MonoBehaviour
 
     public GameStateAction ActionState;
     public GameStateIdle IdleState;
-
+    public GameStateLoading LoadingState;
 
     private StateMachine m_GameStateMachine;
 
+    [HideInInspector] public int GridIndex = -1;
+
     public bool ShouldGoToActionState() { return ShouldDoAction; }
-    public bool ShouldDoAction;
+    [HideInInspector] public bool ShouldDoAction;
 
     private void Awake()
     {
@@ -37,7 +39,7 @@ public class GameStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState }, IdleState);
+        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState }, LoadingState);
     }
 
     // Update is called once per frame
