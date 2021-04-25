@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf202c81f72e224d83d8e838e2cb3cb, type: 3}
+  m_Name: LDConversionTable
+  m_EditorClassIdentifier: 
+  Attributes:
+  - {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+  - {fileID: 11400000, guid: 35a7538982f1cf14c949cda9dda9b332, type: 2}
+  - {fileID: 11400000, guid: 6f4bc0051cedd00489ac430b26efe743, type: 2}
+  - {fileID: 11400000, guid: 5b5a43bbe3e19d24e88700236d72896b, type: 2}

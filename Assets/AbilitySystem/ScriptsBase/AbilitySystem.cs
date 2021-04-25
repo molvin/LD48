@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using GameStructure;
 
 namespace GameplayAbilitySystem
 {
@@ -232,6 +233,18 @@ namespace GameplayAbilitySystem
             }
 
             return false;
+        }
+
+        // LD Conversions
+        public LDAttribute[] GetLDAttributes()
+        {
+            LDConversionTable Conversion = LDConversionTable.Load();
+            List<LDAttribute> LDAttributes = new List<LDAttribute>();
+            foreach (var AttributePair in AttributeSet)
+            {
+                LDAttributes.Add(Conversion.AttributeToLD(AttributePair.Key, AttributePair.Value));
+            }
+            return LDAttributes.ToArray();
         }
     }
 }

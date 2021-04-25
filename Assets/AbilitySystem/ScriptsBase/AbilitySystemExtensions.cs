@@ -9,5 +9,6 @@ namespace GameplayAbilitySystem
     {
         public static bool Is(this Type T, TypeTag Tag) => T.IsAssignableFrom(Tag.GetType());
         public static bool Is(this Type T, Attribute Attribute) => T.IsAssignableFrom(Attribute.GetType());
+        public static bool Is(this Type T, Type Other) => T.IsAssignableFrom(Other);
     }
 }

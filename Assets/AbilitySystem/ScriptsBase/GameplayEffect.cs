@@ -10,7 +10,7 @@ namespace GameplayAbilitySystem
         Duration,
     }
 
-    [CreateAssetMenu()]
+    [CreateAssetMenu(menuName = "Ability System/Effect")]
     public class GameplayEffect : ScriptableObject 
     {
         public EffectDurationType EffectType;
