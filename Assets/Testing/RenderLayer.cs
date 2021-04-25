@@ -6,17 +6,10 @@ namespace Testing
 {
     public class RenderLayer : MonoBehaviour
     {
-        public Transform Player;
-        public float Speed;
-
+        public int layer = 0;
         private void Update()
         {
-            Vector3 input = Vector3.forward * Input.GetAxisRaw("Vertical") + Vector3.right * Input.GetAxisRaw("Horizontal");
-            input.Normalize();
-
-            Vector3 Position = Player.transform.position + input * Speed * Time.deltaTime;
-            Position.y = -Position.z;
-            Player.transform.position = Position;
+            transform.position = new Vector3(transform.position.x, -transform.position.z * layer, transform.position.z);
         }
     }
 }

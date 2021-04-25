@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5aaf5ea516017c742b111bf64b2333e8
+guid: 122da5cb6aa2bc94bb51febf4aaf32b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8160708253570749826
-    second: isometric_tilemap_test_0
+      213: 1511065089938078416
+    second: isometric_tilemap_white_line_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,22 +130,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: isometric_tilemap_test_0
+      name: isometric_tilemap_white_line_0
       rect:
         serializedVersion: 2
-        x: 470
-        y: 65
-        width: 222
-        height: 269
+        x: 495
+        y: 32
+        width: 221
+        height: 268
       alignment: 9
-      pivot: {x: 0.50376576, y: 0.70512766}
+      pivot: {x: 0.49512327, y: 0.2707874}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 285dea95be8a04170800000000000000
-      internalID: 8160708253570749826
+      spriteID: 0dab04e71b168f410800000000000000
+      internalID: 1511065089938078416
       vertices: []
       indices: 
       edges: []
@@ -153,7 +153,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 794369bd6479cb44a97989c783808483
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
