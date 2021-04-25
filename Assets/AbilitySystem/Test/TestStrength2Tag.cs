@@ -5,5 +5,5 @@ using UnityEngine;
 namespace GameplayAbilitySystem
 {
     [CreateAssetMenu(menuName = "Test/Tag/Strength2")]
-    public class TestStrength2Tag : StrengthAbilityTag { }
+    public class TestStrength2Tag : TestStrengthTag { }
 }

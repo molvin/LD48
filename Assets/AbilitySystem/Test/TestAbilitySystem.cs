@@ -85,10 +85,12 @@ namespace GameplayAbilitySystem
 
             Debug.Assert(StrengthTag.Is(TypeTag.StrengthAbility)); 
             Debug.Assert(TypeTag.StrengthAbility.Is(StrengthTag)); 
+            Debug.Assert(!TypeTag.DexterityAbility.Is(StrengthTag)); 
+            Debug.Assert(!TypeTag.DexterityAbility.Is(TypeTag.StrengthAbility)); 
             Debug.Assert(!StrengthTag.Is(TypeTag.DexterityAbility)); 
-
             Debug.Assert(Strength2Tag.Is(TypeTag.StrengthAbility)); 
-            Debug.Assert(StrengthTag.Is(Strength2Tag)); 
+            Debug.Assert(!StrengthTag.Is(Strength2Tag)); 
+            Debug.Assert(Strength2Tag.Is(StrengthTag)); 
             Debug.Assert(!Strength2Tag.Is(TypeTag.DexterityAbility)); 
         }
 
