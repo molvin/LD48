@@ -27,7 +27,7 @@ public class GridGenerator : MonoBehaviour
     private List<GridCellProperties> path;
 
     public float nodeGizRadius = 0.16f;
-    public void Start()
+    public void Awake()
     {
         CreateGridData();
     }
