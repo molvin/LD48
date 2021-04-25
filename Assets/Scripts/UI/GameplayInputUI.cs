@@ -12,7 +12,6 @@ public class GameplayInputUI : MonoBehaviour
     [SerializeField] private HorizontalLayoutGroup m_ActionBar;
     [SerializeField] private HorizontalLayoutGroup m_InventoryBar;
 
-
     //private Dictionary<uint, Button> m_ActionButtons;
 
     // Start is called before the first frame update
@@ -52,7 +51,7 @@ public class GameplayInputUI : MonoBehaviour
 
     public void SelectMove()
     {
-        Debug.Log("Selected Move");
+        GameStateManager.Instance.GoToActionState(0);
     }
 
     public void SelectAction(uint index)
