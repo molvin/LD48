@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6451998034019248903}
+  - component: {fileID: 6412528308059084272}
+  - component: {fileID: 1776055581040313425}
   m_Layer: 0
-  m_Name: CHAR_Necromancer
+  m_Name: CHAR_Cultist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +34,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6412528308059084272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301729960176765268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3774d605b6ba414fb09a10278c34b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 1057826505372436119}
+  GridPos: {x: 0, y: 0}
+  IsAlive: 1
+  initiative: 0
+  Role: 1
+--- !u!114 &1776055581040313425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301729960176765268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer: 1
 --- !u!1 &8288542710232573910
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +254,12 @@ PrefabInstance:
 --- !u!4 &6363035755770174701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e3dde04c5f789a45a5fd4ee922b1ab9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6900836465001315078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1057826505372436119 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 9e3dde04c5f789a45a5fd4ee922b1ab9,
     type: 3}
   m_PrefabInstance: {fileID: 6900836465001315078}
   m_PrefabAsset: {fileID: 0}
