@@ -17,7 +17,7 @@ public class Ticker : MonoBehaviour
     }
     public void Tick()
     {
-        tickAgents.OrderBy((x) => { x.initiative });
+        tickAgents.OrderBy((x) => { return x.initiative; });
         for(int i = 0;i< tickAgents.Count; i++)
         {
             tickAgents[i].Tick();
