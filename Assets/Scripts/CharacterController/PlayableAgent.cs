@@ -23,7 +23,6 @@ public enum CharacterRole
 public class PlayableAgent : TickAgent
 {
     public CharacterRole Role;
-
     [HideInInspector]
     public string Name;
     [HideInInspector]
