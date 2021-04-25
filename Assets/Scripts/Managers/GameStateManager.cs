@@ -66,27 +66,6 @@ public class GameStateManager : MonoBehaviour
         {
             characters = new LDCharacter[]
              {
-                    // Assassin
-                    new LDCharacter
-                    {
-                        name = "Lola the Assassin",
-                        color = 2,
-                        role = 1,
-                        attributes = new LDAttribute[]
-                        {
-                            new LDAttribute{ type = 0, value = 80 },
-                            new LDAttribute{ type = 1, value = 100 },
-                            new LDAttribute{ type = 2, value = 10 },
-                            new LDAttribute{ type = 3, value = 50 },
-                            new LDAttribute{ type = 4, value = 4 },
-                        },
-                        timeLine = new LDInputFrame[]
-                        {
-                            new LDInputFrame { action = 0, cell = 4, },
-                            new LDInputFrame { action = 0, cell = 14, },
-                            new LDInputFrame { action = 0, cell = 17, },
-                        },
-                    },
                     // Barbarian 
                     new LDCharacter
                     {

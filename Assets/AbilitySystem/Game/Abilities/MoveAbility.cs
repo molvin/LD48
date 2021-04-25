@@ -21,6 +21,11 @@ public class MoveAbility : GameplayAbility
             Owner.OwnerAgent.transform.position = WorldPos;
         }
 
+        Grid.setOccupied((Vector3Int)Owner.OwnerAgent.GridPos, false);
+
+        Owner.OwnerAgent.GridPos = Owner.CurrentTarget;
+
+        Grid.setOccupied((Vector3Int)Owner.OwnerAgent.GridPos, true);
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
