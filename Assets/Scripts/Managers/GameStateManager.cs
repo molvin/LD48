@@ -17,8 +17,17 @@ public class GameStateManager : MonoBehaviour
     private StateMachine m_GameStateMachine;
 
     public CharacterRole Role;
-    
+
     [HideInInspector] public PlayableAgent PlayerAgent;
+
+    public GridGenerator GetGridManager()
+    {
+        if (m_GridManager == null)
+            m_GridManager = FindObjectOfType<GridGenerator>(true);
+
+        return m_GridManager;
+    }
+    private GridGenerator m_GridManager;
 
     public FollowMouse GetFolowMouse() 
     {
@@ -27,7 +36,6 @@ public class GameStateManager : MonoBehaviour
 
         return m_FollowMouse;
     }
-
     private FollowMouse m_FollowMouse;
 
     [HideInInspector] public int GridIndex = -1;
