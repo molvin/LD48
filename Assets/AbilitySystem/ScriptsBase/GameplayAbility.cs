@@ -21,16 +21,49 @@ namespace GameplayAbilitySystem
 
         protected void ApplyEffectToTarget(AbilitySystem Owner, AbilitySystem Target)
         {
-            int PowerModifier = 0;
+            int? PowerModifier = null;
             if (AbilityTag.Is(TypeTag.StrengthAbility))
             {
-
+                PowerModifier = Owner.GetAttributeValue(Attribute.Strength);
+            }
+            else if (AbilityTag.Is(TypeTag.DexterityAbility))
+            {
+                PowerModifier = Owner.GetAttributeValue(Attribute.Dexterity);
+            }
+            else if (AbilityTag.Is(TypeTag.IntelligenceAbility))
+            {
+                PowerModifier = Owner.GetAttributeValue(Attribute.Intelligence);
             }
 
             if (AppliedEffect != null)
             {
                 GameplayEffect Instance = Instantiate(AppliedEffect);
+                if (PowerModifier.HasValue)
+                {
+                    if (Instance.InitialAttribute != null)
+                    {
+                        Instance.InitialValue += PowerModifier.Value / 2;
+                    }
+                    if (Instance.TickAttribute != null)
+                    {
+                        Instance.TickValue += PowerModifier.Value / 6;
+                    }
+                }
 
+                int? AddedDamage = Owner.GetAttributeValue(Attribute.AddedDamage);
+                if (AddedDamage.HasValue && Owner != Target)
+                {
+                    if (Instance.InitialAttribute != null && Instance.InitialAttribute.Is(Attribute.Health))
+                    {
+                        Instance.InitialValue += AddedDamage.Value;
+                    }
+                    if (Instance.TickAttribute != null && Instance.TickAttribute.Is(Attribute.Health))
+                    {
+                        Instance.TickValue += AddedDamage.Value / 3;
+                    }
+                }
+
+                Target.TryApplyEffectToSelf(Instance);
             }
         }
 

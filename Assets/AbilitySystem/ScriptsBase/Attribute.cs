@@ -16,5 +16,9 @@ namespace GameplayAbilitySystem
         public static Type Mana => typeof(ManaAttribute);
         public static Type MaxMana => typeof(MaxManaAttribute);
         public static Type MovementDistance => typeof(MovementDistanceAttribute);
+        public static Type Strength => typeof(StrengthAttribute);
+        public static Type Dexterity => typeof(DexterityAttribute);
+        public static Type Intelligence => typeof(IntelligenceAttribute);
+        public static Type AddedDamage => typeof(AddedDamageAttribute);
     }
 }
