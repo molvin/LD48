@@ -6398,6 +6398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 870966438}
   GridPos: {x: 0, y: 0}
+  IsAlive: 1
   initiative: 0
   Role: 1
   Name: 
@@ -27058,17 +27059,17 @@ PrefabInstance:
     - target: {fileID: 6425222590805972472, guid: b100bb71ca2dc1741a50346c68439809,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.47
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6425222590805972472, guid: b100bb71ca2dc1741a50346c68439809,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 7.76
       objectReference: {fileID: 0}
     - target: {fileID: 6425222590805972472, guid: b100bb71ca2dc1741a50346c68439809,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.22
+      value: 6.46
       objectReference: {fileID: 0}
     - target: {fileID: 6425222590805972472, guid: b100bb71ca2dc1741a50346c68439809,
         type: 3}
