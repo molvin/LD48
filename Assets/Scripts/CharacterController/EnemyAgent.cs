@@ -35,4 +35,9 @@ public class EnemyAgent : TickAgent
     {
         Debug.LogError("This monster doesn't have a brain, very sadge :(");
     }
+
+    public void AddActions()
+    {
+
+    }
 }
