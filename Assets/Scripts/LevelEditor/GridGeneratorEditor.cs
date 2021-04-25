@@ -18,11 +18,6 @@ public class GridGeneratorEditor : Editor
         {
             script.ResetLevel();
         }
-        if (GUILayout.Button("Save"))
-        {
-            script.SaveLevel();
-        }
-
         if (GUILayout.Button("TestPathFinding"))
         {
             script.test();
