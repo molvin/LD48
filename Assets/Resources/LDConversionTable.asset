@@ -24,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
   GameplayTags:
   - {fileID: 11400000, guid: 151bebc17b13a9c4cb5f3c153439879d, type: 2}
+  - {fileID: 11400000, guid: c0d38a5f1846b5249a42fcda6586e026, type: 2}

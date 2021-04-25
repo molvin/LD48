@@ -53,6 +53,7 @@ public class PlayableAgent : TickAgent
             }
         }
 
+        Animator = GetComponentInChildren<Animator>();
         AbilitySystem = new AbilitySystem(this);
         Name = OwningCharacter.name;
         Color = (CharacterColor)OwningCharacter.color;
@@ -64,11 +65,25 @@ public class PlayableAgent : TickAgent
         {
             TimeLine = new List<LDInputFrame>();
         }
-        AbilitySystem.RegisterLDAttributes(OwningCharacter.attributes);
-        CharacterDataTemplate.
-            Load().
-            GetAbilities(Role).
-            ForEach(Ability => AbilitySystem.GrantAbility(Ability));
+
+        CharacterDataTemplate Data = CharacterDataTemplate.Load();
+
+        if (OwningCharacter.attributes.Length == 0)
+        {
+            // NOTE: First time, Playing from start!
+            Data.GetStartingAttributes(Role)
+                .ForEach(Entry => AbilitySystem.RegisterAttribute(Entry.Attribute, Entry.Value));
+        }
+        else
+        {
+            AbilitySystem.RegisterLDAttributes(OwningCharacter.attributes);
+        }
+
+        Data.GetAbilities(Role)
+            .ForEach(Ability => AbilitySystem.GrantAbility(Ability));
+
+        Data.GetStartingEffects(Role)
+            .ForEach(Effect => AbilitySystem.TryApplyEffectToSelf(Effect));
     }
 
     public override void Tick(int CurrentFrame, bool Scrum)

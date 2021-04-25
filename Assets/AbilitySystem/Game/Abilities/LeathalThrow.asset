@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88551420f09b6ad43b9a2f51f258a836, type: 3}
+  m_Name: LeathalThrow
+  m_EditorClassIdentifier: 
+  AbilityTag: {fileID: 11400000, guid: c0d38a5f1846b5249a42fcda6586e026, type: 2}
+  AppliedEffect: {fileID: 0}
+  Cost: {fileID: 11400000, guid: 265780b3a2413604e9330fd7b71615ec, type: 2}
+  Cooldown: {fileID: 11400000, guid: 079b4f0b1f076e24bbbf5b2de5a04923, type: 2}
+  BlockedByTags: []
+  RequiredTags: []
+  Range: 4
