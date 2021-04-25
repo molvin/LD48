@@ -17,6 +17,11 @@ public class GameStateAction : State
     }
     public override void Tick() 
     {
+        if(Input.GetMouseButtonUp(1))
+        {
+            GameStateManager.Instance.ShouldDoAction = false;
+            Debug.Log("Canceled action");
+        }
     }
 
     private void CellSelected(Vector3Int pos)

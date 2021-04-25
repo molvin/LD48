@@ -19,9 +19,6 @@ public class GameplayInputUI : MonoBehaviour
     private Dictionary<int, TypeTag> m_AbilityButtonMapping = new Dictionary<int, TypeTag>();
     private Dictionary<int, TypeTag> m_InventoryButtonMapping = new Dictionary<int, TypeTag>();
 
-    //private Dictionary<uint, Button> m_ActionButtons;
-
-    // Start is called before the first frame update
     void Start()
     {
         m_Canvas = GetComponent<Canvas>();
@@ -49,6 +46,7 @@ public class GameplayInputUI : MonoBehaviour
         }
 
         LoadAbilities(GameStateManager.Instance.PlayerAgent.AbilitySystem);
+        LoadInventory();
     }
 
     public void LoadAbilities(AbilitySystem ability_owner)
@@ -69,6 +67,14 @@ public class GameplayInputUI : MonoBehaviour
             {
                 button.gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void LoadInventory()
+    {
+        for(int i = 0; i < m_InventoryButtons.Length; i++)
+        {
+            m_InventoryButtons[i].gameObject.SetActive(false);
         }
     }
 
