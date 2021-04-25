@@ -27,6 +27,16 @@ namespace GameplayAbilitySystem
             this.OwnerAgent = OwnerAgent;
         }
 
+        public List<TypeTag> GetGrantedAbilityTypes()
+        {
+            List<TypeTag> Tags = new List<TypeTag>();
+            foreach (var Granted in GrantedAbilities)
+            {
+                Tags.Add(Granted.Value.AbilityTag); 
+            }
+            return Tags;
+        }
+
         // Tick
         public void Tick()
         {

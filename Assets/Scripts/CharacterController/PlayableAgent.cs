@@ -29,7 +29,6 @@ public class PlayableAgent : TickAgent
     [HideInInspector]
     public CharacterColor Color;
 
-    public AbilitySystem AbilitySystem;
     List<LDInputFrame> TimeLine;
     private LDConversionTable Conversion;
 
