@@ -8,6 +8,7 @@ public abstract class TickAgent : MonoBehaviour
 {
     public Animator Animator;
     public Vector2Int GridPos;
+    public bool IsAlive = true;
 
     public int initiative = 0;
     public AbilitySystem AbilitySystem;

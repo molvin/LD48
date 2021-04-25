@@ -20,6 +20,7 @@ public class MoveAbility : GameplayAbility
         {
             Owner.OwnerAgent.transform.position = WorldPos;
         }
+
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
