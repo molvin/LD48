@@ -163,12 +163,12 @@ TextureImporter:
       name: isometric_tilemap_test_1
       rect:
         serializedVersion: 2
-        x: 231
+        x: 230
         y: 731
         width: 223
         height: 269
       alignment: 9
-      pivot: {x: 0.5, y: 0.6983132}
+      pivot: {x: 0.49033427, y: 0.684291}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,8 +188,8 @@ TextureImporter:
         y: 838
         width: 221
         height: 159
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.49268544, y: 0.4762769}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,7 +205,7 @@ TextureImporter:
       name: isometric_tilemap_test_3
       rect:
         serializedVersion: 2
-        x: 690
+        x: 689
         y: 730
         width: 224
         height: 269
