@@ -7,7 +7,7 @@ using GameplayAbilitySystem;
 public abstract class TickAgent : MonoBehaviour
 {
     public Animator Animator;
-    public int GridID;
+    public Vector2Int GridPos;
 
     public int initiative = 0;
     public AbilitySystem AbilitySystem;

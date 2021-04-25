@@ -25,6 +25,8 @@ namespace GameplayAbilitySystem
         public AbilitySystem(TickAgent OwnerAgent)
         {
             this.OwnerAgent = OwnerAgent;
+
+            RegisterOnAttributeChanged(Attribute.Health, HealthCap);
         }
 
         public List<TypeTag> GetGrantedAbilityTypes()
@@ -321,6 +323,11 @@ namespace GameplayAbilitySystem
                 Attribute attribute = Conversion.LDToAttribute(LDAttribute.type);
                 RegisterAttribute(attribute, LDAttribute.value);
             }
+        }
+
+        // Attribute Calculations
+        private void HealthCap(int Value)
+        {
         }
     }
 }
