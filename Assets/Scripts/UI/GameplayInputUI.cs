@@ -8,6 +8,7 @@ public class GameplayInputUI : MonoBehaviour
 {
     private Canvas m_Canvas;
     [Header("Interaction Buttons")]
+    [SerializeField] private GameObject m_CharacterSelectionWindow;
     [SerializeField] private Button m_MoveActionButton;
     [SerializeField] private Button m_CharacterPortrait;
     [SerializeField] private Button m_EndTurnButton;
