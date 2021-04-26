@@ -25,6 +25,7 @@ public class FollowMouse : MonoBehaviour
                 tiles[x, z] = Instantiate(DefaultTilePrefab).GetComponent<SpriteRenderer>();
                 tiles[x, z].transform.position = gridGen.CellToWorld(new Vector3Int(x,z,0));
                 tiles[x, z].transform.parent = this.transform;
+                tiles[x, z].gameObject.SetActive(false);
             }
         }
     }
