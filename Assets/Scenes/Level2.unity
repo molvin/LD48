@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 1
+  Height: 0
 --- !u!212 &23440648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1571,6 +1571,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6412528308059084272, guid: dfa31c433b3a9a442a6df2c81f7fe448,
+        type: 3}
+      propertyPath: Role
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6451998034019248903, guid: dfa31c433b3a9a442a6df2c81f7fe448,
         type: 3}
       propertyPath: m_RootOrder
@@ -13411,7 +13416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 1
+  Height: 0
 --- !u!212 &695811316
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22258,7 +22263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 0
+  Height: -10
 --- !u!156049354 &1224469044
 Grid:
   m_ObjectHideFlags: 0
@@ -25576,7 +25581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 0
+  Height: -10
 --- !u!156049354 &1390892945
 Grid:
   m_ObjectHideFlags: 0
@@ -37789,7 +37794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 1
+  Height: 0
 --- !u!212 &1975327734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37952,7 +37957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 1
+  Height: 0
 --- !u!212 &1978933526
 SpriteRenderer:
   m_ObjectHideFlags: 0

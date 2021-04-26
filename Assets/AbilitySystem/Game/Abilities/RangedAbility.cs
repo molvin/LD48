@@ -23,13 +23,28 @@ public class RangedAbility : GameplayAbility
         
         if (Ticker.ShouldVisualize)
         {
-          CoroutineRunner.Instance.StartCoroutine(EffectVisualized(Owner, Target));
+            if (Projectile != null)
+            {
+                CoroutineRunner.Instance.StartCoroutine(EffectVisualized(Owner, Target));
+            }
+            else if (FromSelfToTargetParticleSystem != null)
+            {
+                CoroutineRunner.Instance.StartCoroutine(ApplyEffectVisualized(Owner, Target));
+            } 
+            else
+            {
+                ApplyEffectToTarget(Owner, Target);
+            }
         }
         else if (Target != null)
         {
             ApplyEffectToTarget(Owner, Target);
         }
     }
+
+
+
+
 
     IEnumerator EffectVisualized(AbilitySystem Owner, AbilitySystem Target)
     {
@@ -43,7 +58,6 @@ public class RangedAbility : GameplayAbility
         Vector3 NewPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
         GameObject projectile = null;
         RenderLayer RL = null;
-
         if(Projectile != null)
         {
             projectile = Instantiate(Projectile, OriginalPos, Quaternion.identity);
@@ -60,7 +74,6 @@ public class RangedAbility : GameplayAbility
             }
             yield return null;
         }
-        Debug.Log("Kan det vara så");
         yield return PlayParticleSystemOnTarget(Owner);
         if(Target != null)
         {

@@ -9,12 +9,14 @@ public class Ticker : MonoBehaviour
 {
     public static LDBlock currentBlock;
     public static Ticker Instance;
-    public static float TickVisualTime = 1.0f;
+    public static float TickVisualTime = 1.1f;
     public static bool ShouldVisualize;
 
     public CharacterRole? CheckpointRole = null;
 
     public List<TickAgent> tickAgents;
+
+    public int GetCurrentTick => CurrentTick;
 
     private int CurrentTick = 0;
     private int CurrentActor = 0;
@@ -177,6 +179,7 @@ public class Ticker : MonoBehaviour
                 {
                     if (Player.HasInput(CurrentTick) && Player.GetInput(CurrentTick).Is(TypeTag.DeathAction))
                     {
+                        //There is an open slot and you take it now
                         CheckpointRole = Player.Role;
                         m_IsTicking = false;
                         yield break;

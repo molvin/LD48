@@ -11,16 +11,12 @@ public class MeleeAbility : GameplayAbility
         Commit(Owner);
 
         AbilitySystem Target = GetEnemyInTile(Owner, Owner.CurrentTarget);
-        if (Target == null)
-        {
-            return;
-        }
         
         if (Ticker.ShouldVisualize)
         {
           CoroutineRunner.Instance.StartCoroutine(ApplyEffectVisualized(Owner, Target));
         }
-        else
+        else if(Target != null)
         {
             ApplyEffectToTarget(Owner, Target);
         }
