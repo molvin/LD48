@@ -107,7 +107,6 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Ticking");
         m_GameStateMachine.Tick();
     }
 }

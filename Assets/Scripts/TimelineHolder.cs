@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameStructure;
 using GameplayAbilitySystem;
+using UnityEngine.SceneManagement;
 
 public class TimelineHolder : MonoBehaviour
 {
     [Tooltip("The scene you want to start att -1 = means the ticker chooses")]
     public int SceenIndex;
 
-    public LDTimeLine TimeLine;
+    private LDTimeLine m_ServerTimeLine;
+    private List<LDBlock> m_TimelineExtetion;
+    private int m_BranchingIndex = 0;
     public static TimelineHolder Instance;
 
-    private LDBlock m_TestBlock;
-
+    private LDBlock m_CurrentBlock;
     private void Awake()
     {
         if(Instance == null)
@@ -27,37 +29,60 @@ public class TimelineHolder : MonoBehaviour
             return;
         }
 
-        TimeLine = Server.RequestTimeLine();
+        m_ServerTimeLine = new LDTimeLine(); //Server.RequestTimeLine();
+        m_ServerTimeLine.timeLine = new LDBlock[0];
 
-        LDConversionTable LDConversionTable = LDConversionTable.Load();
-        LDInputFrame input_frame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
+        if (m_ServerTimeLine.timeLine.Length <= 0)
+        {
+            m_BranchingIndex = 0;
 
-        m_TestBlock.characters = new LDCharacter[3];
-        m_TestBlock.characters[0].role = (byte)CharacterRole.Assassin;
-        m_TestBlock.characters[0].timeLine = new LDInputFrame[1];
-        m_TestBlock.characters[0].timeLine[0] = input_frame;
+            LDConversionTable LDConversionTable = LDConversionTable.Load();
+            LDInputFrame death_input_frame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
+            LDInputFrame temp_input_frame = new LDInputFrame();
 
-        m_TestBlock.characters[1].role = (byte)CharacterRole.Barbarian;
-        m_TestBlock.characters[1].timeLine = new LDInputFrame[1];
-        m_TestBlock.characters[1].timeLine[0] = input_frame;
 
-        m_TestBlock.characters[2].role = (byte)CharacterRole.Necromancer;
-        m_TestBlock.characters[2].timeLine = new LDInputFrame[1];
-        m_TestBlock.characters[2].timeLine[0] = input_frame;
+            m_CurrentBlock.characters = new LDCharacter[3];
+            m_CurrentBlock.characters[0].role = (byte)CharacterRole.Assassin;
+            m_CurrentBlock.characters[0].timeLine = new LDInputFrame[1];
+
+            temp_input_frame.action = LDConversionTable.GameplayTagToLDID(TypeTag.MoveAbility);
+            temp_input_frame.cell = 20 * 10 + 10;
+            m_CurrentBlock.characters[0].timeLine[0] = temp_input_frame;
+
+            m_CurrentBlock.characters[1].role = (byte)CharacterRole.Barbarian;
+            m_CurrentBlock.characters[1].timeLine = new LDInputFrame[2];
+
+            temp_input_frame.cell = 20 * 10 + 8;
+            m_CurrentBlock.characters[1].timeLine[0] = temp_input_frame;
+            m_CurrentBlock.characters[1].timeLine[1] = death_input_frame;
+
+            m_CurrentBlock.characters[2].role = (byte)CharacterRole.Necromancer;
+            m_CurrentBlock.characters[2].timeLine = new LDInputFrame[3];
+
+            temp_input_frame.cell = 20 * 10 + 10;
+            m_CurrentBlock.characters[2].timeLine[0] = temp_input_frame;
+            temp_input_frame.cell = 20 * 11 + 10;
+            m_CurrentBlock.characters[2].timeLine[1] = temp_input_frame;
+            temp_input_frame.cell = 20 * 11 + 11;
+            m_CurrentBlock.characters[2].timeLine[2] = death_input_frame;
+
+
+            //m_TimelineExtetion.Add(m_CurrentBlock);
+        }  
     }
 
-    public int GetNextSceneIndex()
+    public LDBlock GiveNextRelevantBlock()
     {
-        if(SceenIndex == -1)
-        {
-            //TODO: Add the sceen getting thing from server
-            return 1;
-        }
-        return SceenIndex;
+        //  LDBlock temp_block = new LDBlock();
+
+        m_CurrentBlock.level = (byte)SceenIndex;
+
+        return m_CurrentBlock;
+      
     }
 
     public LDBlock GetCurrentBlock()
     {
-        return m_TestBlock;
+        return m_CurrentBlock;
     }
 }
