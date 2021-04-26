@@ -95,10 +95,7 @@ public class GameplayInputUI : MonoBehaviour
         GameStateManager.Instance.GoToActionState(m_AbilityButtonMapping[index].GetType());
         Debug.Log("Clicked action: " + index);
     }
-    public void SelectEndTurn()
-    {
-        GameStateManager.Instance.GoToEndTurnState();
-    }
+
     public void SelectInventoryItem(int index)
     {
         Debug.Log("Clicked inventory item: " + index);
@@ -116,7 +113,6 @@ public class GameplayInputUI : MonoBehaviour
                 continue;
 
             button.interactable = !has_done_ability;
-           
         }
     }
 }
