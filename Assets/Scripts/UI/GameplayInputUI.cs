@@ -8,7 +8,9 @@ public class GameplayInputUI : MonoBehaviour
 {
     private Canvas m_Canvas;
     [Header("Interaction Buttons")]
+    [SerializeField] private Button m_MoveActionButton;
     [SerializeField] private Button m_CharacterPortrait;
+    [SerializeField] private Button m_EndTurnButton;
     [SerializeField] private HorizontalLayoutGroup m_ActionBar;
     [SerializeField] private HorizontalLayoutGroup m_InventoryBar;
 
@@ -26,7 +28,9 @@ public class GameplayInputUI : MonoBehaviour
 
         GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;
 
+        m_MoveActionButton.onClick.AddListener(delegate { SelectMove(); });
         m_CharacterPortrait.onClick.AddListener(delegate { ClickedCharacterPortrait(); });
+        m_EndTurnButton.onClick.AddListener(delegate { SelectEndTurn(); });
 
         m_ActionButtons = m_ActionBar.GetComponentsInChildren<Button>();
         for (int i = 0; i < m_ActionButtons.Length; i++)
@@ -51,11 +55,11 @@ public class GameplayInputUI : MonoBehaviour
     public void LoadAbilities(AbilitySystem ability_owner)
     {
         List<TypeTag> type_tags = ability_owner.GetGrantedAbilityTypes();
-        
+
         for (int i = 0; i < m_ActionButtons.Length; i++)
         {
             Button button = m_ActionButtons[i];
-            if (type_tags.Count > i)
+            if (type_tags.Count > i && i > 0)
             {
                 TypeTag ability_tag = type_tags[i];
                 button.GetComponent<Image>().sprite = ability_tag.Icon;
@@ -71,7 +75,7 @@ public class GameplayInputUI : MonoBehaviour
 
     public void LoadInventory()
     {
-        for(int i = 0; i < m_InventoryButtons.Length; i++)
+        for (int i = 0; i < m_InventoryButtons.Length; i++)
         {
             m_InventoryButtons[i].gameObject.SetActive(false);
         }
@@ -80,32 +84,42 @@ public class GameplayInputUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SelectMove()
     {
         GameStateManager.Instance.GoToActionState(TypeTag.MoveAbility);
     }
+
     public void SelectAction(int index)
     {
         if (!m_AbilityButtonMapping.ContainsKey(index))
-            return; 
+            return;
 
         GameStateManager.Instance.GoToActionState(m_AbilityButtonMapping[index].GetType());
         Debug.Log("Clicked action: " + index);
+    }
+    public void SelectEndTurn()
+    {
+        GameStateManager.Instance.GoToEndTurnState();
     }
 
     public void SelectInventoryItem(int index)
     {
         Debug.Log("Clicked inventory item: " + index);
     }
+
     public void ClickedCharacterPortrait()
     {
         Debug.Log("Clicked character portrait");
     }
+
     public void UpdateActionButtons(bool has_done_ability)
     {
+        m_EndTurnButton.interactable    = !has_done_ability;
+        m_MoveActionButton.interactable = !has_done_ability;
+
         for (int i = 0; i < m_ActionButtons.Length; i++)
         {
             Button button = m_ActionButtons[i];
@@ -113,6 +127,12 @@ public class GameplayInputUI : MonoBehaviour
                 continue;
 
             button.interactable = !has_done_ability;
+
         }
+    }
+
+    public void UpdateMoveButton(bool has_moved)
+    {
+        m_MoveActionButton.interactable = !has_moved;
     }
 }

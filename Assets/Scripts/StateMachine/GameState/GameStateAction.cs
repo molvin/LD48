@@ -9,7 +9,15 @@ public class GameStateAction : State
     {
         GameStateManager.Instance.GetFolowMouse().gameObject.SetActive(true);
         GameStateManager.Instance.GetFolowMouse().OnCellSelected += OnCellSelected;
-        GameStateManager.Instance.GetFolowMouse().AbilityType = AbilityType;
+        GameStateManager.Instance.GetFolowMouse().AbilityType = AbilityType;  
+        if (AbilityType == TypeTag.NoAction)
+        {
+            GameStateManager.Instance.HasDoneAction = true;
+            GameStateManager.Instance.ShouldDoAction = false;
+            GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, new Vector2Int());
+            Ticker.Instance.TickCurrent();
+        }
+
         Debug.Log("Enter action");
     }
     public override void Tick() 

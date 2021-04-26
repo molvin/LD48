@@ -71,6 +71,7 @@ public class LongJumpAbility : GameplayAbility
             yield return null;
         }
         OwnerAgent.transform.position = NewPos;
+        OwnerAgent.GridPos = Owner.CurrentTarget;
 
         yield return PlayParticleSystem(Owner);
     }
