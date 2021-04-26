@@ -10,6 +10,9 @@ public abstract class TickAgent : MonoBehaviour
     public ParticleSystem DeathEffect;
     public ParticleSystem PoisonedEffect;
 
+    public string DeathSound;
+    public string HurtSound;
+
     [HideInInspector]
     public Animator Animator;
     [HideInInspector]
@@ -39,6 +42,7 @@ public abstract class TickAgent : MonoBehaviour
 
         if (Health < CurrentHealth)
         {
+            AudioSystem.Play(HurtSound);
             if (AbilitySystem.HasActiveTag(TypeTag.Poison))
             {
                 StartCoroutine(PlayEffect(PoisonedEffect));
@@ -54,6 +58,7 @@ public abstract class TickAgent : MonoBehaviour
             IsAlive = false;
             Grid.setOccupied((Vector3Int)GridPos, false);
             Animator.SetBool("Death", true);
+            AudioSystem.Play(DeathSound);
             StartCoroutine(PlayEffect(DeathEffect));
         }
 
