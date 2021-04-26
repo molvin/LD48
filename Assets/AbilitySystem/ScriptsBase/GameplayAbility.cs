@@ -18,6 +18,7 @@ namespace GameplayAbilitySystem
         public int AbilityIndex;
         public float MomentOfExecution;
         public ParticleSystem ParticleSystem;
+        public string SoundEffect;
 
         public GridGenerator Grid => GameStateManager.Instance.GetGridManager();
 
@@ -152,6 +153,7 @@ namespace GameplayAbilitySystem
 
             yield return new WaitForSeconds(MomentOfExecution);
 
+            AudioSystem.Play(SoundEffect);
             if (ParticleSystem != null)
             {
                 //Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
