@@ -15,3 +15,4 @@ MonoBehaviour:
   Icon: {fileID: 3016814293982505212, guid: adabac0d7de3fb743b2d35d7534d8f9b, type: 3}
   Name: Move
   Description: Move to a space
+  Targeting: 4

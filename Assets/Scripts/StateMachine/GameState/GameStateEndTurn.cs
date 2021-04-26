@@ -5,17 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game State/EndTurn")]
 public class GameStateEndTurn : State
 {
-    bool m_HasTicked;
     protected override void Initialize() { }
     public override void Enter()
     {
+        Ticker.Instance.CurrentDone();
+        Ticker.Instance.TickUntilPlayableTurn(false);
     }
     public override void Tick()
     {
-        if (Ticker.Instance.IsTicking)
-            return;
-
-        m_HasTicked = true;
     }
     public override void Exit()
     {
@@ -23,19 +20,14 @@ public class GameStateEndTurn : State
     }
     public override State SelectTransition()
     {
-        if (!m_HasTicked)
+        if (Ticker.Instance.IsTicking)
             return null;
-
-        bool FirstTime = !GameStateManager.Instance.HasDoneAction;
 
         if (!GameStateManager.Instance.HasDoneAction)
         {
             GameStateManager.Instance.PlayerAgent.AppendInput(TypeTag.NoAction, new Vector2Int());
-            Ticker.Instance.TickCurrent(FirstTime);
+            Ticker.Instance.TickCurrent();
         }
-
-        Ticker.Instance.CurrentDone();
-        Ticker.Instance.TickUntilPlayableTurn(false);
 
         GameStateManager.Instance.HasDoneAction = false;
         GameStateManager.Instance.ShouldEndTurn = false;
