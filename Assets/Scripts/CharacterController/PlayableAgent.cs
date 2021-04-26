@@ -103,6 +103,9 @@ public class PlayableAgent : TickAgent
 
         AbilitySystem.RegisterOnAttributeChanged(Attribute.Health, OnDamageTaken);
         CurrentHealth = AbilitySystem.GetAttributeValue(Attribute.Health).Value;
+
+        AbilitySystem.RegisterOnAttributeChanged(Attribute.MaxHealth, UpdateMaxHealth);
+        MaxHealth = AbilitySystem.GetAttributeValue(Attribute.MaxHealth).Value;
     }
 
     public override void Tick(int CurrentFrame, bool Scrum)
