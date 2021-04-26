@@ -16,7 +16,7 @@ public class HelpAllyAbility : GameplayAbility
         
         if (Ticker.ShouldVisualize)
         {
-          CoroutineRunner.Instance.StartCoroutine(PlayParticleSystemOnTarget(Owner));
+          CoroutineRunner.Instance.StartCoroutine(PlayParticleSystemOnTarget(Owner, true));
         }
         else if(Target == null)
         {

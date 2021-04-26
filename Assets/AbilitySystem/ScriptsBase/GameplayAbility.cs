@@ -208,13 +208,27 @@ namespace GameplayAbilitySystem
                 }
             }
         }
-        protected IEnumerator PlayParticleSystemOnTarget(AbilitySystem Owner)
+        protected IEnumerator PlayParticleSystemOnTarget(AbilitySystem Owner, bool SetTargetToParent = false)
         {
             if (TargetProjectileSystem != null)
             {
                 Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
                 ParticleSystem Instance = Instantiate(TargetProjectileSystem, WorldPos, Quaternion.identity);
                 Instance.Play();
+
+                if (SetTargetToParent)
+                {
+                    TickAgent TargetAgent = null;
+                    foreach (TickAgent Agent in Ticker.Instance.tickAgents)
+                    {
+                        if (Agent.IsAlive && Agent.GridPos == Owner.CurrentTarget)
+                        {
+                            TargetAgent = Agent;
+                            break;
+                        }
+                    }
+                    Instance.transform.SetParent(TargetAgent.transform);
+                }
 
                 while (Instance != null && Instance.isPlaying)
                 {
