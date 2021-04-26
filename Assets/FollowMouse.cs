@@ -11,9 +11,13 @@ public class FollowMouse : MonoBehaviour
     public Action<Vector3Int> OnCellSelected;
     public SpriteRenderer MousePointerMarker;
     public GameObject DefaultTilePrefab;
-    public System.Type AbilityType;
     private SpriteRenderer[,] tiles;
-    // Update is called once per frame
+
+    private System.Type _abilityType;
+    public System.Type AbilityType { get { return _abilityType; } set { NeedsRedraw = true; _abilityType = value; } }
+
+    private bool NeedsRedraw = true;
+
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -29,10 +33,25 @@ public class FollowMouse : MonoBehaviour
             }
         }
     }
+    private void OnEnable()
+    {
+        NeedsRedraw = true;
+        if (GameStateManager.Instance != null 
+        && GameStateManager.Instance.PlayerAgent != null 
+        && GameStateManager.Instance.PlayerAgent.AbilitySystem != null
+        && AbilityType != null)
+        {
+            ShowAvailiableSquares();
+        }
+    }
+
     void Update()
     {
-        //Show here the user can cast their spell!
-        ShowAvailiableSquares();
+        if (NeedsRedraw)
+        {
+            //Show here the user can cast their spell!
+            ShowAvailiableSquares();
+        }
 
         //Show the reticule!
         Vector3 world = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -53,6 +72,7 @@ public class FollowMouse : MonoBehaviour
 
     void ShowAvailiableSquares()
     {
+        NeedsRedraw = false;
         for (int z = 0; z < gridGen.zWidth; z++)
         {
             for (int x = 0; x < gridGen.xWidth; x++)

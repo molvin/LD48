@@ -1,3 +1,4 @@
+using GameStructure;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,19 +29,23 @@ public class GameStateLoading : State
         {
             CharacterRole? player_role = Ticker.Instance.CheckpointRole;
             
+            if(Input.GetButtonDown("Jump"))
+            {
+                //TODO: go to next character
+            }
+
             if(player_role == null)
             {
-                GameStateManager.Instance.StartCoroutine(LoadScene());
+                Debug.LogError("Mardröms rolle vadför scen");
                 return null;
             }
 
+            SetUpCharacter((CharacterRole)player_role);
+            
             GameStateManager.Instance.PlayerAgent.RemoveOneInput();
-
+           
             return GameStateManager.Instance.IdleState;
         }
-
-        if(!GameStateManager.Instance.IsScrumming)
-            return GameStateManager.Instance.IdleState;
 
         return null;
     }
@@ -48,16 +53,26 @@ public class GameStateLoading : State
     public IEnumerator LoadScene()
     {
         m_IsLoadingScene = true;
-        SceneManager.LoadScene(TimelineHolder.Instance.GetNextSceneIndex());
+        LDBlock next_block = TimelineHolder.Instance.GiveNextRelevantBlock();
+        SceneManager.LoadScene(next_block.level);
 
         yield return null;
-
-        GameStateManager.Instance.Setup();
         Ticker.currentBlock = TimelineHolder.Instance.GetCurrentBlock();
         Ticker.Instance.Initialize();
-        FindObjectOfType<GameplayInputUI>().Setup();
         Ticker.Instance.TickToNextCheckpoint(false);
         m_IsLoadingScene = false;
+    }
+
+    public void SetUpCharacter(CharacterRole role)
+    {
+        GameStateManager.Instance.Role = role;
+        GameStateManager.Instance.Setup();
+        Ticker.currentBlock = TimelineHolder.Instance.GetCurrentBlock();
+        int current_frame = Ticker.Instance.GetCurrentTick;
+        Ticker.Instance.Initialize();
+        Ticker.Instance.Scrum(current_frame - 1);
+
+        FindObjectOfType<GameplayInputUI>().Setup();
     }
 
     protected override void Initialize() { }

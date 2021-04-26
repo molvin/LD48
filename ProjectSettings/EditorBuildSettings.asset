@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePoc.unity
     guid: 64a4ccb03ab95cb4397e68368a90287d
+  - enabled: 1
+    path: Assets/Scenes/Simple Forest.unity
+    guid: c0a52f5869aa46448867b1b2b32109b5
   m_configObjects: {}

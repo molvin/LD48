@@ -52,16 +52,12 @@ public class DashAttackAbility : GameplayAbility
         Owner.CurrentTarget = TargetPos;
 
         AbilitySystem Target = GetEnemyInTile(Owner, Owner.CurrentTarget);
-        if (Target == null)
-        {
-            return;
-        }
         
         if (Ticker.ShouldVisualize)
         {
           CoroutineRunner.Instance.StartCoroutine(ApplyEffectVisualized(Owner, Target));
         }
-        else
+        else if(Target != null)
         {
             ApplyEffectToTarget(Owner, Target);
         }
