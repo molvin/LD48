@@ -41,7 +41,6 @@ public class Ticker : MonoBehaviour
             if(tickAgents[i] == null)
                 tickAgents.RemoveAt(i);
         }
-
     }
     public void TickCurrent()
     {
