@@ -81,4 +81,11 @@ public class MoveAbility : GameplayAbility
             yield return null;
         }
     }
+    
+    protected void RotateToTargetPos(AbilitySystem Owner, Vector3 LookDir)
+    {
+        Transform trans = Owner.OwnerAgent.Animator.transform;
+        trans.localRotation = Quaternion.LookRotation(LookDir, trans.up);
+        trans.localRotation = Quaternion.Euler(0, trans.localRotation.eulerAngles.y, 0);
+    }
 }
