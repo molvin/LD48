@@ -34,6 +34,8 @@ public class GameStateLoading : State
                 return null;
             }
 
+            GameStateManager.Instance.PlayerAgent.RemoveOneInput();
+
             return GameStateManager.Instance.IdleState;
         }
 
