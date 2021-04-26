@@ -18,18 +18,14 @@ public class RangedAbility : GameplayAbility
     public override void Activate(AbilitySystem Owner)
     {
         Commit(Owner);
-
         AbilitySystem Target = GetEnemyInTile(Owner, Owner.CurrentTarget);
-        if (Target == null)
-        {
-            return;
-        }
+       
         
         if (Ticker.ShouldVisualize)
         {
           CoroutineRunner.Instance.StartCoroutine(EffectVisualized(Owner, Target));
         }
-        else
+        else if (Target != null)
         {
             ApplyEffectToTarget(Owner, Target);
         }
@@ -64,10 +60,13 @@ public class RangedAbility : GameplayAbility
             }
             yield return null;
         }
-
+        Debug.Log("Kan det vara så");
         yield return PlayParticleSystemOnTarget(Owner);
-
-        ApplyEffectToTarget(Owner, Target);
+        if(Target != null)
+        {
+            ApplyEffectToTarget(Owner, Target);
+        }
+        
     }
 
     public override bool IsTargetValid(AbilitySystem Owner)
@@ -97,7 +96,7 @@ public class RangedAbility : GameplayAbility
         }
 
         //Blocked by obsticle
-        Vector2Int direction = ( TargetPos - TilePos);
+        Vector2Int direction = (TargetPos - TilePos);
         int targetRange = (int)Vector2Int.Distance(TilePos, TargetPos);
         if (direction.x != 0)
             direction.x = (int)Mathf.Sign(direction.x);
