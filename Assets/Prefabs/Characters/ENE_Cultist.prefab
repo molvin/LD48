@@ -166,6 +166,8 @@ MonoBehaviour:
     type: 3}
   DeathEffect: {fileID: 443631830879095119, guid: db6518b5b0cd5f54ea2427cc9b569456,
     type: 3}
+  PoisonedEffect: {fileID: 8338664491998094893, guid: c9068878c62dbaa4385e3a0fa0ea4913,
+    type: 3}
   Animator: {fileID: 1057826505372436119}
   GridPos: {x: 0, y: 0}
   IsAlive: 1
@@ -185,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 1
+  Height: 0
 --- !u!1001 &6900836465001315078
 PrefabInstance:
   m_ObjectHideFlags: 0

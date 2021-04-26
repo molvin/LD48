@@ -8,6 +8,7 @@ public abstract class TickAgent : MonoBehaviour
 {
     public ParticleSystem DamageEffect;
     public ParticleSystem DeathEffect;
+    public ParticleSystem PoisonedEffect;
 
     [HideInInspector]
     public Animator Animator;
@@ -38,7 +39,14 @@ public abstract class TickAgent : MonoBehaviour
 
         if (Health < CurrentHealth)
         {
-            StartCoroutine(PlayEffect(DamageEffect));
+            if (AbilitySystem.HasActiveTag(TypeTag.Poison))
+            {
+                StartCoroutine(PlayEffect(PoisonedEffect));
+            }
+            else
+            {
+                StartCoroutine(PlayEffect(DamageEffect));
+            }
         }
 
         if (Health <= 0)

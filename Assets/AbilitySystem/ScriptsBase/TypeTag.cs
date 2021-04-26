@@ -30,7 +30,11 @@ namespace GameplayAbilitySystem
         public static Type DeathAction => typeof(DeathActionTag);
         public static Type StrengthAbility => typeof(StrengthAbilityTag); 
         public static Type DexterityAbility => typeof(DexterityAbilityTag); 
-        public static Type IntelligenceAbility => typeof(IntelligenceAbilityTag); 
+        public static Type IntelligenceAbility => typeof(IntelligenceAbilityTag);
+
+        // Status
+
+        public static Type Poison => typeof(PoisonTag);
     }
 
     public abstract class StrengthAbilityTag : TypeTag { }

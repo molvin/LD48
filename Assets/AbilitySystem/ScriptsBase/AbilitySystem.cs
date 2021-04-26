@@ -40,6 +40,11 @@ namespace GameplayAbilitySystem
             return Tags;
         }
 
+        public bool HasActiveTag(Type Tag)
+        {
+            return ActiveTags.ContainsKey(Tag);
+        }
+
         // Tick
         public void Tick()
         {

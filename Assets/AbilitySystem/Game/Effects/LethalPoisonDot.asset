@@ -19,6 +19,7 @@ MonoBehaviour:
   InitialValue: 0
   TickAttribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
   TickValue: 10
-  AppliedTags: []
+  AppliedTags:
+  - {fileID: 11400000, guid: 84bdcc315b1f45a45bd64071c972b396, type: 2}
   BlockedByTags: []
   RequiredTags: []

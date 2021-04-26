@@ -327,7 +327,7 @@ MonoBehaviour:
   GameOverState: {fileID: 11400000, guid: 6616be12daec78345b9745b1ccd241f8, type: 2}
   EndTurnState: {fileID: 11400000, guid: 8a410772d113f714ba20d3db66207db2, type: 2}
   IsScrumming: 1
-  Role: 0
+  Role: 1
   PlayerAgent: {fileID: 0}
   GridIndex: -1
   ShouldDoAction: 0
