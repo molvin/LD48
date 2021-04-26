@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21158ca648561e54ba89a25a39429d7b, type: 3}
-  m_Name: LongJumpAbility
+  m_Script: {fileID: 11500000, guid: b825d303f689cf043a072e6b978723a3, type: 3}
+  m_Name: HeavyStrike
   m_EditorClassIdentifier: 
-  AbilityTag: {fileID: 11400000, guid: d5390d425df60c243b59484939df39f4, type: 2}
+  AbilityTag: {fileID: 11400000, guid: e175b44647e05754389f49f08da778fb, type: 2}
   AppliedEffect: {fileID: 0}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}

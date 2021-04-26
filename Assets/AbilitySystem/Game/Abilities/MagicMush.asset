@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b825d303f689cf043a072e6b978723a3, type: 3}
-  m_Name: HeadbuttAbility
+  m_Script: {fileID: 11500000, guid: 699e8f8fe70007546aa5bbbd8793d6c9, type: 3}
+  m_Name: MagicMush
   m_EditorClassIdentifier: 
-  AbilityTag: {fileID: 11400000, guid: bc8c8e5647a20214b825f2b414d7c70f, type: 2}
-  AppliedEffect: {fileID: 11400000, guid: 1b2e3777a48bee441bcd1eb4b62f955e, type: 2}
+  AbilityTag: {fileID: 11400000, guid: f26f54f38c7f8f34399e3c886c1c4793, type: 2}
+  AppliedEffect: {fileID: 0}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}
   BlockedByTags: []
