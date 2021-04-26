@@ -1,3 +1,4 @@
+using GameplayAbilitySystem;
 using GameStructure;
 using System.Collections;
 using System.Collections.Generic;
@@ -174,16 +175,21 @@ public class Ticker : MonoBehaviour
                 PlayableAgent Player = (PlayableAgent)CurrentAgent;
                 if (Player.IsAlive)
                 {
-                    if (Player.HasInput(CurrentTick))
+                    if (Player.HasInput(CurrentTick) && Player.GetInput(CurrentTick).Is(TypeTag.DeathAction))
+                    {
+                        CheckpointRole = Player.Role;
+                        m_IsTicking = false;
+                        yield break;
+                   
+                    }
+                    else if(Player.HasInput(CurrentTick))
                     {
                         Debug.Log("Doing other player stuff");
                         Player.Tick(CurrentTick, !ShouldVisualize);
                     }
                     else
                     {
-                        CheckpointRole = Player.Role;
-                        m_IsTicking = false;
-                        yield break;
+                        Debug.Log("Player is Frozen");
                     }
                 }
             }

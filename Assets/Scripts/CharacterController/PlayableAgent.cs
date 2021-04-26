@@ -32,6 +32,8 @@ public class PlayableAgent : TickAgent
     private LDConversionTable Conversion;
 
     public bool HasInput(int Frame) => TimeLine.Count > Frame;
+    public TypeTag GetInput(int Frame) => Conversion.LDToGameplayTag(TimeLine[Frame].action);
+
     private void Awake()
     {
         Conversion = LDConversionTable.Load();
@@ -49,6 +51,11 @@ public class PlayableAgent : TickAgent
     public void AppendInput(LDInputFrame input)
     {
         TimeLine.Add(input);
+    }
+
+    public void RemoveOneInput()
+    {
+        TimeLine.RemoveAt(TimeLine.Count - 1);
     }
     public override void Initialize(LDBlock data)
     {

@@ -20,11 +20,6 @@ public class GameplayInputUI : MonoBehaviour
     private Dictionary<int, TypeTag> m_AbilityButtonMapping = new Dictionary<int, TypeTag>();
     private Dictionary<int, TypeTag> m_InventoryButtonMapping = new Dictionary<int, TypeTag>();
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void Setup()
     {
         m_Canvas = GetComponent<Canvas>();
@@ -55,6 +50,11 @@ public class GameplayInputUI : MonoBehaviour
 
         LoadAbilities(GameStateManager.Instance.PlayerAgent.AbilitySystem);
         LoadInventory();
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnHasDoneActionUpdate -= UpdateActionButtons;
     }
 
     public void LoadAbilities(AbilitySystem ability_owner)

@@ -25,4 +25,8 @@ public class GridCellProperties : MonoBehaviour
 
     [HideInInspector]
     public int cost;
+    public void Start()
+    {
+        this.GetComponent<MeshRenderer>().enabled = false;
+    }
 }
