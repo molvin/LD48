@@ -9,7 +9,7 @@ namespace Testing
         public int layer = 0;
         private void Update()
         {
-            transform.position = new Vector3(transform.position.x, transform.position.z * layer, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -transform.position.z + 10 * layer, transform.position.z);
         }
     }
 }
