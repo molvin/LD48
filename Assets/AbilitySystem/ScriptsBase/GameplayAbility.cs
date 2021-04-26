@@ -17,8 +17,10 @@ namespace GameplayAbilitySystem
         [Header("Animation")]
         public int AbilityIndex;
         public float MomentOfExecution;
-        public ParticleSystem ParticleSystem;
-
+        public ParticleSystem FromSelfToTargetParticleSystem;
+        public ParticleSystem SelfProjectileSystem;
+        public ParticleSystem TargetProjectileSystem;
+        public string SoundEffect;
         public GridGenerator Grid => GameStateManager.Instance.GetGridManager();
 
         public abstract void Activate(AbilitySystem Owner);
@@ -75,12 +77,10 @@ namespace GameplayAbilitySystem
                 Target.TryApplyEffectToSelf(Instance);
             }
         }
-
         protected bool IsTileOccupiedByEnemy(AbilitySystem Owner, Vector2Int TargetPos)
         {
             return GetEnemyInTile(Owner, TargetPos) != null;
         }
-
         protected AbilitySystem GetEnemyInTile(AbilitySystem Owner, Vector2Int TargetPos)
         { 
             if (TargetPos.x < 0 || TargetPos.x >= Grid.xWidth || TargetPos.y < 0 || TargetPos.y >= Grid.zWidth)
@@ -114,7 +114,6 @@ namespace GameplayAbilitySystem
         {
             return GetFriendlyInTile(Owner, TargetPos) != null;
         }
-
         protected AbilitySystem GetFriendlyInTile(AbilitySystem Owner, Vector2Int TargetPos)
         { 
             if (TargetPos.x < 0 || TargetPos.x >= Grid.xWidth || TargetPos.y < 0 || TargetPos.y >= Grid.zWidth)
@@ -144,45 +143,72 @@ namespace GameplayAbilitySystem
 
             return TargetAgent.AbilitySystem;
         }
-
+        protected bool FlagsAlongLine(Vector2Int startTileExcluded, Vector2Int dir, int range, GridGenerator.BlockStatus flag)
+        {
+            Vector2Int currentTile = startTileExcluded + dir;
+            for (int i = 0; i < range; i++)
+            {
+                if (Grid.GetCellStatus(currentTile).HasFlag(flag))
+                    return true;
+                currentTile += dir;
+            }
+            return false;
+        }
         protected IEnumerator ApplyEffectVisualized(AbilitySystem Owner, AbilitySystem Target)
         {
             Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
             Owner.OwnerAgent.Animator.SetTrigger("Ability");
-
             yield return new WaitForSeconds(MomentOfExecution);
-
-            if (ParticleSystem != null)
+            AudioSystem.Play(SoundEffect);
+            PlayParticleSystemFromSelfToTarget(Owner);
+            ApplyEffectToTarget(Owner, Target);
+        }
+        protected IEnumerator PlayParticleSystemFromSelfToTarget(AbilitySystem Owner)
+        {
+            if (FromSelfToTargetParticleSystem != null)
             {
-                //Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
-                //Vector3 TargetWorldPos = Grid.CellToWorld((Vector3Int)Target.OwnerAgent.GridPos);
+                Vector3 TargetWorldPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
                 Vector3 WorldPos = Owner.OwnerAgent.transform.position;
-                Vector3 TargetWorldPos = Target.OwnerAgent.transform.position;
-                ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
+                ParticleSystem Instance = Instantiate(FromSelfToTargetParticleSystem, WorldPos, Quaternion.identity);
                 Instance.transform.forward = TargetWorldPos - WorldPos;
                 Instance.Play();
 
-                while(Instance.isPlaying)
+                while (Instance.isPlaying)
                 {
                     yield return null;
                 }
                 Destroy(Instance.gameObject);
             }
-
-            ApplyEffectToTarget(Owner, Target);
         }
-
-        protected IEnumerator PlayParticleSystem(AbilitySystem Owner)
+        protected IEnumerator PlayParticleSystemOnSelf(AbilitySystem Owner)
         {
-            Vector3 WorldPos = Owner.OwnerAgent.transform.position;
-            ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
-            Instance.Play();
-
-            while(Instance.isPlaying)
+            if (SelfProjectileSystem != null)
             {
-                yield return null;
+                Vector3 WorldPos = Owner.OwnerAgent.transform.position;
+                ParticleSystem Instance = Instantiate(SelfProjectileSystem, WorldPos, Quaternion.identity);
+                Instance.Play();
+
+                while (Instance.isPlaying)
+                {
+                    yield return null;
+                }
+                Destroy(Instance.gameObject);
             }
-            Destroy(Instance.gameObject);
+        }
+        protected IEnumerator PlayParticleSystemOnTarget(AbilitySystem Owner)
+        {
+            if (TargetProjectileSystem != null)
+            {
+                Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
+                ParticleSystem Instance = Instantiate(TargetProjectileSystem, WorldPos, Quaternion.identity);
+                Instance.Play();
+
+                while (Instance.isPlaying)
+                {
+                    yield return null;
+                }
+                Destroy(Instance.gameObject);
+            }
         }
 
         public void Commit(AbilitySystem Owner)

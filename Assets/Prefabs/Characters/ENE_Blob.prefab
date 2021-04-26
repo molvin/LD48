@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 5219946228598945961, guid: e191c39755aa84e429737d4315bca6fd,
         type: 3}
       propertyPath: offset.z
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e191c39755aa84e429737d4315bca6fd, type: 3}
