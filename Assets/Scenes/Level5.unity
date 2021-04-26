@@ -630,6 +630,11 @@ PrefabInstance:
       propertyPath: GridZ
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4810728494390793891, guid: a808399421edde647aaada34e6c1e955,
+        type: 3}
+      propertyPath: flags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a808399421edde647aaada34e6c1e955, type: 3}
 --- !u!1001 &29367112
@@ -15520,7 +15525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Height: 0
+  Height: -10
 --- !u!156049354 &1224469044
 Grid:
   m_ObjectHideFlags: 0
@@ -17828,7 +17833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Height: 0
+  Height: -10
 --- !u!156049354 &1390892945
 Grid:
   m_ObjectHideFlags: 0
@@ -24766,6 +24771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: GridZ
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810728494390793891, guid: a808399421edde647aaada34e6c1e955,
+        type: 3}
+      propertyPath: flags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a808399421edde647aaada34e6c1e955, type: 3}
