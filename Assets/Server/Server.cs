@@ -40,8 +40,8 @@ public class Server
             stream.Close();
             client.Close();
         }
-        catch (ArgumentNullException e){ Debug.Log("ArgumentNullException: {0}"); }
-        catch (SocketException e){ Debug.Log("SocketException: {0}");}
+        catch (ArgumentNullException e){ Debug.Log($"ArgumentNullException: {e}"); }
+        catch (SocketException e){ Debug.Log($"SocketException: {e}");}
         return timeline;
     }
     public static bool PushTimeLine(LDTimeLineBranchRequest branch)
