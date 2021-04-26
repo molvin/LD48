@@ -51,7 +51,7 @@ public class RangedAbility : GameplayAbility
         Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
         Owner.OwnerAgent.Animator.SetTrigger("Ability");
         yield return new WaitForSeconds(MomentOfExecution);
-
+        AudioSystem.Play(SoundEffect);
         
         float time = 0;
         Vector3 OriginalPos = Owner.OwnerAgent.transform.position;
