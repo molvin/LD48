@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: ParalyzingPoison
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: b57773acd0ccca246ac8f79a16aafcb8, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: a7754dcb0dbf47b4d981fb2cf2c6f618, type: 2}
+  Cost: {fileID: 11400000, guid: da8825924e09b944b80335f14f55a035, type: 2}
+  Cooldown: {fileID: 11400000, guid: a43856a5bcaad374ea575e49a53cd449, type: 2}
   BlockedByTags: []
   RequiredTags: []
   AbilityIndex: 0
   MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
-  Range: 0
+  FromSelfToTargetParticleSystem: {fileID: 5472594211451857368, guid: fa4e049f2e42b9048af4fb854271a8f6,
+    type: 3}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 3680722583408756282, guid: d63665f28cc986c4e83a6aea6d09452b,
+    type: 3}
+  SoundEffect: 
+  CanTargetEnemy: 1
+  CanTargetFriendy: 1
+  CanBeBlockedByObstacle: 1
+  Range: 3
+  Projectile: {fileID: 0}
+  ProjectileFlyTime: 0
+  ProjectileArcHeight: 0

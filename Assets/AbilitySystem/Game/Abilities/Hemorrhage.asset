@@ -21,5 +21,8 @@ MonoBehaviour:
   RequiredTags: []
   AbilityIndex: 1
   MomentOfExecution: 0.5
-  ParticleSystem: {fileID: 7251391475727345042, guid: 13bd7c7ea1bb44647a4b501a12e07efa,
+  FromSelfToTargetParticleSystem: {fileID: 7251391475727345042, guid: 13bd7c7ea1bb44647a4b501a12e07efa,
     type: 3}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 

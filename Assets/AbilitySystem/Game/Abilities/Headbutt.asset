@@ -16,8 +16,12 @@ MonoBehaviour:
   AppliedEffect: {fileID: 11400000, guid: 1b2e3777a48bee441bcd1eb4b62f955e, type: 2}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}
-  BlockedByTags: []
+  BlockedByTags:
+  - {fileID: 11400000, guid: ddd72169f40352a4d8619a72929e60b2, type: 2}
   RequiredTags: []
   AbilityIndex: 0
   MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 

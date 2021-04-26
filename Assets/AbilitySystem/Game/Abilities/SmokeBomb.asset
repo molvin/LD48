@@ -13,12 +13,22 @@ MonoBehaviour:
   m_Name: SmokeBomb
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: a1a95e5cc120da74e8010192b132682e, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: 96680df7ce2cf1949805908973234f03, type: 2}
+  Cost: {fileID: 11400000, guid: 0e5d76a13aa5b704582520a0489db5ba, type: 2}
+  Cooldown: {fileID: 11400000, guid: 9775cfbae6b492643a317396df08dceb, type: 2}
   BlockedByTags: []
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
+  MomentOfExecution: 0.5
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 6911764141540588582, guid: d98abdafb3836574c8e01a7a1fee1ced,
+    type: 3}
+  SoundEffect: 
+  CanTargetEnemy: 1
+  CanTargetFriendy: 1
+  CanBeBlockedByObstacle: 0
   Range: 0
+  Projectile: {fileID: 0}
+  ProjectileFlyTime: 0
+  ProjectileArcHeight: 0

@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: LongJumpEffect
   m_EditorClassIdentifier: 
   EffectType: 0
-  Duration: 0
+  Duration: 2
   RevertInitialChangeWhenRemoved: 0
-  InitialAttribute: {fileID: 0}
-  InitialValue: 0
+  InitialAttribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
+  InitialValue: 10
   TickAttribute: {fileID: 0}
   TickValue: 0
-  AppliedTags: []
+  AppliedTags:
+  - {fileID: 11400000, guid: ddd72169f40352a4d8619a72929e60b2, type: 2}
   BlockedByTags: []
   RequiredTags: []

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a49d49efbed249a42b187118b6567908, type: 3}
-  m_Name: MagicMushroomCooldown
+  m_Name: SmokeBombEffect
   m_EditorClassIdentifier: 
   EffectType: 0
-  Duration: 0
+  Duration: 2
   RevertInitialChangeWhenRemoved: 0
   InitialAttribute: {fileID: 0}
   InitialValue: 0
   TickAttribute: {fileID: 0}
   TickValue: 0
   AppliedTags:
-  - {fileID: 11400000, guid: f26f54f38c7f8f34399e3c886c1c4793, type: 2}
+  - {fileID: 11400000, guid: e55f3714fe887024f849c3002ec2e022, type: 2}
   BlockedByTags: []
   RequiredTags: []
