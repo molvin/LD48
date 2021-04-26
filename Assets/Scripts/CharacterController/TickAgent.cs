@@ -59,12 +59,15 @@ public abstract class TickAgent : MonoBehaviour
 
     private IEnumerator PlayEffect(ParticleSystem ParticleEffect)
     {
-        ParticleSystem Particle = Instantiate(ParticleEffect, transform.position, transform.rotation);
-        Particle.Play();
-        while (Particle.isPlaying)
+        if (ParticleEffect != null)
         {
-            yield return null;
+            ParticleSystem Particle = Instantiate(ParticleEffect, transform.position, transform.rotation);
+            Particle.Play();
+            while (Particle.isPlaying)
+            {
+                yield return null;
+            }
+            Destroy(Particle.gameObject);
         }
-        Destroy(Particle.gameObject);
     }
 }
