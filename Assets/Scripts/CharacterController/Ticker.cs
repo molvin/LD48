@@ -14,7 +14,6 @@ public class Ticker : MonoBehaviour
     public List<TickAgent> tickAgents;
 
     private int CurrentTick;
-    private int CurrentAction => CurrentTick * 2;
     private int CurrentActor;
 
     bool m_IsTicking;
@@ -42,7 +41,7 @@ public class Ticker : MonoBehaviour
         Debug.Assert(tickAgents[CurrentActor] == GameStateManager.Instance.PlayerAgent, "Ticking player out of turn!");
 
         ShouldVisualize = true;
-        StartCoroutine(TickOverTime(CurrentActor, First ? 0 : 1));
+        StartCoroutine(TickOverTime(CurrentActor));
     }
     public void CurrentDone()
     {
@@ -69,16 +68,17 @@ public class Ticker : MonoBehaviour
             CurrentTick++;
         }
     }
-    public IEnumerator TickOverTime(int ActorIndex, int TickAction)
+    public IEnumerator TickOverTime(int ActorIndex)
     {
         m_IsTicking = true;
 
         TickAgent Agent = tickAgents[ActorIndex];
-        Agent.Tick(CurrentAction + TickAction, !ShouldVisualize);
+        Agent.Tick(CurrentTick, !ShouldVisualize);
 
         yield return new WaitForSeconds(TickVisualTime);
 
         m_IsTicking = false;
+        GameStateManager.Instance.ShouldEndTurn = true;
     }
 
     public void TickUntilPlayableTurn(bool Scrum)
@@ -90,7 +90,7 @@ public class Ticker : MonoBehaviour
     private IEnumerator TickUtilPlayableTurn(float TickTime)
     {
         m_IsTicking = true;
-        for(;;)
+        while(true)
         {
             TickAgent CurrentAgent = tickAgents[CurrentActor];
             if (CurrentAgent is EnemyAgent)
@@ -98,10 +98,7 @@ public class Ticker : MonoBehaviour
                 EnemyAgent Enemy = (EnemyAgent)CurrentAgent;
                 if (Enemy.IsAlive)
                 {
-                    Enemy.AddActions();
-                    Enemy.Tick(0, !ShouldVisualize);
-                    yield return new WaitForSeconds(TickTime);
-                    Enemy.Tick(0, !ShouldVisualize);
+                    Enemy.Tick(CurrentTick, !ShouldVisualize);
                     yield return new WaitForSeconds(TickTime);
                 }
             }
@@ -110,10 +107,9 @@ public class Ticker : MonoBehaviour
                 PlayableAgent Player = (PlayableAgent)CurrentAgent;
                 if (Player.IsAlive)
                 {
-                    if (Player.HasInput(CurrentAction))
+                    if (Player.HasInput(CurrentTick))
                     {
-                        Player.Tick(CurrentAction, !ShouldVisualize);
-                        Player.Tick(CurrentAction + 1, !ShouldVisualize);
+                        Player.Tick(CurrentTick, !ShouldVisualize);
                     } 
                     else if (Player == GameStateManager.Instance.PlayerAgent)
                     {

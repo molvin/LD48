@@ -64,6 +64,8 @@ public class EnemyAgent : TickAgent
 
     public override void Tick(int _Frame, bool Scrum)
     {
+        if(AgentActions.Count == 0)
+            return;
         AgentAction Move = AgentActions[0];
 
         AbilitySystem.IsScrumming = Scrum;
