@@ -36,17 +36,22 @@ public class GameStateEndTurn : State
         if (!m_HasTicked)
             return null;
 
+        bool FirstTime = !GameStateManager.Instance.HasMoved && !GameStateManager.Instance.HasDoneAction;
+
         if (!GameStateManager.Instance.HasDoneAction)
         {
             GameStateManager.Instance.PlayerAgent.AppendInput(TypeTag.NoAction, new Vector2Int());
-            Ticker.Instance.Tick();
+            Ticker.Instance.TickCurrent(FirstTime);
         }
 
         if (!GameStateManager.Instance.HasMoved)
         {
             GameStateManager.Instance.PlayerAgent.AppendInput(TypeTag.NoAction, new Vector2Int());
-            Ticker.Instance.Tick();
+            Ticker.Instance.TickCurrent(false);
         }
+
+        Ticker.Instance.CurrentDone();
+        Ticker.Instance.TickUntilPlayableTurn(false);
 
         GameStateManager.Instance.HasDoneAction = false;
         GameStateManager.Instance.HasMoved      = false;

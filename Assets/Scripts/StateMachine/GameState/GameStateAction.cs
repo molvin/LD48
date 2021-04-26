@@ -23,14 +23,16 @@ public class GameStateAction : State
 
     private void OnCellSelected(Vector3Int pos)
     {
-    if (AbilityType.Is(TypeTag.MoveAbility))
-        GameStateManager.Instance.HasMoved = true;
-    else
-        GameStateManager.Instance.HasDoneAction = true;
+        bool FirstTime = !GameStateManager.Instance.HasMoved && !GameStateManager.Instance.HasDoneAction;
+
+        if (AbilityType.Is(TypeTag.MoveAbility))
+            GameStateManager.Instance.HasMoved = true;
+        else
+            GameStateManager.Instance.HasDoneAction = true;
 
         GameStateManager.Instance.ShouldDoAction = false;
         GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
-        Ticker.Instance.Tick();
+        Ticker.Instance.TickCurrent(FirstTime);
         Debug.Log("Action done");
     }
 
