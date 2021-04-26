@@ -30,6 +30,11 @@ namespace GameplayAbilitySystem
             RegisterOnAttributeChanged(Attribute.Mana, ManaCap);
         }
 
+        public bool IsOnCooldown(Type Tag)
+        {
+            return ActiveTags.ContainsKey(Tag);
+        }
+
         public List<TypeTag> GetGrantedAbilityTypes()
         {
             List<TypeTag> Tags = new List<TypeTag>();

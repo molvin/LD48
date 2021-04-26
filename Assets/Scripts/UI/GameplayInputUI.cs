@@ -16,6 +16,7 @@ public class GameplayInputUI : MonoBehaviour
 
     private Button[] m_ActionButtons;
     private Button[] m_InventoryButtons;
+    private AbilitySystem Owner;
 
     private Dictionary<int, TypeTag> m_AbilityButtonMapping = new Dictionary<int, TypeTag>();
     private Dictionary<int, TypeTag> m_InventoryButtonMapping = new Dictionary<int, TypeTag>();
@@ -59,6 +60,7 @@ public class GameplayInputUI : MonoBehaviour
 
     public void LoadAbilities(AbilitySystem ability_owner)
     {
+        Owner = ability_owner;
         List<TypeTag> type_tags = ability_owner.GetGrantedAbilityTypes();
 
         for (int i = 0; i < m_ActionButtons.Length; i++)
@@ -89,7 +91,13 @@ public class GameplayInputUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Owner != null)
+        {
+            foreach (var AbilityButton in m_AbilityButtonMapping)
+            {
+                m_ActionButtons[AbilityButton.Key].enabled = !Owner.IsOnCooldown(AbilityButton.Value.GetType());
+            }
+        }
     }
 
     public void SelectMove()
