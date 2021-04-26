@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HpBar : MonoBehaviour
+public class AnchoredHPBar : MonoBehaviour
 {
     public TickAgent Guy;
-    public Transform TransformToFollow;
-    public Vector2 offset;
+    public Vector3 offset;
     public Image HPBar;
     public TMPro.TextMeshProUGUI Name;
 
@@ -22,8 +21,9 @@ public class HpBar : MonoBehaviour
 
     private void LateUpdate()
     {
-        HPBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100 * Guy.CurrentHealth / Guy.ma)
-        if (!TransformToFollow) return;
-        rectTransform.position = RectTransformUtility.WorldToScreenPoint(cam, objectToFollow.position) + offset;
+        if (!Guy) return;
+        HPBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100 * (Guy.CurrentHealth / Guy.MaxHealth));
+        Name.text = (Guy is PlayableAgent) ? ((PlayableAgent)Guy).Name : "";
+        rectTransform.position = RectTransformUtility.WorldToScreenPoint(cam, Guy.transform.position + offset);
     }
 }
