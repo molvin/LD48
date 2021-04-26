@@ -19,7 +19,7 @@ MonoBehaviour:
   BlockedByTags: []
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
+  MomentOfExecution: 0.2
   FromSelfToTargetParticleSystem: {fileID: 5472594211451857368, guid: fa4e049f2e42b9048af4fb854271a8f6,
     type: 3}
   SelfProjectileSystem: {fileID: 0}

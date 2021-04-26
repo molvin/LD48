@@ -18,3 +18,10 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   BlockedByTags: []
   RequiredTags: []
+  AbilityIndex: 0
+  MomentOfExecution: 0.2
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
+  timePerSquare: 0.3

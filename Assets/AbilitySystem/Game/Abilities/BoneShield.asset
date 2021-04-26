@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24302b07cf8d2b644b22e00ad84fde5b, type: 2}
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
+  MomentOfExecution: 0.2
   FromSelfToTargetParticleSystem: {fileID: 0}
   SelfProjectileSystem: {fileID: 0}
   TargetProjectileSystem: {fileID: 9200714023734234791, guid: 53631b5394142ea498090f6cc7135a80,
