@@ -11,10 +11,12 @@ public class Ticker : MonoBehaviour
     public static float TickVisualTime = 1.0f;
     public static bool ShouldVisualize;
 
+    public CharacterRole? CheckpointRole = null;
+
     public List<TickAgent> tickAgents;
 
-    private int CurrentTick;
-    private int CurrentActor;
+    private int CurrentTick = 0;
+    private int CurrentActor = 0;
 
     bool m_IsTicking;
     public bool IsTicking { get => m_IsTicking; }
@@ -27,7 +29,6 @@ public class Ticker : MonoBehaviour
 
     public void Initialize()
     {
-        CurrentTick = 0;
         CurrentActor = 0;
         tickAgents = FindObjectsOfType<TickAgent>().ToList();
         tickAgents.OrderBy((x) => { return x.initiative; });
@@ -127,6 +128,62 @@ public class Ticker : MonoBehaviour
                     else
                     {
                         Debug.LogWarning("Player is frozen in time!");
+                    }
+                }
+            }
+            CurrentActor = (CurrentActor + 1) % tickAgents.Count;
+            if (CurrentActor == 0)
+            {
+                CurrentTick++;
+            }
+        }
+    }
+
+    private void TickToNextCheckpoint(bool Scrum)
+    {
+        ShouldVisualize = !Scrum;
+        StartCoroutine(TickToNextCheckpoint(Scrum ? 0.0f : TickVisualTime));
+    }
+
+    // TODO: ADD PADDING FOR INPUT
+
+    private IEnumerator TickToNextCheckpoint(float TickTime)
+    {
+        CheckpointRole = null;
+        m_IsTicking = true;
+        while(true)
+        {
+            if (!tickAgents.Any(a => a is EnemyAgent && a.IsAlive))
+            {
+                m_IsTicking = false;
+                CurrentTick++;
+                yield break;
+            }
+            TickAgent CurrentAgent = tickAgents[CurrentActor];
+            if (CurrentAgent is EnemyAgent)
+            {
+                EnemyAgent Enemy = (EnemyAgent)CurrentAgent;
+                if (Enemy.IsAlive)
+                {
+                    Enemy.Tick(CurrentTick, !ShouldVisualize);
+                    yield return new WaitForSeconds(TickTime);
+                }
+            }
+            else
+            {
+                PlayableAgent Player = (PlayableAgent)CurrentAgent;
+                if (Player.IsAlive)
+                {
+                    if (Player.HasInput(CurrentTick))
+                    {
+                        Debug.Log("Doing other player stuff");
+                        Player.Tick(CurrentTick, !ShouldVisualize);
+                    }
+                    else
+                    {
+                        CheckpointRole = Player.Role;
+                        m_IsTicking = false;
+                        yield break;
                     }
                 }
             }
