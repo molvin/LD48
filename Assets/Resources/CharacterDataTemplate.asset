@@ -56,7 +56,7 @@ MonoBehaviour:
     - Attribute: {fileID: 11400000, guid: b4c4df153eb76da469b0fd07ffa3af3d, type: 2}
       Value: 6
     - Attribute: {fileID: 11400000, guid: 464bff30b8d4e5a409585eed252c582e, type: 2}
-      Value: 3
+      Value: 6
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
   Necromanacer:
@@ -97,7 +97,9 @@ MonoBehaviour:
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
   BlobManB:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: a39ef54c3faeb084ea66b8907cae98b1, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
@@ -109,7 +111,9 @@ MonoBehaviour:
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
   CultistA:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
@@ -121,7 +125,9 @@ MonoBehaviour:
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
   CultistB:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
@@ -133,7 +139,9 @@ MonoBehaviour:
     - Attribute: {fileID: 11400000, guid: 7a06310b431f121419969b02a357b38b, type: 2}
       Value: 0
   CultistC:
-    StartingAbilities: []
+    StartingAbilities:
+    - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}

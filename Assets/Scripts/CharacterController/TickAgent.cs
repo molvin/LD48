@@ -17,6 +17,8 @@ public abstract class TickAgent : MonoBehaviour
     public bool IsAlive = true;
     [HideInInspector]
     public int CurrentHealth;
+    [HideInInspector]
+    public int MaxHealth;
 
 
     public int initiative = 0;
@@ -50,14 +52,22 @@ public abstract class TickAgent : MonoBehaviour
         CurrentHealth = Health;
     }
 
+    protected void UpdateMaxHealth(int MaxValue)
+    {
+        MaxHealth = MaxValue;
+    }
+
     private IEnumerator PlayEffect(ParticleSystem ParticleEffect)
     {
-        ParticleSystem Particle = Instantiate(ParticleEffect, transform.position, transform.rotation);
-        Particle.Play();
-        while (Particle.isPlaying)
+        if (ParticleEffect != null)
         {
-            yield return null;
+            ParticleSystem Particle = Instantiate(ParticleEffect, transform.position, transform.rotation);
+            Particle.Play();
+            while (Particle.isPlaying)
+            {
+                yield return null;
+            }
+            Destroy(Particle.gameObject);
         }
-        Destroy(Particle.gameObject);
     }
 }

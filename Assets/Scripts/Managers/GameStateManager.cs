@@ -157,13 +157,14 @@ public class GameStateManager : MonoBehaviour
 
     public void GoToEndTurnState()
     {
-        ShouldEndTurn = true;
+        ActionState.AbilityType = TypeTag.NoAction;
+        ShouldDoAction = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState }, LoadingState);
+        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState, EndTurnState }, LoadingState);
     }
 
     // Update is called once per frame
