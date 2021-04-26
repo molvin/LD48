@@ -48,6 +48,7 @@ public class RangedAbility : GameplayAbility
 
     IEnumerator EffectVisualized(AbilitySystem Owner, AbilitySystem Target)
     {
+        RotateThowaradsTarget(Owner);
         Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
         Owner.OwnerAgent.Animator.SetTrigger("Ability");
         yield return new WaitForSeconds(MomentOfExecution);

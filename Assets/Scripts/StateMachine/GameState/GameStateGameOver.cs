@@ -14,6 +14,8 @@ public class GameStateGameOver : State
         TimelineHolder.Instance.SaveCurrentBlock();
         FindObjectOfType<EndScreen>(true).gameObject.SetActive(true);
         CoroutineRunner.Instance.StartCoroutine(EndSoon());
+        TimelineHolder.Instance.PushToServer();
+
     }
     public override void Tick()
     {
