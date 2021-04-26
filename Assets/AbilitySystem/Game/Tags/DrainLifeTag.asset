@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bd83a89ee506c4c81ef034e8712f50, type: 3}
   m_Name: DrainLifeTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: 848bd2e00b8bf5440a8bd8cc076db0c3, type: 3}
   Name: Drain Life
   Description: 'Saps life from an enemy to heal themself. '
   Targeting: 0

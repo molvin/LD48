@@ -26,7 +26,7 @@ MonoBehaviour:
   SelfProjectileSystem: {fileID: 0}
   TargetProjectileSystem: {fileID: 8482220230700301170, guid: 6c07f55188f28db4c91def9888608450,
     type: 3}
-  SoundEffect: 
+  SoundEffect: Magic
   CanTargetEnemy: 1
   CanTargetFriendy: 1
   CanBeBlockedByObstacle: 1

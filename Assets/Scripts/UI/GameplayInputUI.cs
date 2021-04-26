@@ -69,7 +69,7 @@ public class GameplayInputUI : MonoBehaviour
             if (type_tags.Count > i && i > 0)
             {
                 TypeTag ability_tag = type_tags[i];
-                button.GetComponent<Image>().sprite = ability_tag.Icon;
+                button.GetComponentInChildren<Image>().sprite = ability_tag.Icon;
                 button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = ability_tag.Name;
                 m_AbilityButtonMapping.Add(i, ability_tag);
             }

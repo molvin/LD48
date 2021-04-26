@@ -180,11 +180,14 @@ namespace GameplayAbilitySystem
                 Instance.transform.forward = TargetWorldPos - WorldPos;
                 Instance.Play();
                 Debug.Log("PlayParticleSystemFromSelfToTarget3");
-                while (Instance.isPlaying)
+                while (Instance != null && Instance.isPlaying)
                 {
                     yield return null;
                 }
-                Destroy(Instance.gameObject);
+                if (Instance != null)
+                {
+                    Destroy(Instance.gameObject);
+                }
             }
         }
         protected IEnumerator PlayParticleSystemOnSelf(AbilitySystem Owner)
@@ -195,14 +198,17 @@ namespace GameplayAbilitySystem
                 ParticleSystem Instance = Instantiate(SelfProjectileSystem, WorldPos, Quaternion.identity);
                 Instance.Play();
 
-                while (Instance.isPlaying)
+                while (Instance != null && Instance.isPlaying)
                 {
                     yield return null;
                 }
-                Destroy(Instance.gameObject);
+                if (Instance != null)
+                {
+                    Destroy(Instance.gameObject);
+                }
             }
         }
-        protected IEnumerator PlayParticleSystemOnTarget(AbilitySystem Owner)
+        protected IEnumerator PlayParticleSystemOnTarget(AbilitySystem Owner, bool SetTargetToParent = false)
         {
             if (TargetProjectileSystem != null)
             {
@@ -210,11 +216,28 @@ namespace GameplayAbilitySystem
                 ParticleSystem Instance = Instantiate(TargetProjectileSystem, WorldPos, Quaternion.identity);
                 Instance.Play();
 
-                while (Instance.isPlaying)
+                if (SetTargetToParent)
+                {
+                    TickAgent TargetAgent = null;
+                    foreach (TickAgent Agent in Ticker.Instance.tickAgents)
+                    {
+                        if (Agent.IsAlive && Agent.GridPos == Owner.CurrentTarget)
+                        {
+                            TargetAgent = Agent;
+                            break;
+                        }
+                    }
+                    Instance.transform.SetParent(TargetAgent.transform);
+                }
+
+                while (Instance != null && Instance.isPlaying)
                 {
                     yield return null;
                 }
-                Destroy(Instance.gameObject);
+                if (Instance != null)
+                {
+                    Destroy(Instance.gameObject);
+                }
             }
         }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1080100420085c244962ae23407619da, type: 3}
   m_Name: SmashTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: ea49434aa112e894ab0fad1d7c340039, type: 3}
   Name: Smash
   Description: 'Smashes the weapon in front, dealing damage in a short line '
   Targeting: 0

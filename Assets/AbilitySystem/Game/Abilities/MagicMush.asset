@@ -25,4 +25,4 @@ MonoBehaviour:
   SelfProjectileSystem: {fileID: 7956600889783516325, guid: c6b62723f1f779745934e31176090189,
     type: 3}
   TargetProjectileSystem: {fileID: 0}
-  SoundEffect: 
+  SoundEffect: Magic

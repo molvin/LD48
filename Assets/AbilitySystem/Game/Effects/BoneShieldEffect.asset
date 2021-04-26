@@ -16,7 +16,7 @@ MonoBehaviour:
   Duration: 5
   RevertInitialChangeWhenRemoved: 0
   InitialAttribute: {fileID: 11400000, guid: d07672f481bf4f9439174b4696a2527a, type: 2}
-  InitialValue: 25
+  InitialValue: -25
   TickAttribute: {fileID: 0}
   TickValue: 0
   AppliedTags: []

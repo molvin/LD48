@@ -26,5 +26,5 @@ MonoBehaviour:
     type: 3}
   TargetProjectileSystem: {fileID: 1512055025743005460, guid: 31193fe5ee2e98743986a5fbc91c1812,
     type: 3}
-  SoundEffect: 
+  SoundEffect: Swing
   JumpDistance: 3

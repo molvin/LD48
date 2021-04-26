@@ -25,7 +25,7 @@ MonoBehaviour:
   SelfProjectileSystem: {fileID: 0}
   TargetProjectileSystem: {fileID: 3680722583408756282, guid: d63665f28cc986c4e83a6aea6d09452b,
     type: 3}
-  SoundEffect: 
+  SoundEffect: Knife
   CanTargetEnemy: 1
   CanTargetFriendy: 1
   CanBeBlockedByObstacle: 1
