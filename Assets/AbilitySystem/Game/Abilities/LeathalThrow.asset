@@ -21,6 +21,15 @@ MonoBehaviour:
   RequiredTags: []
   AbilityIndex: 1
   MomentOfExecution: 0.5
-  ParticleSystem: {fileID: 4980169344390421963, guid: 5ebe1a8542594c04d819730f0c8de185,
+  FromSelfToTargetParticleSystem: {fileID: 4980169344390421963, guid: 5ebe1a8542594c04d819730f0c8de185,
     type: 3}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
+  CanTargetEnemy: 1
+  CanTargetFriendy: 1
+  CanBeBlockedByObstacle: 1
   Range: 4
+  Projectile: {fileID: 0}
+  ProjectileFlyTime: 0
+  ProjectileArcHeight: 0

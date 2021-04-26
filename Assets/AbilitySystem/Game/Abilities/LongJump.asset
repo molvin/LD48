@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LongJump
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: d5390d425df60c243b59484939df39f4, type: 2}
-  AppliedEffect: {fileID: 11400000, guid: ccc1a88e8da889848b8c4a80f539be0a, type: 2}
+  AppliedEffect: {fileID: 11400000, guid: d8be0ad9c8ab59b4db1fd2cf7b7df54f, type: 2}
   Cost: {fileID: 11400000, guid: da8825924e09b944b80335f14f55a035, type: 2}
   Cooldown: {fileID: 11400000, guid: d7488edca49bb7343a90fc8dace45bf8, type: 2}
   BlockedByTags:
@@ -21,5 +21,9 @@ MonoBehaviour:
   RequiredTags: []
   AbilityIndex: 0
   MomentOfExecution: 0.5
-  ParticleSystem: {fileID: 2897606915903970964, guid: 8fc5f48e31ee55e4c8074d35242e137d,
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 2897606915903970964, guid: 8fc5f48e31ee55e4c8074d35242e137d,
     type: 3}
+  TargetProjectileSystem: {fileID: 1512055025743005460, guid: 31193fe5ee2e98743986a5fbc91c1812,
+    type: 3}
+  SoundEffect: 

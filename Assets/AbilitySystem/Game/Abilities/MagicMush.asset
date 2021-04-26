@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: MagicMush
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: f26f54f38c7f8f34399e3c886c1c4793, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: 96604752f8235f341b693a106a48e6ed, type: 2}
+  Cost: {fileID: 11400000, guid: da8825924e09b944b80335f14f55a035, type: 2}
+  Cooldown: {fileID: 11400000, guid: 19006d7dcd66cc548af987318b777e77, type: 2}
   BlockedByTags: []
   RequiredTags: []
-  AbilityIndex: 0
-  MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
+  AbilityIndex: 1
+  MomentOfExecution: 0.5
+  FromSelfToTargetParticleSystem: {fileID: 7956600889783516325, guid: c6b62723f1f779745934e31176090189,
+    type: 3}
+  SelfProjectileSystem: {fileID: 7956600889783516325, guid: c6b62723f1f779745934e31176090189,
+    type: 3}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
