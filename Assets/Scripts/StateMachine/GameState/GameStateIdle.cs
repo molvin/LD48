@@ -31,9 +31,13 @@ public class GameStateIdle : State
                 break;
             }
         }
-
+        //Victory!
         if (all_enemies_killed)
+        {
+            TimelineHolder.Instance.SaveCurrentBlock();
             return GameStateManager.Instance.LoadingState;
+        }
+       
 
         if(!GameStateManager.Instance.PlayerAgent.IsAlive)
         {
