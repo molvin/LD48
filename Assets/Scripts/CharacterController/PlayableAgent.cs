@@ -28,7 +28,7 @@ public class PlayableAgent : TickAgent
     [HideInInspector]
     public CharacterColor Color;
 
-    List<LDInputFrame> TimeLine;
+    public List<LDInputFrame> TimeLine;
     private LDConversionTable Conversion;
 
     public bool HasInput(int Frame) => TimeLine.Count > Frame;
@@ -56,13 +56,20 @@ public class PlayableAgent : TickAgent
 
     public override void Initialize(LDBlock data)
     {
+        bool found = false;
         LDCharacter OwningCharacter = new LDCharacter();
         foreach (LDCharacter Character in data.characters)
         {
             if (Character.role == (byte)Role)
             {
                 OwningCharacter = Character;
+                found = true;
             }
+        }
+        if(!found)
+        {
+            DestroyImmediate(gameObject);
+            return;
         }
 
         GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
