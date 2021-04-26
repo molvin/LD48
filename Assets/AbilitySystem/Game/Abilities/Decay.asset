@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Decay
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: 4d84ac796134dcb4fbc62f8f2dc5aa10, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
-  BlockedByTags: []
+  AppliedEffect: {fileID: 11400000, guid: 34caa84dc43a5554a8ea5939162eac57, type: 2}
+  Cost: {fileID: 11400000, guid: 82c40cbac9b81714895fea36f3ae13f9, type: 2}
+  Cooldown: {fileID: 11400000, guid: 66cf76962443e814babed4935edb1fbd, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: 4d84ac796134dcb4fbc62f8f2dc5aa10, type: 2}
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
-  Range: 0
+  MomentOfExecution: 0.5
+  ParticleSystem: {fileID: 954903695281034297, guid: 2af38d72a9c7d404ca5eb1c610150a58,
+    type: 3}
+  Range: 5

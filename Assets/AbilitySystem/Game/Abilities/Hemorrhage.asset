@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Hemorrhage
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: b061c41fb291edd468899c575b3ecc15, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
-  BlockedByTags: []
+  AppliedEffect: {fileID: 11400000, guid: 874d9e9f209ff7c43b2627c2c2530243, type: 2}
+  Cost: {fileID: 11400000, guid: d6ba59f70eabcf04dbd53510440aa37d, type: 2}
+  Cooldown: {fileID: 11400000, guid: 63f5b59e4e40f434cb278ac3e30aeef9, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: b061c41fb291edd468899c575b3ecc15, type: 2}
   RequiredTags: []
-  AbilityIndex: 0
-  MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
+  AbilityIndex: 1
+  MomentOfExecution: 0.5
+  ParticleSystem: {fileID: 7251391475727345042, guid: 13bd7c7ea1bb44647a4b501a12e07efa,
+    type: 3}

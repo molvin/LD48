@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: LongJump
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: d5390d425df60c243b59484939df39f4, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
-  BlockedByTags: []
+  AppliedEffect: {fileID: 11400000, guid: ccc1a88e8da889848b8c4a80f539be0a, type: 2}
+  Cost: {fileID: 11400000, guid: da8825924e09b944b80335f14f55a035, type: 2}
+  Cooldown: {fileID: 11400000, guid: d7488edca49bb7343a90fc8dace45bf8, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: d5390d425df60c243b59484939df39f4, type: 2}
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
+  MomentOfExecution: 0.5
+  ParticleSystem: {fileID: 2897606915903970964, guid: 8fc5f48e31ee55e4c8074d35242e137d,
+    type: 3}

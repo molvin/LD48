@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: KnifeStab
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: f99daba3a25c67f429bff52c77e8e0a0, type: 2}
-  AppliedEffect: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: c49a4b3fdbff90448bd4f62959be7c03, type: 2}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}
   BlockedByTags: []
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
+  MomentOfExecution: 0.5
   ParticleSystem: {fileID: 0}
