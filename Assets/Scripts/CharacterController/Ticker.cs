@@ -36,6 +36,12 @@ public class Ticker : MonoBehaviour
         {
             tickAgents[i].Initialize(currentBlock);
         }
+        for(int i = tickAgents.Count - 1; i >= 0; i--)
+        {
+            if(tickAgents[i] == null)
+                tickAgents.RemoveAt(i);
+        }
+
     }
     public void TickCurrent()
     {
@@ -106,6 +112,7 @@ public class Ticker : MonoBehaviour
             else
             {
                 PlayableAgent Player = (PlayableAgent)CurrentAgent;
+                Debug.Log(Player.Role);
                 if (Player.IsAlive)
                 {
                     if (Player.HasInput(CurrentTick))

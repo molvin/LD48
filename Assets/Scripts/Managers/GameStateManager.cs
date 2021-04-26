@@ -129,13 +129,18 @@ public class GameStateManager : MonoBehaviour
              },
         };
 
-        Ticker.currentBlock = block;
+        Ticker.currentBlock = new LDBlock();
+        //TEMP: Add the player character
+        Ticker.currentBlock.characters = new LDCharacter[1];
+        Ticker.currentBlock.characters[0].role = (byte)Role;
+    
         Ticker.Instance.Initialize();
 
         foreach (PlayableAgent player in FindObjectsOfType<PlayableAgent>())
         {
             if (player.Role == Role)
             {
+                Debug.Log("Found Player Agent");
                 PlayerAgent = player;
                 break;
             }
@@ -152,13 +157,14 @@ public class GameStateManager : MonoBehaviour
 
     public void GoToEndTurnState()
     {
-        ShouldEndTurn = true;
+        ActionState.AbilityType = TypeTag.NoAction;
+        ShouldDoAction = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState }, LoadingState);
+        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState, EndTurnState }, LoadingState);
     }
 
     // Update is called once per frame

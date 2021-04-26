@@ -28,16 +28,14 @@ public class PlayableAgent : TickAgent
     [HideInInspector]
     public CharacterColor Color;
 
-    List<LDInputFrame> TimeLine;
+    public List<LDInputFrame> TimeLine;
     private LDConversionTable Conversion;
 
     public bool HasInput(int Frame) => TimeLine.Count > Frame;
-
     private void Awake()
     {
         Conversion = LDConversionTable.Load();
     }
-
     public void AppendInput(TypeTag GameplayTag, Vector2Int Position)
     {
         AppendInput(GameplayTag.GetType(), Position);
@@ -48,21 +46,26 @@ public class PlayableAgent : TickAgent
         ushort Cell = (ushort)(Position.x + Position.y * X);
         AppendInput(Conversion.GameplayTagToLD(GameplayTag, Cell));
     }
-
     public void AppendInput(LDInputFrame input)
     {
         TimeLine.Add(input);
     }
-
     public override void Initialize(LDBlock data)
     {
+        bool found = false;
         LDCharacter OwningCharacter = new LDCharacter();
         foreach (LDCharacter Character in data.characters)
         {
             if (Character.role == (byte)Role)
             {
                 OwningCharacter = Character;
+                found = true;
             }
+        }
+        if(!found)
+        {
+            DestroyImmediate(gameObject);
+            return;
         }
 
         GridPos = (Vector2Int)GameStateManager.Instance.GetGridManager().WorldToCell(transform.position);
