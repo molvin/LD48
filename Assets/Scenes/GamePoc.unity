@@ -6324,9 +6324,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf7d5cf2b1b5447bb97f55982146fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageEffect: {fileID: 5313144615783341630, guid: 228499ef7afdc554297f45417f656a66,
+    type: 3}
+  DeathEffect: {fileID: 443631830879095119, guid: db6518b5b0cd5f54ea2427cc9b569456,
+    type: 3}
   Animator: {fileID: 870966438}
   GridPos: {x: 0, y: 0}
   IsAlive: 1
+  CurrentHealth: 0
   initiative: 0
   Role: 1
   Name: 
@@ -26888,6 +26893,16 @@ PrefabInstance:
       propertyPath: Animator
       value: 
       objectReference: {fileID: 504836638}
+    - target: {fileID: 905693415, guid: 149783b3bc61c5b418a2949a8d7c9154, type: 3}
+      propertyPath: DeathEffect
+      value: 
+      objectReference: {fileID: 443631830879095119, guid: db6518b5b0cd5f54ea2427cc9b569456,
+        type: 3}
+    - target: {fileID: 905693415, guid: 149783b3bc61c5b418a2949a8d7c9154, type: 3}
+      propertyPath: DamageEffect
+      value: 
+      objectReference: {fileID: 5313144615783341630, guid: 228499ef7afdc554297f45417f656a66,
+        type: 3}
     - target: {fileID: 631404481551070511, guid: 149783b3bc61c5b418a2949a8d7c9154,
         type: 3}
       propertyPath: m_RootOrder
@@ -40969,6 +40984,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6412528308059084272, guid: dfa31c433b3a9a442a6df2c81f7fe448,
+        type: 3}
+      propertyPath: DeathEffect
+      value: 
+      objectReference: {fileID: 443631830879095119, guid: db6518b5b0cd5f54ea2427cc9b569456,
+        type: 3}
+    - target: {fileID: 6412528308059084272, guid: dfa31c433b3a9a442a6df2c81f7fe448,
+        type: 3}
+      propertyPath: DamageEffect
+      value: 
+      objectReference: {fileID: 5313144615783341630, guid: 228499ef7afdc554297f45417f656a66,
+        type: 3}
     - target: {fileID: 6451998034019248903, guid: dfa31c433b3a9a442a6df2c81f7fe448,
         type: 3}
       propertyPath: m_RootOrder
@@ -40977,7 +41004,7 @@ PrefabInstance:
     - target: {fileID: 6451998034019248903, guid: dfa31c433b3a9a442a6df2c81f7fe448,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0105891
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: 6451998034019248903, guid: dfa31c433b3a9a442a6df2c81f7fe448,
         type: 3}
@@ -40987,7 +41014,7 @@ PrefabInstance:
     - target: {fileID: 6451998034019248903, guid: dfa31c433b3a9a442a6df2c81f7fe448,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.089109
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 6451998034019248903, guid: dfa31c433b3a9a442a6df2c81f7fe448,
         type: 3}

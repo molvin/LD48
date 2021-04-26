@@ -31,6 +31,8 @@ public class PlayableAgent : TickAgent
     List<LDInputFrame> TimeLine;
     private LDConversionTable Conversion;
 
+    public bool HasInput(int Frame) => TimeLine.Count > Frame;
+
     private void Awake()
     {
         Conversion = LDConversionTable.Load();
@@ -98,6 +100,9 @@ public class PlayableAgent : TickAgent
 
         Data.GetStartingEffects(Role)
             .ForEach(Effect => AbilitySystem.TryApplyEffectToSelf(Effect));
+
+        AbilitySystem.RegisterOnAttributeChanged(Attribute.Health, OnDamageTaken);
+        CurrentHealth = AbilitySystem.GetAttributeValue(Attribute.Health).Value;
     }
 
     public override void Tick(int CurrentFrame, bool Scrum)

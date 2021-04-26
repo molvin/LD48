@@ -89,7 +89,7 @@ namespace GameplayAbilitySystem
                 }
             }
 
-            if (TargetAgent == null)
+            if (TargetAgent == null || !TargetAgent.IsAlive)
             {
                 return null;
             }
@@ -111,8 +111,10 @@ namespace GameplayAbilitySystem
 
             if (ParticleSystem != null)
             {
-                Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
-                Vector3 TargetWorldPos = Grid.CellToWorld((Vector3Int)Target.OwnerAgent.GridPos);
+                //Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
+                //Vector3 TargetWorldPos = Grid.CellToWorld((Vector3Int)Target.OwnerAgent.GridPos);
+                Vector3 WorldPos = Owner.OwnerAgent.transform.position;
+                Vector3 TargetWorldPos = Target.OwnerAgent.transform.position;
                 ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
                 Instance.transform.forward = TargetWorldPos - WorldPos;
                 Instance.Play();
@@ -121,6 +123,7 @@ namespace GameplayAbilitySystem
                 {
                     yield return null;
                 }
+                Destroy(Instance.gameObject);
             }
 
             ApplyEffectToTarget(Owner, Target);

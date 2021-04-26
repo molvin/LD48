@@ -152,6 +152,8 @@ public class GameStateManager : MonoBehaviour
                 break;
             }
         }
+
+        Ticker.Instance.TickUntilPlayableTurn(false);
     }
 
     public void GoToActionState(System.Type ability_index)
