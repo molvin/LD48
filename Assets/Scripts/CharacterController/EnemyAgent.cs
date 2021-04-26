@@ -173,11 +173,14 @@ public class EnemyAgent : TickAgent
                 Vector2Int? SelectPos = SelectTargetForAttackFromPosition(Players, TestPosition);
                 if (SelectPos.HasValue)
                 {
-                    return SelectPos;
+                    if (AbilitySystem.CanActivateTargetAbilityByTag(TypeTag.MoveAbility, TestPosition))
+                    {
+                        return TestPosition;
+                    }
                 }
             }
         }
-        return null;
+        return BlobMoveTarget(Players);
     }
 
     private Vector2Int? SelectTargetForAttackFromPosition(List<PlayableAgent> Players, Vector2Int Pos)

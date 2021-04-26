@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88551420f09b6ad43b9a2f51f258a836, type: 3}
+  m_Name: MagicBolt
+  m_EditorClassIdentifier: 
+  AbilityTag: {fileID: 11400000, guid: e3d2620a0b330c449865a4ade34b1a81, type: 2}
+  AppliedEffect: {fileID: 11400000, guid: 1b2e3777a48bee441bcd1eb4b62f955e, type: 2}
+  Cost: {fileID: 0}
+  Cooldown: {fileID: 0}
+  BlockedByTags:
+  - {fileID: 11400000, guid: ddd72169f40352a4d8619a72929e60b2, type: 2}
+  RequiredTags: []
+  AbilityIndex: 0
+  MomentOfExecution: 0.5
+  FromSelfToTargetParticleSystem: {fileID: 930173917549334525, guid: df553dad75733184a8730c244431d9fe,
+    type: 3}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
+  CanTargetEnemy: 1
+  CanTargetFriendy: 1
+  CanBeBlockedByObstacle: 1
+  Range: 6
+  Projectile: {fileID: 0}
+  ProjectileFlyTime: 0
+  ProjectileArcHeight: 0
