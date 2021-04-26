@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Test 1
+  m_Name: Test
   m_EditorClassIdentifier: Assembly-CSharp::AudioObject
-  Clips: []
-  MixerGroup: {fileID: 0}
+  Clips:
+  - {fileID: 8300000, guid: 664a6a1962f22e84399d7293ed32ffe7, type: 3}
+  MixerGroup: {fileID: 24300002, guid: 713e65aa6f08b694d85b6800ff1ee62a, type: 2}
   MinVolume: 1
   MaxVolume: 1
   MinPitch: 1

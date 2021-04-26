@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b44a57a450f82e49ae4afbfa847b935, type: 3}
+  m_Name: DrainLifeAbility
+  m_EditorClassIdentifier: 
+  AbilityTag: {fileID: 11400000, guid: dda69bf410663a64c8499d56d146557e, type: 2}
+  AppliedEffect: {fileID: 11400000, guid: 82c40cbac9b81714895fea36f3ae13f9, type: 2}
+  Cost: {fileID: 11400000, guid: ccc1a88e8da889848b8c4a80f539be0a, type: 2}
+  Cooldown: {fileID: 11400000, guid: 7970a8bcbfbf44b4689c5ada6730a0b2, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: dda69bf410663a64c8499d56d146557e, type: 2}
+  RequiredTags: []
+  AbilityIndex: 0
+  MomentOfExecution: 0
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
+  Range: 3

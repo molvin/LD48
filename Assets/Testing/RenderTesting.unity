@@ -153,17 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1083078af78b1c24fb6b6e46212fc195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ability1: {fileID: 11400000, guid: f5a24d9bb778e4e48944742abcf4e688, type: 2}
-  Ability2: {fileID: 11400000, guid: 5911e9d415d29df45aaddbd1483f6adc, type: 2}
-  Ability3: {fileID: 11400000, guid: bf025a65cfc729f4fabe01a8fe3cf4af, type: 2}
-  Ability4: {fileID: 11400000, guid: f3fb7d7aa184422418bd17b50e0b4648, type: 2}
-  RequiredEffect: {fileID: 11400000, guid: 6cf99bbab5969e64e85aaa4f50a9b79c, type: 2}
-  ApplyRequiredEffect: {fileID: 11400000, guid: ffaad4529710127448fc3fca4a95a13c,
-    type: 2}
-  BlockedEffect: {fileID: 11400000, guid: 76053fd8bad4bd24b8e3cf8a000200b9, type: 2}
-  ApplyBlockedEffect: {fileID: 11400000, guid: 916954aca2d80d04e9a2a057a077b690, type: 2}
-  StrengthTag: {fileID: 11400000, guid: 6a184cf136804234dbdacb05c9fc877f, type: 2}
-  Strength2Tag: {fileID: 11400000, guid: bf72264ddfa3d96469b04d59fa115f30, type: 2}
 --- !u!4 &84048849
 Transform:
   m_ObjectHideFlags: 0
@@ -288,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e20a37f6087c24c8ceab7466952b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 0
+  Height: 0
 --- !u!1 &263213200
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +289,7 @@ GameObject:
   - component: {fileID: 263213202}
   - component: {fileID: 263213201}
   - component: {fileID: 263213203}
+  - component: {fileID: 263213204}
   m_Layer: 0
   m_Name: TestAgent
   m_TagString: Untagged
@@ -348,6 +338,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickAgents: []
+--- !u!114 &263213204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263213200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5789c96800b1f4a4eab2462232920422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &390887498
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,9 +718,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf7d5cf2b1b5447bb97f55982146fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageEffect: {fileID: 0}
+  DeathEffect: {fileID: 0}
+  PoisonedEffect: {fileID: 0}
+  DeathSound: 
+  HurtSound: 
   Animator: {fileID: 0}
   GridPos: {x: 0, y: 0}
   IsAlive: 1
+  CurrentHealth: 0
+  MaxHealth: 0
   initiative: 0
   Role: 0
   Name: 
