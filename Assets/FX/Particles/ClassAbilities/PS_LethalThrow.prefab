@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 4980169344390421963}
   - component: {fileID: 6846655049378812035}
   m_Layer: 0
-  m_Name: PS_LethalThrow 1
+  m_Name: PS_LethalThrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
