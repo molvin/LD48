@@ -27,6 +27,7 @@ namespace GameplayAbilitySystem
         public TargetType Targeting;
 
         public static Type NoAction => typeof(NoActionTag);
+        public static Type DeathAction => typeof(DeathActionTag);
         public static Type StrengthAbility => typeof(StrengthAbilityTag); 
         public static Type DexterityAbility => typeof(DexterityAbilityTag); 
         public static Type IntelligenceAbility => typeof(IntelligenceAbilityTag); 
