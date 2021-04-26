@@ -18,6 +18,8 @@ public class SaveName : MonoBehaviour
         }
     }
 
+    public static string GetPlayerName() => PlayerPrefs.GetString(NameKey, "Player");
+
     public void Save()
     {
         if (!PlayerPrefs.HasKey(NameKey))
