@@ -26,7 +26,7 @@ MonoBehaviour:
     type: 3}
   TargetProjectileSystem: {fileID: 6911764141540588582, guid: d98abdafb3836574c8e01a7a1fee1ced,
     type: 3}
-  SoundEffect: 
+  SoundEffect: Swing
   CanTargetEnemy: 1
   CanTargetFriendy: 1
   CanBeBlockedByObstacle: 0
