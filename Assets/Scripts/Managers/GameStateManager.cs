@@ -15,6 +15,7 @@ public class GameStateManager : MonoBehaviour
     public GameStateGameOver GameOverState;
     public GameStateEndTurn EndTurnState;
     public bool IsScrumming = true;
+    public bool IsWaitingForSelection;
 
     private StateMachine m_GameStateMachine;
 
