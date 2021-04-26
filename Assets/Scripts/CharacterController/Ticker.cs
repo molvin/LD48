@@ -8,12 +8,13 @@ public class Ticker : MonoBehaviour
 {
     public static LDBlock currentBlock;
     public static Ticker Instance;
-    public static float TickVisualTime = 0.5f;
+    public static float TickVisualTime = 1.0f;
     public static bool ShouldVisualize;
 
     public List<TickAgent> tickAgents;
 
     private int CurrentTick;
+    private int CurrentActor;
 
     bool m_IsTicking;
     public bool IsTicking { get => m_IsTicking; }
@@ -27,16 +28,28 @@ public class Ticker : MonoBehaviour
     public void Initialize()
     {
         CurrentTick = 0;
+        CurrentActor = 0;
         tickAgents = FindObjectsOfType<TickAgent>().ToList();
+        tickAgents.OrderBy((x) => { return x.initiative; });
         for (int i = 0; i < tickAgents.Count; i++)
         {
             tickAgents[i].Initialize(currentBlock);
         }
     }
-    public void Tick()
+    public void TickCurrent(bool First)
     {
+        Debug.Assert(tickAgents[CurrentActor] == GameStateManager.Instance.PlayerAgent, "Ticking player out of turn!");
+
         ShouldVisualize = true;
-        StartCoroutine(TickOverTime());
+        StartCoroutine(TickOverTime(CurrentActor));
+    }
+    public void CurrentDone()
+    {
+        CurrentActor = (CurrentActor + 1) % tickAgents.Count;
+        if (CurrentActor == 0)
+        {
+            CurrentTick++;
+        }
     }
     public void Scrum(int toFrame)
     {
@@ -55,16 +68,64 @@ public class Ticker : MonoBehaviour
             CurrentTick++;
         }
     }
-    public IEnumerator TickOverTime()
+    public IEnumerator TickOverTime(int ActorIndex)
     {
         m_IsTicking = true;
-        tickAgents.OrderBy((x) => { return x.initiative; });
-        for(int i = 0;i< tickAgents.Count; i++)
-        {
-            tickAgents[i].Tick(CurrentTick, false);
-            yield return new WaitForSeconds(TickVisualTime);
-        }
-        CurrentTick++;
+
+        TickAgent Agent = tickAgents[ActorIndex];
+        Agent.Tick(CurrentTick, !ShouldVisualize);
+
+        yield return new WaitForSeconds(TickVisualTime);
+
         m_IsTicking = false;
+    }
+
+    public void TickUntilPlayableTurn(bool Scrum)
+    {
+        ShouldVisualize = !Scrum;
+        StartCoroutine(TickUtilPlayableTurn(ShouldVisualize ? TickVisualTime : 0.0f));
+    }
+
+    private IEnumerator TickUtilPlayableTurn(float TickTime)
+    {
+        m_IsTicking = true;
+        while(true)
+        {
+            TickAgent CurrentAgent = tickAgents[CurrentActor];
+            if (CurrentAgent is EnemyAgent)
+            {
+                EnemyAgent Enemy = (EnemyAgent)CurrentAgent;
+                if (Enemy.IsAlive)
+                {
+                    Enemy.Tick(CurrentTick, !ShouldVisualize);
+                    yield return new WaitForSeconds(TickTime);
+                }
+            }
+            else
+            {
+                PlayableAgent Player = (PlayableAgent)CurrentAgent;
+                if (Player.IsAlive)
+                {
+                    if (Player.HasInput(CurrentTick))
+                    {
+                        Player.Tick(CurrentTick, !ShouldVisualize);
+                    } 
+                    else if (Player == GameStateManager.Instance.PlayerAgent)
+                    {
+                        m_IsTicking = false;
+                        yield break;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Player is frozen in time!");
+                    }
+                }
+            }
+            CurrentActor = (CurrentActor + 1) % tickAgents.Count;
+            if (CurrentActor == 0)
+            {
+                CurrentTick++;
+            }
+        }
     }
 }

@@ -5,6 +5,15 @@ using UnityEngine;
 
 namespace GameplayAbilitySystem
 {
+
+    public enum TargetType
+    {
+        TargetEnemy,
+        TargetAlly,
+        TargetCell,
+        TargetSelf,
+        Move,
+    }
     public abstract class TypeTag : ScriptableObject
     {
         public bool Is(TypeTag Other) => Other.GetType().IsAssignableFrom(GetType());
@@ -15,6 +24,7 @@ namespace GameplayAbilitySystem
         public Sprite Icon;
         public string Name;
         public string Description;
+        public TargetType Targeting;
 
         public static Type NoAction => typeof(NoActionTag);
         public static Type StrengthAbility => typeof(StrengthAbilityTag); 

@@ -14,6 +14,7 @@ public class GameStateAction : State
     }
     public override void Tick() 
     {
+        Debug.Log("In Action State");
         if(Input.GetMouseButtonUp(1))
         {
             GameStateManager.Instance.ShouldDoAction = false;
@@ -23,15 +24,14 @@ public class GameStateAction : State
 
     private void OnCellSelected(Vector3Int pos)
     {
-    if (AbilityType.Is(TypeTag.MoveAbility))
-        GameStateManager.Instance.HasMoved = true;
-    else
-        GameStateManager.Instance.HasDoneAction = true;
+        bool FirstTime = !GameStateManager.Instance.HasDoneAction;
 
+        GameStateManager.Instance.HasDoneAction = true;
         GameStateManager.Instance.ShouldDoAction = false;
         GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
-        Ticker.Instance.Tick();
+        Ticker.Instance.TickCurrent(FirstTime);
         Debug.Log("Action done");
+        GameStateManager.Instance.GoToEndTurnState();
     }
 
     public override void Exit() 

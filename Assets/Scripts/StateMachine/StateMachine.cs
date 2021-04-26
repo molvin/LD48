@@ -26,6 +26,7 @@ public class StateMachine
 
     public void Tick()
     {
+        Debug.Log(CurrentState);
         State NewState = CurrentState.SelectTransition();
         if (NewState != null && NewState != CurrentState)
         {

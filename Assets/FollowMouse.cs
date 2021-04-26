@@ -47,7 +47,6 @@ public class FollowMouse : MonoBehaviour
         {
             OnCellSelected?.Invoke(iso);
             BlockStatus hej = gridGen.GetCellStatus(new Vector2Int(iso.x, iso.y));
-            Debug.Log($"for iso x:{iso.x} y:{iso.y}  i got:{hej}");
         }
     }
 

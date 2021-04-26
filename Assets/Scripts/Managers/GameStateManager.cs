@@ -21,7 +21,6 @@ public class GameStateManager : MonoBehaviour
 
     public CharacterRole Role;
 
-    public Action<bool> OnHasMovedUpdate;
     public Action<bool> OnHasDoneActionUpdate;
 
     [HideInInspector] public PlayableAgent PlayerAgent;
@@ -48,18 +47,6 @@ public class GameStateManager : MonoBehaviour
 
     public bool ShouldGoToActionState() { return ShouldDoAction; }
 
-    [HideInInspector] public bool HasMoved{
-        get => m_HasMoved;
-
-        set {
-            if (value != m_HasMoved)
-            {
-                m_HasMoved = value;
-                OnHasMovedUpdate?.Invoke(m_HasMoved);
-            }
-        }
-    }
-    bool m_HasMoved = false;
     [HideInInspector] public bool HasDoneAction 
     {   get => m_HasDoneAction; 
 
@@ -92,6 +79,7 @@ public class GameStateManager : MonoBehaviour
 
     public void Setup(Scene scene, LoadSceneMode scene_mode)
     {
+        //TODO: block recieved from server
         LDBlock block = new LDBlock
         {
             characters = new LDCharacter[]
@@ -152,6 +140,8 @@ public class GameStateManager : MonoBehaviour
                 break;
             }
         }
+
+        Ticker.Instance.TickUntilPlayableTurn(false);
     }
 
     public void GoToActionState(System.Type ability_index)
@@ -174,6 +164,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Ticking");
         m_GameStateMachine.Tick();
     }
 }
