@@ -5863,6 +5863,8 @@ MonoBehaviour:
   m_MoveActionButton: {fileID: 1288623501}
   m_CharacterPortrait: {fileID: 7470980275969984744}
   m_EndTurnButton: {fileID: 399548360}
+  m_SelectCharacterButton: {fileID: 4345926395549383876}
+  m_DismissCharacterButton: {fileID: 4308012868633581921}
   m_ActionBar: {fileID: 7470980275284974750}
   m_InventoryBar: {fileID: 7470980274476875537}
 --- !u!223 &7470980274837249122
