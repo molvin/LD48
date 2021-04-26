@@ -30,6 +30,7 @@ public class Ticker : MonoBehaviour
     public void Initialize()
     {
         CurrentActor = 0;
+        CurrentTick = 0;
         tickAgents = FindObjectsOfType<TickAgent>().ToList();
         tickAgents.OrderBy((x) => { return x.initiative; });
         for (int i = 0; i < tickAgents.Count; i++)
@@ -41,7 +42,6 @@ public class Ticker : MonoBehaviour
             if(tickAgents[i] == null)
                 tickAgents.RemoveAt(i);
         }
-
     }
     public void TickCurrent()
     {
@@ -139,7 +139,7 @@ public class Ticker : MonoBehaviour
         }
     }
 
-    private void TickToNextCheckpoint(bool Scrum)
+    public void TickToNextCheckpoint(bool Scrum)
     {
         ShouldVisualize = !Scrum;
         StartCoroutine(TickToNextCheckpoint(Scrum ? 0.0f : TickVisualTime));

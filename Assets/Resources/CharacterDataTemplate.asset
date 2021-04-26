@@ -15,6 +15,10 @@ MonoBehaviour:
   Barbarian:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: 4f0afbafc6d24044982909addd5c3bf7, type: 2}
+    - {fileID: 11400000, guid: f4a7bb0f497153a49b4429c118950091, type: 2}
+    - {fileID: 11400000, guid: 8cef7cffb9e325246b3076505ecc6404, type: 2}
+    - {fileID: 11400000, guid: 7ca44b8a92684f740b70f20eb0da8382, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
@@ -38,7 +42,11 @@ MonoBehaviour:
   Assassin:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: e054d3f31b88edd4ea02b714f3b90129, type: 2}
     - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
+    - {fileID: 11400000, guid: d4e6fd441304c2c42a264a5883c0d376, type: 2}
+    - {fileID: 11400000, guid: a1ea3744e9b206d4c9ba9da4b19d4d2d, type: 2}
+    - {fileID: 11400000, guid: 511d97d0d8581514cb52584cfd10898d, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
@@ -62,6 +70,9 @@ MonoBehaviour:
   Necromanacer:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
+    - {fileID: 11400000, guid: 942eacf3c1dc4414baede61c80f31fda, type: 2}
+    - {fileID: 11400000, guid: 5fff304d44fe70b4d9667a4f42646ea2, type: 2}
+    - {fileID: 11400000, guid: 6467215018874954e8e63bef48bf13c2, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
