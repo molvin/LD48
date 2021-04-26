@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e4a1d00ecc7574c9bfd81d19fe0353, type: 3}
   m_Name: LethalPoisonTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: c841c88c7962fe240bbf1459365ed5ef, type: 3}
   Name: Lethal Poison
   Description: Deals damage each round.
   Targeting: 0

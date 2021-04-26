@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f14ceae0af1c8438834106bef7cbf6, type: 3}
   m_Name: HeadbuttTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: ea49434aa112e894ab0fad1d7c340039, type: 3}
   Name: Headbutt
   Description: Deals damage in close range, applies mild poison
   Targeting: 0

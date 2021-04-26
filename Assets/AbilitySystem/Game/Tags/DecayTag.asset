@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3850f52919548b468dcfe5d8bffdaa6, type: 3}
   m_Name: DecayTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: 848bd2e00b8bf5440a8bd8cc076db0c3, type: 3}
   Name: Decay
   Description: 'Slows an enemy''s movement and deals damage over time. '
   Targeting: 0

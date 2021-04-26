@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432be410626dcaf429edba19b9a43a99, type: 3}
   m_Name: ShootTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: c8e7e17700742944694a3d30c56e2f78, type: 3}
   Name: Shoot
   Description: Deals damage in far range, removes buff
   Targeting: 0
