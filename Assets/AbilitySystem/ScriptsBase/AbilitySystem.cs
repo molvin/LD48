@@ -28,6 +28,8 @@ namespace GameplayAbilitySystem
 
             RegisterOnAttributeChanged(Attribute.Health, HealthCap);
             RegisterOnAttributeChanged(Attribute.Mana, ManaCap);
+
+            RegisterAttributeCalculation(Attribute.Health, EnergyShield);
         }
 
         public bool IsOnCooldown(Type Tag)
@@ -346,6 +348,24 @@ namespace GameplayAbilitySystem
         {
             int MaxValue = GetAttributeValue(Attribute.MaxMana).Value;
             Value = Mathf.Clamp(Value, 0, MaxValue);
+        }
+        private int EnergyShield(int Value)
+        {
+            int? Shield = GetAttributeValue(Attribute.EnergyShield);
+            if (Shield.HasValue)
+            {
+                if (Shield > Value)
+                {
+                    Value = 0;
+                    AttributeSet[Attribute.EnergyShield] = Shield.Value - Value;
+                }
+                else
+                {
+                    Value -= Shield.Value;
+                    AttributeSet[Attribute.EnergyShield] = 0;
+                }
+            }
+            return Value;
         }
     }
 }
