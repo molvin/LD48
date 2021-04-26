@@ -149,6 +149,7 @@ public class Ticker : MonoBehaviour
 
     private IEnumerator TickToNextCheckpoint(float TickTime)
     {
+        CheckpointRole = null;
         m_IsTicking = true;
         while(true)
         {
