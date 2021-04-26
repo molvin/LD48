@@ -45,14 +45,23 @@ public class RangedAbility : GameplayAbility
         float time = 0;
         Vector3 OriginalPos = Owner.OwnerAgent.transform.position;
         Vector3 NewPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
-        GameObject projectile = Instantiate(Projectile, OriginalPos, Quaternion.identity);
-        RenderLayer RL = projectile.GetComponent<RenderLayer>();
+        GameObject projectile = null;
+        RenderLayer RL = null;
+
+        if(Projectile != null)
+        {
+            projectile = Instantiate(Projectile, OriginalPos, Quaternion.identity);
+            RL = projectile.GetComponent<RenderLayer>(); ;
+        }
         while (time < ProjectileFlyTime)
         {
             time += Time.deltaTime;
             float heigt = Mathf.Lerp(0, ProjectileArcHeight, time / ProjectileFlyTime);
-            projectile.transform.position = Vector3.Lerp(OriginalPos, NewPos, time / ProjectileFlyTime) + Vector3.forward * heigt;
-            if(RL != null){RL.Height = heigt;}
+            if(projectile != null && RL != null)
+            {
+                projectile.transform.position = Vector3.Lerp(OriginalPos, NewPos, time / ProjectileFlyTime) + Vector3.forward * heigt;
+                if (RL != null) { RL.Height = heigt; }
+            }
             yield return null;
         }
 
