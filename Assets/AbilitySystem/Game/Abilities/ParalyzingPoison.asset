@@ -16,7 +16,8 @@ MonoBehaviour:
   AppliedEffect: {fileID: 11400000, guid: a7754dcb0dbf47b4d981fb2cf2c6f618, type: 2}
   Cost: {fileID: 0}
   Cooldown: {fileID: 11400000, guid: a43856a5bcaad374ea575e49a53cd449, type: 2}
-  BlockedByTags: []
+  BlockedByTags:
+  - {fileID: 11400000, guid: b57773acd0ccca246ac8f79a16aafcb8, type: 2}
   RequiredTags: []
   AbilityIndex: 0
   MomentOfExecution: 0.2
