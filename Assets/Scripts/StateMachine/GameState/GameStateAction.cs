@@ -31,7 +31,6 @@ public class GameStateAction : State
         GameStateManager.Instance.PlayerAgent.AppendInput(AbilityType, (Vector2Int)pos);
         Ticker.Instance.TickCurrent(FirstTime);
         Debug.Log("Action done");
-        GameStateManager.Instance.GoToEndTurnState();
     }
 
     public override void Exit() 
