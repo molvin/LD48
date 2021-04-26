@@ -6,6 +6,7 @@ using GameplayAbilitySystem;
 [CreateAssetMenu(menuName = "Ability System/Ability/LongJumpAbility")]
 public class LongJumpAbility : GameplayAbility
 {
+    public uint JumpDistance = 3;
     public override void Activate(AbilitySystem Owner)
     {
         Commit(Owner);
@@ -49,14 +50,14 @@ public class LongJumpAbility : GameplayAbility
     {
         Vector2Int TilePos = Owner.OwnerAgent.GridPos;
         Vector2Int TargetPos = Owner.CurrentTarget;
-
-        if (Grid.IsOccupied((Vector3Int)TargetPos))
+        
+        if (Grid.IsOccupied((Vector3Int)TargetPos) || !Grid.GetCellStatus(TargetPos).HasFlag(GridGenerator.BlockStatus.Walkable))
         {
             return false;
         }
 
         Vector2Int Dist = (TargetPos - TilePos);
-        return Mathf.Abs(Dist.x) + Mathf.Abs(Dist.y) == 1;
+        return Mathf.Abs(Dist.x) + Mathf.Abs(Dist.y) <= JumpDistance;
     }
     public IEnumerator Move(AbilitySystem Owner)
     {
