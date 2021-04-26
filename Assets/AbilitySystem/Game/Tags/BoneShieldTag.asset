@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903dd580594590142a4fa5c0cdcbd853, type: 3}
   m_Name: BoneShieldTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: c8e7e17700742944694a3d30c56e2f78, type: 3}
   Name: Bone Shield
   Description: 'Gives a shield to themself or an ally. '
   Targeting: 3
