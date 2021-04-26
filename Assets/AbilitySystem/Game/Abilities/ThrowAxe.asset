@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: ThrowAxe
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: 1bf864344bfd5af43a84c4842a5132d5, type: 2}
-  AppliedEffect: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: 82c40cbac9b81714895fea36f3ae13f9, type: 2}
   Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
-  BlockedByTags: []
+  Cooldown: {fileID: 11400000, guid: b8177ec557e1e64428fb41fa8f2232b8, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: 1bf864344bfd5af43a84c4842a5132d5, type: 2}
   RequiredTags: []
-  AbilityIndex: 0
-  MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
-  Range: 0
+  AbilityIndex: 1
+  MomentOfExecution: 0.5
+  FromSelfToTargetParticleSystem: {fileID: 7169588799110161296, guid: 33463da259c48d94f816cf834ab74dbb,
+    type: 3}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
+  CanTargetEnemy: 1
+  CanTargetFriendy: 1
+  CanBeBlockedByObstacle: 1
+  Range: 3
+  Projectile: {fileID: 0}
+  ProjectileFlyTime: 0
+  ProjectileArcHeight: 0

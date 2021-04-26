@@ -35,6 +35,6 @@ public class HelpAllyAbility : GameplayAbility
         }
 
         Vector2Int Dist = (TargetPos - TilePos);
-        return Mathf.Abs(Dist.x) + Mathf.Abs(Dist.y) == 1;
+        return Mathf.Abs(Dist.x) + Mathf.Abs(Dist.y) <= 1;
     }
 }

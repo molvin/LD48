@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: e175b44647e05754389f49f08da778fb, type: 2}
   AppliedEffect: {fileID: 11400000, guid: ee1f431738f48ae49a89fe81d45af40a, type: 2}
-  Cost: {fileID: 11400000, guid: fd5d022c12b7309428a62541f0579561, type: 2}
+  Cost: {fileID: 0}
   Cooldown: {fileID: 11400000, guid: ae3618806843b1349b4c690ab3d87989, type: 2}
   BlockedByTags:
   - {fileID: 11400000, guid: e175b44647e05754389f49f08da778fb, type: 2}
   RequiredTags: []
   AbilityIndex: 2
   MomentOfExecution: 0.5
-  ParticleSystem: {fileID: 0}
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 0}
+  SoundEffect: 
