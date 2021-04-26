@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveName : MonoBehaviour
 {
-    private const string NameKey = "player_name_xx_1337";
+    public const string NameKey = "player_name_xx_1337";
 
     public UnityEngine.UI.InputField NameField;
 
@@ -20,13 +20,17 @@ public class SaveName : MonoBehaviour
 
     public void Save()
     {
-        if (PlayerPrefs.HasKey(NameKey))
+        if (!PlayerPrefs.HasKey(NameKey))
         {
             string Name = NameField.text.Trim();
             if (Name.Length > 1)
             {
                 PlayerPrefs.SetString(NameKey, Name);
+                SceneManager.LoadScene(1);
             }
+        }
+        else
+        {
             SceneManager.LoadScene(1);
         }
     }
