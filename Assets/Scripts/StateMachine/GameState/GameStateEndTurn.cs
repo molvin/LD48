@@ -20,6 +20,9 @@ public class GameStateEndTurn : State
     }
     public override State SelectTransition()
     {
+        if (!GameStateManager.Instance.PlayerAgent.IsAlive)
+            return GameStateManager.Instance.GameOverState;
+
         if (Ticker.Instance.IsTicking)
             return null;
 

@@ -10,12 +10,12 @@ public class GameStateGameOver : State
     bool ShouldExit = true;
     public override void Enter()
     {
+        ShouldExit = false;
         IsActive = true;
         TimelineHolder.Instance.SaveCurrentBlock();
         FindObjectOfType<EndScreen>(true).gameObject.SetActive(true);
         CoroutineRunner.Instance.StartCoroutine(EndSoon());
         TimelineHolder.Instance.PushToServer();
-
     }
     public override void Tick()
     {
@@ -36,8 +36,8 @@ public class GameStateGameOver : State
     private IEnumerator EndSoon()
     {
         yield return new WaitForSeconds(5.0f);
-        FindObjectOfType<EndScreen>().gameObject.SetActive(true);
-        SceneManager.LoadScene(1);
+        FindObjectOfType<EndScreen>(true).gameObject.SetActive(false);
+        ShouldExit = true;
     }
 }
 

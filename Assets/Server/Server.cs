@@ -52,12 +52,16 @@ public class Server
             // Create a TcpClient.
             Int32 port = 13000;
             TcpClient client = new TcpClient(ipAdress, port);
-
+            mem.Seek(0, SeekOrigin.Begin);
             // Send request message to server
             WritableSystem.Write(mem, branch);
             int pos = (int)mem.Position;
             mem.Seek(0, SeekOrigin.Begin);
             int length = mem.Read(buffer, 0, pos);
+
+            mem.Seek(0, SeekOrigin.Begin);
+            LDTimeLineBranchRequest debug_equest = WritableSystem.Read<LDTimeLineBranchRequest>(mem);
+
 
             //Send
             client.GetStream().Write(buffer, 0, length);
