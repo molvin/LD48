@@ -36,7 +36,7 @@ public class Ticker : MonoBehaviour
             tickAgents[i].Initialize(currentBlock);
         }
     }
-    public void TickCurrent(bool First)
+    public void TickCurrent()
     {
         Debug.Assert(tickAgents[CurrentActor] == GameStateManager.Instance.PlayerAgent, "Ticking player out of turn!");
 
@@ -109,8 +109,9 @@ public class Ticker : MonoBehaviour
                 {
                     if (Player.HasInput(CurrentTick))
                     {
+                        Debug.Log("Doing other player stuff");
                         Player.Tick(CurrentTick, !ShouldVisualize);
-                    } 
+                    }
                     else if (Player == GameStateManager.Instance.PlayerAgent)
                     {
                         m_IsTicking = false;
