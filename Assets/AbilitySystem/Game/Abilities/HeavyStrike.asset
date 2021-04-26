@@ -24,4 +24,4 @@ MonoBehaviour:
   FromSelfToTargetParticleSystem: {fileID: 0}
   SelfProjectileSystem: {fileID: 0}
   TargetProjectileSystem: {fileID: 0}
-  SoundEffect: 
+  SoundEffect: Sword

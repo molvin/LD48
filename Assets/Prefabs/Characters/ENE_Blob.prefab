@@ -52,6 +52,8 @@ MonoBehaviour:
     type: 3}
   PoisonedEffect: {fileID: 8338664491998094893, guid: c9068878c62dbaa4385e3a0fa0ea4913,
     type: 3}
+  DeathSound: Death_Monster
+  HurtSound: Damage
   Animator: {fileID: 6175156637718937537}
   GridPos: {x: 0, y: 0}
   IsAlive: 1

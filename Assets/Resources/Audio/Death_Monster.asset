@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Death_Monster
+  m_EditorClassIdentifier: Assembly-CSharp::AudioObject
+  Clips:
+  - {fileID: 8300000, guid: 158a43889c5e7944d98deb80d56eb973, type: 3}
+  MixerGroup: {fileID: -8787360428221047033, guid: 713e65aa6f08b694d85b6800ff1ee62a,
+    type: 2}
+  MinVolume: 0.8
+  MaxVolume: 1
+  MinPitch: 0.8
+  MaxPitch: 1.2
+  Loop: 0
+  SpatialBlend: 0

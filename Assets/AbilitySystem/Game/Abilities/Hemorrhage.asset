@@ -25,4 +25,4 @@ MonoBehaviour:
     type: 3}
   SelfProjectileSystem: {fileID: 0}
   TargetProjectileSystem: {fileID: 0}
-  SoundEffect: 
+  SoundEffect: Magic

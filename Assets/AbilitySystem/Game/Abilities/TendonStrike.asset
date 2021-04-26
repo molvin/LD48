@@ -25,4 +25,4 @@ MonoBehaviour:
   SelfProjectileSystem: {fileID: 0}
   TargetProjectileSystem: {fileID: 2638700043627461516, guid: b37c429c300c2c6408680f111bf5d382,
     type: 3}
-  SoundEffect: 
+  SoundEffect: Sword
