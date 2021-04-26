@@ -26,6 +26,8 @@ namespace GameplayAbilitySystem
         public abstract void Activate(AbilitySystem Owner);
         public abstract bool IsTargetValid(AbilitySystem Owner);
 
+
+
         protected bool IsInsideGrid(Vector2Int TargetPos)
         {
             return (TargetPos.x >= 0 && TargetPos.x < Grid.xWidth && TargetPos.y >= 0 && TargetPos.y < Grid.zWidth);
@@ -160,11 +162,16 @@ namespace GameplayAbilitySystem
             Owner.OwnerAgent.Animator.SetTrigger("Ability");
             yield return new WaitForSeconds(MomentOfExecution);
             AudioSystem.Play(SoundEffect);
-            PlayParticleSystemFromSelfToTarget(Owner);
-            ApplyEffectToTarget(Owner, Target);
+            yield return PlayParticleSystemFromSelfToTarget(Owner);
+            Debug.Log("PlayParticleSystemFromSelfToTarget1");
+
+            if (Target != null)
+                ApplyEffectToTarget(Owner, Target);
         }
         protected IEnumerator PlayParticleSystemFromSelfToTarget(AbilitySystem Owner)
         {
+            Debug.Log("PlayParticleSystemFromSelfToTarget2");
+
             if (FromSelfToTargetParticleSystem != null)
             {
                 Vector3 TargetWorldPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
@@ -172,7 +179,7 @@ namespace GameplayAbilitySystem
                 ParticleSystem Instance = Instantiate(FromSelfToTargetParticleSystem, WorldPos, Quaternion.identity);
                 Instance.transform.forward = TargetWorldPos - WorldPos;
                 Instance.Play();
-
+                Debug.Log("PlayParticleSystemFromSelfToTarget3");
                 while (Instance.isPlaying)
                 {
                     yield return null;

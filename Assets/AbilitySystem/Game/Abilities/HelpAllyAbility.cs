@@ -12,16 +12,13 @@ public class HelpAllyAbility : GameplayAbility
         Commit(Owner);
 
         AbilitySystem Target = GetFriendlyInTile(Owner, Owner.CurrentTarget);
-        if (Target == null)
-        {
-            return;
-        }
+    
         
         if (Ticker.ShouldVisualize)
         {
           CoroutineRunner.Instance.StartCoroutine(ApplyEffectVisualized(Owner, Target));
         }
-        else
+        else if(Target == null)
         {
             ApplyEffectToTarget(Owner, Target);
         }
