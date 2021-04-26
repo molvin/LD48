@@ -74,7 +74,7 @@ public class RangedAbility : GameplayAbility
             }
             yield return null;
         }
-        yield return PlayParticleSystemOnTarget(Owner);
+        CoroutineRunner.Instance.StartCoroutine(PlayParticleSystemOnTarget(Owner));
         if(Target != null)
         {
             ApplyEffectToTarget(Owner, Target);
