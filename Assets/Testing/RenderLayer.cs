@@ -6,10 +6,10 @@ namespace Testing
 {
     public class RenderLayer : MonoBehaviour
     {
-        public int layer = 0;
+        public float Height;
         private void LateUpdate()
         {
-            transform.position = new Vector3(transform.position.x, -transform.position.z + 10 * layer, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -transform.position.z + (10f * Height), transform.position.z);
         }
     }
 }
