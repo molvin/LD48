@@ -22,7 +22,7 @@ public class AnchoredHPBar : MonoBehaviour
     private void LateUpdate()
     {
         if (!Guy) return;
-        HPBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100 * (Guy.CurrentHealth / Guy.MaxHealth));
+        HPBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100f * ((float)Guy.CurrentHealth / Guy.MaxHealth));
         Name.text = (Guy is PlayableAgent) ? ((PlayableAgent)Guy).Name : "";
         rectTransform.position = RectTransformUtility.WorldToScreenPoint(cam, Guy.transform.position + offset);
     }
