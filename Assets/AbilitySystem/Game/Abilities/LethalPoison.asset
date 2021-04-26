@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88551420f09b6ad43b9a2f51f258a836, type: 3}
-  m_Name: SmokeBomb
+  m_Script: {fileID: 11500000, guid: b825d303f689cf043a072e6b978723a3, type: 3}
+  m_Name: LethalPoison
   m_EditorClassIdentifier: 
-  AbilityTag: {fileID: 11400000, guid: a1a95e5cc120da74e8010192b132682e, type: 2}
+  AbilityTag: {fileID: 11400000, guid: 7ee3c3d0b53fe1841801ebf59e52b45f, type: 2}
   AppliedEffect: {fileID: 0}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}
@@ -21,4 +21,3 @@ MonoBehaviour:
   AbilityIndex: 0
   MomentOfExecution: 0
   ParticleSystem: {fileID: 0}
-  Range: 0

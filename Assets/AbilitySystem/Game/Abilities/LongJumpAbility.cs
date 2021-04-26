@@ -17,6 +17,10 @@ public class LongJumpAbility : GameplayAbility
             CoroutineRunner.Instance.StartCoroutine(Move(Owner));
         }
 
+        Grid.setOccupied((Vector3Int)Owner.OwnerAgent.GridPos, false);
+        Owner.OwnerAgent.GridPos = Owner.CurrentTarget;
+        Grid.setOccupied((Vector3Int)Owner.OwnerAgent.GridPos, true);
+
         AbilitySystem Target1 = GetEnemyInTile(Owner, TargetPos + Vector2Int.left);
         AbilitySystem Target2 = GetEnemyInTile(Owner, TargetPos + Vector2Int.right);
         AbilitySystem Target3 = GetEnemyInTile(Owner, TargetPos + Vector2Int.up);

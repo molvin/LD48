@@ -20,7 +20,7 @@ namespace GameplayAbilitySystem
         public ParticleSystem FromSelfToTargetParticleSystem;
         public ParticleSystem SelfProjectileSystem;
         public ParticleSystem TargetProjectileSystem;
-
+        public string SoundEffect;
         public GridGenerator Grid => GameStateManager.Instance.GetGridManager();
 
         public abstract void Activate(AbilitySystem Owner);
@@ -159,6 +159,7 @@ namespace GameplayAbilitySystem
             Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
             Owner.OwnerAgent.Animator.SetTrigger("Ability");
             yield return new WaitForSeconds(MomentOfExecution);
+            AudioSystem.Play(SoundEffect);
             PlayParticleSystemFromSelfToTarget(Owner);
             ApplyEffectToTarget(Owner, Target);
         }

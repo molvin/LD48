@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88551420f09b6ad43b9a2f51f258a836, type: 3}
-  m_Name: SmokeBomb
+  m_Name: Decay
   m_EditorClassIdentifier: 
-  AbilityTag: {fileID: 11400000, guid: a1a95e5cc120da74e8010192b132682e, type: 2}
+  AbilityTag: {fileID: 11400000, guid: 4d84ac796134dcb4fbc62f8f2dc5aa10, type: 2}
   AppliedEffect: {fileID: 0}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}

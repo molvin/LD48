@@ -20,7 +20,12 @@ public class GameplayInputUI : MonoBehaviour
     private Dictionary<int, TypeTag> m_AbilityButtonMapping = new Dictionary<int, TypeTag>();
     private Dictionary<int, TypeTag> m_InventoryButtonMapping = new Dictionary<int, TypeTag>();
 
-    void Start()
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void Setup()
     {
         m_Canvas = GetComponent<Canvas>();
         if (!m_Canvas)

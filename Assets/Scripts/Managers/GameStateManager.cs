@@ -1,8 +1,5 @@
 using GameplayAbilitySystem;
-using GameStructure;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +13,7 @@ public class GameStateManager : MonoBehaviour
     public GameStateLoading LoadingState;
     public GameStateGameOver GameOverState;
     public GameStateEndTurn EndTurnState;
+    public bool IsScrumming = true;
 
     private StateMachine m_GameStateMachine;
 
@@ -65,8 +63,6 @@ public class GameStateManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
 
-        SceneManager.sceneLoaded += Setup;
-
         if (m_Instance != null && m_Instance != this)
         {
             Destroy(this.gameObject);
@@ -77,71 +73,17 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    public void Setup(Scene scene, LoadSceneMode scene_mode)
+    public void Setup()
     {
-        //TODO: block recieved from server
-        LDBlock block = new LDBlock
-        {
-            characters = new LDCharacter[]
-             {
-                    // Barbarian 
-                    new LDCharacter
-                    {
-                        name = "Beny the Barbarian",
-                        color = 3,
-                        role = 0,
-                        attributes = new LDAttribute[]
-                        {
-                            new LDAttribute{ type = 0, value = 80 },
-                            new LDAttribute{ type = 1, value = 100 },
-                            new LDAttribute{ type = 2, value = 10 },
-                            new LDAttribute{ type = 3, value = 50 },
-                            new LDAttribute{ type = 4, value = 2 },
-                        },
-                        timeLine = new LDInputFrame[]
-                        {
-                            new LDInputFrame { action = 0, cell = 16, },
-                            new LDInputFrame { action = 0, cell = 30, },
-                            new LDInputFrame { action = 0, cell = 32, },
-                        },
-                    },
-                    // Barbarian 
-                    new LDCharacter
-                    {
-                        name = "Ninni the Necromancer",
-                        color = 1,
-                        role = 2,
-                        attributes = new LDAttribute[]
-                        {
-                            new LDAttribute{ type = 0, value = 80 },
-                            new LDAttribute{ type = 1, value = 100 },
-                            new LDAttribute{ type = 2, value = 10 },
-                            new LDAttribute{ type = 3, value = 50 },
-                            new LDAttribute{ type = 4, value = 1 },
-                        },
-                        timeLine = new LDInputFrame[]
-                        {
-                            new LDInputFrame { action = 0, cell = 12, },
-                            new LDInputFrame { action = 0, cell = 14, },
-                            new LDInputFrame { action = 0, cell = 13, },
-                        },
-                    },
-             },
-        };
-
-        Ticker.currentBlock = block;
-        Ticker.Instance.Initialize();
-
         foreach (PlayableAgent player in FindObjectsOfType<PlayableAgent>())
         {
             if (player.Role == Role)
             {
+                Debug.Log("Found Player Agent");
                 PlayerAgent = player;
                 break;
             }
         }
-
-        Ticker.Instance.TickUntilPlayableTurn(false);
     }
 
     public void GoToActionState(System.Type ability_index)
