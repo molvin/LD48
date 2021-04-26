@@ -9,7 +9,8 @@ public class GameStateGameOver : State
     public override void Enter()
     {
         IsActive = true;
-        TimelineHolder.Instance.SaveCurrentBlock();
+        TimelineHolder.Instance.PushToServer();
+
     }
     public override void Tick()
     {

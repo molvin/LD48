@@ -34,15 +34,13 @@ public class TimelineHolder : MonoBehaviour
         LDConversionTable LDConversionTable = LDConversionTable.Load();
         m_DeathInputFrame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
 
-        m_ServerTimeLine = new LDTimeLine(); //Server.RequestTimeLine();
-        m_ServerTimeLine.timeLine = new LDBlock[0];
-
-        m_CurrentBlock.branches = new int[0];
-
+        m_ServerTimeLine = Server.RequestTimeLine();
         if (m_ServerTimeLine.timeLine.Length <= 0)
         {
+            m_ServerTimeLine.timeLine = new LDBlock[0];
             m_BranchingIndex = 0;
 
+            m_CurrentBlock.branches = new int[0];
             m_CurrentBlock.characters = new LDCharacter[3];
             m_CurrentBlock.characters[0].role = (byte)CharacterRole.Assassin;
             m_CurrentBlock.characters[0].timeLine = new LDInputFrame[1];
@@ -57,7 +55,6 @@ public class TimelineHolder : MonoBehaviour
             m_CurrentBlock.characters[2].timeLine[0] = m_DeathInputFrame;
         }  
     }
-
     public void SaveCurrentBlock()
     {
         if (GameStateManager.Instance.PlayerAgent)
@@ -74,12 +71,19 @@ public class TimelineHolder : MonoBehaviour
                 break;
             }
         }
-
         m_TimelineExtetion.Add(m_CurrentBlock);
-        //Push it to the server!
-
     }
-
+    public void PushToServer()
+    {
+        SaveCurrentBlock();
+        //Push it to the server!
+        LDTimeLineBranchRequest temp = new LDTimeLineBranchRequest
+        {
+            branchBlockIndex = m_BranchingIndex,
+            timeLine = m_TimelineExtetion.ToArray()
+        };
+        Server.PushTimeLine(temp);
+    }
     public LDBlock GenerateNextRelevantBlock()
     {
         LDBlock temp_block = new LDBlock();
@@ -129,7 +133,6 @@ public class TimelineHolder : MonoBehaviour
 
         return m_CurrentBlock;
     }
-
     public LDBlock GetCurrentBlock()
     {
         return m_CurrentBlock;
