@@ -87,7 +87,6 @@ public class GameplayInputUI : MonoBehaviour
     {
         GameStateManager.Instance.GoToActionState(TypeTag.MoveAbility);
     }
-
     public void SelectAction(int index)
     {
         if (!m_AbilityButtonMapping.ContainsKey(index))
@@ -101,12 +100,10 @@ public class GameplayInputUI : MonoBehaviour
     {
         Debug.Log("Clicked inventory item: " + index);
     }
-
     public void ClickedCharacterPortrait()
     {
         Debug.Log("Clicked character portrait");
     }
-
     public void UpdateActionButtons(bool has_done_ability)
     {
         for (int i = 0; i < m_ActionButtons.Length; i++)

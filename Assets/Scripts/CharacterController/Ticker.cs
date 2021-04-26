@@ -78,6 +78,7 @@ public class Ticker : MonoBehaviour
         yield return new WaitForSeconds(TickVisualTime);
 
         m_IsTicking = false;
+        GameStateManager.Instance.ShouldEndTurn = true;
     }
 
     public void TickUntilPlayableTurn(bool Scrum)

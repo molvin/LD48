@@ -15,3 +15,4 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
   Name: Leathal Throw
   Description: Throw a knife
+  Targeting: 0
