@@ -47,7 +47,7 @@ public class GameStateAction : State
     {
         if(GameStateManager.Instance.ShouldEndTurn)
         {
-            GameStateManager.Instance.ShouldDoAction = false;
+            GameStateManager.Instance.ShouldDoAction = false;;
             return GameStateManager.Instance.EndTurnState;
         }
 

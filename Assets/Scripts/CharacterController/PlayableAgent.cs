@@ -141,4 +141,10 @@ public class PlayableAgent : TickAgent
             timeLine = TimeLine.ToArray(),
         };
     }
+
+    public LDCharacter AppendTimeline(LDCharacter character)
+    {
+        character.timeLine = TimeLine.ToArray();
+        return character;
+    }
 }

@@ -53,7 +53,7 @@ public class GameStateLoading : State
     public IEnumerator LoadScene()
     {
         m_IsLoadingScene = true;
-        LDBlock next_block = TimelineHolder.Instance.GiveNextRelevantBlock();
+        LDBlock next_block = TimelineHolder.Instance.GenerateNextRelevantBlock();
         SceneManager.LoadScene(next_block.level);
 
         yield return null;
