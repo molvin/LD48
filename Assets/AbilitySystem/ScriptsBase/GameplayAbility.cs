@@ -78,7 +78,12 @@ namespace GameplayAbilitySystem
         }
 
         protected AbilitySystem GetEnemyInTile(AbilitySystem Owner, Vector2Int TargetPos)
-        {
+        { 
+            if (TargetPos.x < 0 || TargetPos.x >= Grid.xWidth || TargetPos.y < 0 || TargetPos.y >= Grid.zWidth)
+            {
+                return null;
+            }
+
             TickAgent TargetAgent = null;
             foreach (TickAgent Agent in Ticker.Instance.tickAgents)
             {
@@ -95,6 +100,40 @@ namespace GameplayAbilitySystem
             }
 
             if (Owner.OwnerAgent.GetType() == TargetAgent.GetType())
+            {
+                return null;
+            }
+
+            return TargetAgent.AbilitySystem;
+        }
+        protected bool IsTileOccupiedByFriendly(AbilitySystem Owner, Vector2Int TargetPos)
+        {
+            return GetFriendlyInTile(Owner, TargetPos) != null;
+        }
+
+        protected AbilitySystem GetFriendlyInTile(AbilitySystem Owner, Vector2Int TargetPos)
+        { 
+            if (TargetPos.x < 0 || TargetPos.x >= Grid.xWidth || TargetPos.y < 0 || TargetPos.y >= Grid.zWidth)
+            {
+                return null;
+            }
+
+            TickAgent TargetAgent = null;
+            foreach (TickAgent Agent in Ticker.Instance.tickAgents)
+            {
+                if (Agent.IsAlive && Agent.GridPos == TargetPos)
+                {
+                    TargetAgent = Agent;
+                    break;
+                }
+            }
+
+            if (TargetAgent == null || !TargetAgent.IsAlive)
+            {
+                return null;
+            }
+
+            if (Owner.OwnerAgent.GetType() != TargetAgent.GetType())
             {
                 return null;
             }
@@ -127,6 +166,19 @@ namespace GameplayAbilitySystem
             }
 
             ApplyEffectToTarget(Owner, Target);
+        }
+
+        protected IEnumerator PlayParticleSystem(AbilitySystem Owner)
+        {
+            Vector3 WorldPos = Owner.OwnerAgent.transform.position;
+            ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
+            Instance.Play();
+
+            while(Instance.isPlaying)
+            {
+                yield return null;
+            }
+            Destroy(Instance.gameObject);
         }
 
         public void Commit(AbilitySystem Owner)
