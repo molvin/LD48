@@ -121,6 +121,11 @@ public class GridGenerator : MonoBehaviour
             childrenByPosition[pos.x, pos.y].flags &= ~BlockStatus.Occupied;
     }
 
+    public bool IsOccupied(Vector3Int pos)
+    {
+        return childrenByPosition[pos.x, pos.y].flags.HasFlag(BlockStatus.Occupied);
+    }
+
     private List<GridCellProperties> getNeighbors(GridCellProperties node)
     {
         List<GridCellProperties> neighbors = new List<GridCellProperties>();

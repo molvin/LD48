@@ -14,18 +14,12 @@ public enum MonsterRole
     CultistC,
 }
 
-struct AgentAction
-{
-    public System.Type Action;
-    public Vector2Int Target;
-}
 
 public class EnemyAgent : TickAgent
 {
     public MonsterRole Role;
 
     private TypeTag MainAbility;
-    private List<AgentAction> AgentActions = new List<AgentAction>();
 
     bool IsBlob => Role == MonsterRole.BlobManA || Role == MonsterRole.BlobManB;
     bool IsCultist => !IsBlob;
@@ -51,6 +45,9 @@ public class EnemyAgent : TickAgent
         AbilitySystem.RegisterOnAttributeChanged(Attribute.Health, OnDamageTaken);
         CurrentHealth = AbilitySystem.GetAttributeValue(Attribute.Health).Value;
 
+        AbilitySystem.RegisterOnAttributeChanged(Attribute.MaxHealth, UpdateMaxHealth);
+        MaxHealth = AbilitySystem.GetAttributeValue(Attribute.MaxHealth).Value;
+
         AbilitySystem
             .GetGrantedAbilityTypes()
             .ForEach(Ability =>
@@ -64,28 +61,23 @@ public class EnemyAgent : TickAgent
 
     public override void Tick(int _Frame, bool Scrum)
     {
-        if(AgentActions.Count == 0)
-            return;
-        AgentAction Move = AgentActions[0];
+        (System.Type, Vector2Int) Action = SelectAction();
 
         AbilitySystem.IsScrumming = Scrum;
-        AbilitySystem.CurrentTarget = Move.Target;
-        AbilitySystem.TryActivateAbilityByTag(Move.Action);
+        AbilitySystem.CurrentTarget = Action.Item2;
+        AbilitySystem.TryActivateAbilityByTag(Action.Item1);
         AbilitySystem.Tick();
         AbilitySystem.IsScrumming = false;
-
-        AgentActions.RemoveAt(0);
     }
 
-    public void AddActions()
+    public (System.Type, Vector2Int) SelectAction()
     {
         List<PlayableAgent> Players = FindObjectsOfType<PlayableAgent>().Where(Player => Player.IsAlive).ToList();
 
         Vector2Int? TargetPos = SelectTargetForAttackFromPosition(Players, GridPos);
         if (TargetPos.HasValue)
         {
-            AgentActions.Add(new AgentAction { Action = MainAbility.GetType(), Target = TargetPos.Value }); 
-            AgentActions.Add(new AgentAction { Action = TypeTag.NoAction }); 
+            return (MainAbility.GetType(), TargetPos.Value);
         }
         else
         {
@@ -102,22 +94,11 @@ public class EnemyAgent : TickAgent
 
             if (MoveTarget.HasValue)
             {
-                AgentActions.Add(new AgentAction { Action = TypeTag.MoveAbility, Target = MoveTarget.Value }); 
-
-                TargetPos = SelectTargetForAttackFromPosition(Players, GridPos);
-                if (TargetPos.HasValue)
-                {
-                    AgentActions.Add(new AgentAction { Action = MainAbility.GetType(), Target = TargetPos.Value }); 
-                }
-                else
-                {
-                    AgentActions.Add(new AgentAction { Action = TypeTag.NoAction }); 
-                }
+                return (TypeTag.MoveAbility, MoveTarget.Value);
             }
             else
             {
-                AgentActions.Add(new AgentAction { Action = TypeTag.NoAction }); 
-                AgentActions.Add(new AgentAction { Action = TypeTag.NoAction }); 
+                return (TypeTag.NoAction, Vector2Int.zero);
             }
         }
     }
