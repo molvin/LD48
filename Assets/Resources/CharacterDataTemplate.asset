@@ -138,7 +138,7 @@ MonoBehaviour:
   CultistB:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
-    - {fileID: 11400000, guid: 2d46954a2511e5847a7b90f8833c2ae4, type: 2}
+    - {fileID: 11400000, guid: d7f1cafd83e788a43bffd9ca5653c0f5, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
@@ -152,7 +152,7 @@ MonoBehaviour:
   CultistC:
     StartingAbilities:
     - {fileID: 11400000, guid: 0f32874ccee246742a3087d2785bfe30, type: 2}
-    - {fileID: 11400000, guid: 2d46954a2511e5847a7b90f8833c2ae4, type: 2}
+    - {fileID: 11400000, guid: 33b99c070ebb6df4ba94a078ae34b24c, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}
