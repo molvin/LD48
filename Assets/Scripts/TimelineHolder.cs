@@ -16,6 +16,9 @@ public class TimelineHolder : MonoBehaviour
     public static TimelineHolder Instance;
 
     private LDBlock m_CurrentBlock = new LDBlock();
+
+    LDInputFrame m_DeathInputFrame;
+
     private void Awake()
     {
         if(Instance == null)
@@ -28,6 +31,8 @@ public class TimelineHolder : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        LDConversionTable LDConversionTable = LDConversionTable.Load();
+        m_DeathInputFrame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
 
         m_ServerTimeLine = new LDTimeLine(); //Server.RequestTimeLine();
         m_ServerTimeLine.timeLine = new LDBlock[0];
@@ -38,21 +43,18 @@ public class TimelineHolder : MonoBehaviour
         {
             m_BranchingIndex = 0;
 
-            LDConversionTable LDConversionTable = LDConversionTable.Load();
-            LDInputFrame death_input_frame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
-
             m_CurrentBlock.characters = new LDCharacter[3];
             m_CurrentBlock.characters[0].role = (byte)CharacterRole.Assassin;
             m_CurrentBlock.characters[0].timeLine = new LDInputFrame[1];
-            m_CurrentBlock.characters[0].timeLine[0] = death_input_frame;
+            m_CurrentBlock.characters[0].timeLine[0] = m_DeathInputFrame;
 
             m_CurrentBlock.characters[1].role = (byte)CharacterRole.Barbarian;
             m_CurrentBlock.characters[1].timeLine = new LDInputFrame[2];
-            m_CurrentBlock.characters[1].timeLine[0] = death_input_frame;
+            m_CurrentBlock.characters[1].timeLine[0] = m_DeathInputFrame;
 
             m_CurrentBlock.characters[2].role = (byte)CharacterRole.Necromancer;
             m_CurrentBlock.characters[2].timeLine = new LDInputFrame[3];
-            m_CurrentBlock.characters[2].timeLine[0] = death_input_frame;
+            m_CurrentBlock.characters[2].timeLine[0] = m_DeathInputFrame;
         }  
     }
 
@@ -104,7 +106,10 @@ public class TimelineHolder : MonoBehaviour
                 {
                     if ((byte)GameStateManager.Instance.PlayerAgent.Role == character.role)
                     {
-                        temp_block.characters = new LDCharacter[] { character };
+                        LDCharacter current_character = GameStateManager.Instance.PlayerAgent.ToLDCharacter();
+                        current_character.timeLine = new LDInputFrame[1];
+                        current_character.timeLine[0] = m_DeathInputFrame;
+                        temp_block.characters = new LDCharacter[] { current_character };
                         break;
                     }
                 }
