@@ -11,8 +11,11 @@ public class GameplayInputUI : MonoBehaviour
     [SerializeField] private Button m_MoveActionButton;
     [SerializeField] private Button m_CharacterPortrait;
     [SerializeField] private Button m_EndTurnButton;
+    [SerializeField] private Button m_SelectCharacterButton;
+    [SerializeField] private Button m_DismissCharacterButton;
     [SerializeField] private HorizontalLayoutGroup m_ActionBar;
     [SerializeField] private HorizontalLayoutGroup m_InventoryBar;
+
 
     private Button[] m_ActionButtons;
     private Button[] m_InventoryButtons;
@@ -28,10 +31,13 @@ public class GameplayInputUI : MonoBehaviour
             Debug.LogAssertion("There is no canvas");
 
         GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;
+        GameStateManager.Instance.OnAvailableCharacter += CharacterTakeOver;
 
         m_MoveActionButton.onClick.AddListener(delegate { SelectMove(); });
         m_CharacterPortrait.onClick.AddListener(delegate { ClickedCharacterPortrait(); });
         m_EndTurnButton.onClick.AddListener(delegate { SelectEndTurn(); });
+        m_SelectCharacterButton.onClick.AddListener(delegate { SelectCharacter(); });
+        m_DismissCharacterButton.onClick.AddListener(delegate { DismissCharacter(); });
 
         m_ActionButtons = m_ActionBar.GetComponentsInChildren<Button>();
         for (int i = 0; i < m_ActionButtons.Length; i++)
@@ -143,9 +149,25 @@ public class GameplayInputUI : MonoBehaviour
 
         }
     }
-
     public void UpdateMoveButton(bool has_moved)
     {
         m_MoveActionButton.interactable = !has_moved;
+    }
+
+    private PlayableAgent temp_character;
+
+    public void CharacterTakeOver(PlayableAgent player)
+    {
+        temp_character = player;
+    }
+
+    public void SelectCharacter()
+    {
+        GameStateManager.Instance.PlayerAgent = temp_character;
+    }
+
+    public void DismissCharacter()
+    {
+
     }
 }

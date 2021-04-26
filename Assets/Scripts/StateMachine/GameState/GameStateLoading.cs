@@ -29,11 +29,6 @@ public class GameStateLoading : State
         {
             CharacterRole? player_role = Ticker.Instance.CheckpointRole;
             
-            if(Input.GetButtonDown("Jump"))
-            {
-                //TODO: go to next character
-            }
-
             if(player_role == null)
             {
                 Debug.LogError("Mardröms rolle vadför scen");
@@ -65,8 +60,7 @@ public class GameStateLoading : State
 
     public void SetUpCharacter(CharacterRole role)
     {
-        GameStateManager.Instance.Role = role;
-        GameStateManager.Instance.Setup();
+        GameStateManager.Instance.Setup(role);
         Ticker.currentBlock = TimelineHolder.Instance.GetCurrentBlock();
         int current_frame = Ticker.Instance.GetCurrentTick;
         Ticker.Instance.Initialize();
