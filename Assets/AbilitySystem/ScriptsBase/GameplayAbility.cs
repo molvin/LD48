@@ -112,7 +112,9 @@ namespace GameplayAbilitySystem
             if (ParticleSystem != null)
             {
                 Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.OwnerAgent.GridPos);
+                Vector3 TargetWorldPos = Grid.CellToWorld((Vector3Int)Target.OwnerAgent.GridPos);
                 ParticleSystem Instance = Instantiate(ParticleSystem, WorldPos, Quaternion.identity);
+                Instance.transform.forward = TargetWorldPos - WorldPos;
                 Instance.Play();
 
                 while(Instance.isPlaying)

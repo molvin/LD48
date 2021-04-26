@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LeathalThrow
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: c0d38a5f1846b5249a42fcda6586e026, type: 2}
-  AppliedEffect: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: 1b2e3777a48bee441bcd1eb4b62f955e, type: 2}
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}
   BlockedByTags: []

@@ -29,6 +29,11 @@ namespace GameplayAbilitySystem
             RegisterOnAttributeChanged(Attribute.Health, (x) => OwnerAgent.IsAlive = x > 0);
             RegisterOnAttributeChanged(Attribute.Health, HealthCap);
             RegisterOnAttributeChanged(Attribute.Mana, ManaCap);
+            RegisterOnAttributeChanged(Attribute.Health, (x) =>
+            {
+                if (!OwnerAgent.IsAlive) 
+                    UnityEngine.Object.Destroy(OwnerAgent.gameObject);
+            });
         }
 
         public List<TypeTag> GetGrantedAbilityTypes()
