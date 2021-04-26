@@ -9,7 +9,7 @@ public class Ticker : MonoBehaviour
 {
     public static LDBlock currentBlock;
     public static Ticker Instance;
-    public static float TickVisualTime = 1.1f;
+    public static float TickVisualTime = 1.3f;
     public static bool ShouldVisualize;
 
     public CharacterRole? CheckpointRole = null;
