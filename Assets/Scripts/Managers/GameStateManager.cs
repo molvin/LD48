@@ -15,13 +15,12 @@ public class GameStateManager : MonoBehaviour
     public GameStateGameOver GameOverState;
     public GameStateEndTurn EndTurnState;
     public bool IsScrumming = true;
+    public bool IsWaitingForSelection;
 
     private StateMachine m_GameStateMachine;
 
-    public CharacterRole Role;
-
     public Action<bool> OnHasDoneActionUpdate;
-
+    public Action<PlayableAgent> OnAvailableCharacter;
     [HideInInspector] public PlayableAgent PlayerAgent;
 
     public GridGenerator GetGridManager()
@@ -74,14 +73,14 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    public void Setup()
+    public void Setup(CharacterRole role)
     {
         foreach (PlayableAgent player in FindObjectsOfType<PlayableAgent>())
         {
-            if (player.Role == Role)
+            if (player.Role == role)
             {
+                OnAvailableCharacter?.Invoke(player);
                 Debug.Log("Found Player Agent");
-                PlayerAgent = player;
                 break;
             }
         }

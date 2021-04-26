@@ -51,13 +51,13 @@ public class TimelineHolder : MonoBehaviour
             m_CurrentBlock.characters[0].attributes = new LDAttribute[0];
 
             m_CurrentBlock.characters[1].role = (byte)CharacterRole.Barbarian;
-            m_CurrentBlock.characters[1].timeLine = new LDInputFrame[2];
+            m_CurrentBlock.characters[1].timeLine = new LDInputFrame[1];
             m_CurrentBlock.characters[1].timeLine[0] = m_DeathInputFrame;
             m_CurrentBlock.characters[1].name = "Barb";
             m_CurrentBlock.characters[1].attributes = new LDAttribute[0];
 
             m_CurrentBlock.characters[2].role = (byte)CharacterRole.Necromancer;
-            m_CurrentBlock.characters[2].timeLine = new LDInputFrame[3];
+            m_CurrentBlock.characters[2].timeLine = new LDInputFrame[1];
             m_CurrentBlock.characters[2].timeLine[0] = m_DeathInputFrame;
             m_CurrentBlock.characters[2].name = "Bob";
             m_CurrentBlock.characters[2].attributes = new LDAttribute[0];
@@ -112,27 +112,23 @@ public class TimelineHolder : MonoBehaviour
             temp_block.level = SceenIndex < 0 ? (ushort)Random.Range(1, SceneManager.sceneCountInBuildSettings) : (ushort)SceenIndex;
             temp_block.mods = m_CurrentBlock.mods;
             temp_block.characters = m_CurrentBlock.characters;
-            for(int i = 0; i < m_CurrentBlock.characters.Length; i++)
+
+            PlayableAgent[] player_agents = FindObjectsOfType<PlayableAgent>(true);
+
+            for (int i = 0; i < m_CurrentBlock.characters.Length; i++)
             {
                 LDCharacter character = m_CurrentBlock.characters[i];
 
-                if (GameStateManager.Instance.PlayerAgent != null)
+                foreach (PlayableAgent player in player_agents)
                 {
-                    if ((byte)GameStateManager.Instance.PlayerAgent.Role == character.role)
+                    if((byte)player.Role == character.role)
                     {
-                        LDCharacter current_character = GameStateManager.Instance.PlayerAgent.ToLDCharacter();
+                        LDCharacter current_character = player.ToLDCharacter();
                         current_character.timeLine = new LDInputFrame[1];
-                        current_character.timeLine[0] = m_DeathInputFrame;
+                        current_character.timeLine[0] = m_DeathInputFrame; //TODO: Maybe not dead
                         temp_block.characters[i] = current_character;
                     }
                 }
-                else
-                {
-                    temp_block.characters = new LDCharacter[] { character };
-                    break;
-                }
-
-        
             }
 
             temp_block.branches = new int[0];
