@@ -28,6 +28,8 @@ public class AudioSystem
 
     public static void Play(string name, Vector3 position = default, float overwriteVolume = -1)
     {
+        if(name == null || name == "")
+            return;
         if(!audioObjects.ContainsKey(name))
         {
             var obj = Resources.Load($"Audio/{name}") as AudioObject;
