@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: BoneShield
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: 24302b07cf8d2b644b22e00ad84fde5b, type: 2}
-  AppliedEffect: {fileID: 0}
-  Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
-  BlockedByTags: []
+  AppliedEffect: {fileID: 11400000, guid: 178fdd2ef013b314bb5379b921dcfe48, type: 2}
+  Cost: {fileID: 11400000, guid: ccc1a88e8da889848b8c4a80f539be0a, type: 2}
+  Cooldown: {fileID: 11400000, guid: 38f2d178221535c47872ee6c342575f4, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: 24302b07cf8d2b644b22e00ad84fde5b, type: 2}
   RequiredTags: []
   AbilityIndex: 0
-  MomentOfExecution: 0
+  MomentOfExecution: 0.2
   FromSelfToTargetParticleSystem: {fileID: 0}
   SelfProjectileSystem: {fileID: 0}
-  TargetProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 9200714023734234791, guid: 53631b5394142ea498090f6cc7135a80,
+    type: 3}
   SoundEffect: 

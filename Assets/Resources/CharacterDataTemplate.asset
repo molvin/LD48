@@ -79,6 +79,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5fff304d44fe70b4d9667a4f42646ea2, type: 2}
     - {fileID: 11400000, guid: 6467215018874954e8e63bef48bf13c2, type: 2}
     - {fileID: 11400000, guid: 0961d1f93b40bcc46b049c3f1a537ae8, type: 2}
+    - {fileID: 11400000, guid: 9b66d578e34ecb84e9c5f43dd32131e1, type: 2}
     StartingEffects: []
     StartingAttributeSet:
     - Attribute: {fileID: 11400000, guid: 2fd6290843771e74298cd0596685e198, type: 2}

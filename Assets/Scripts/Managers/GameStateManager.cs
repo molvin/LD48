@@ -1,4 +1,5 @@
 using GameplayAbilitySystem;
+using GameStructure;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
