@@ -20,5 +20,6 @@ namespace GameplayAbilitySystem
         public static Type Dexterity => typeof(DexterityAttribute);
         public static Type Intelligence => typeof(IntelligenceAttribute);
         public static Type AddedDamage => typeof(AddedDamageAttribute);
+        public static Type EnergyShield => typeof(EnergyShieldAttribute);
     }
 }
