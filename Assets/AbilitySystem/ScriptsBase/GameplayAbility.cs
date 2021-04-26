@@ -156,8 +156,19 @@ namespace GameplayAbilitySystem
             }
             return false;
         }
+
+        protected void RotateThowaradsTarget(AbilitySystem Owner)
+        {
+            Vector3 TargetPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
+            Vector3 OriginalPos = Owner.OwnerAgent.transform.position;
+            Animator Animator = Owner.OwnerAgent.Animator;
+            Animator.transform.localRotation = Quaternion.LookRotation((TargetPos - OriginalPos), Animator.transform.up);
+            Animator.transform.localRotation = Quaternion.Euler(0, Animator.transform.localRotation.eulerAngles.y, 0);
+        }
+
         protected IEnumerator ApplyEffectVisualized(AbilitySystem Owner, AbilitySystem Target)
         {
+            RotateThowaradsTarget(Owner);
             Owner.OwnerAgent.Animator.SetInteger("AbilityIndex", AbilityIndex);
             Owner.OwnerAgent.Animator.SetTrigger("Ability");
             yield return new WaitForSeconds(MomentOfExecution);
