@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: TendonStrike
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: a9243baa21025a941b8b8e3d002b88c6, type: 2}
-  AppliedEffect: {fileID: 0}
+  AppliedEffect: {fileID: 11400000, guid: 0a05aa1963d013146b5ddf2a80877bca, type: 2}
   Cost: {fileID: 0}
-  Cooldown: {fileID: 0}
-  BlockedByTags: []
+  Cooldown: {fileID: 11400000, guid: d120d1a0cfdc30147acf7003dd5ca818, type: 2}
+  BlockedByTags:
+  - {fileID: 11400000, guid: a9243baa21025a941b8b8e3d002b88c6, type: 2}
   RequiredTags: []
-  AbilityIndex: 0
+  AbilityIndex: 1
   MomentOfExecution: 0
-  ParticleSystem: {fileID: 0}
+  FromSelfToTargetParticleSystem: {fileID: 0}
+  SelfProjectileSystem: {fileID: 0}
+  TargetProjectileSystem: {fileID: 2638700043627461516, guid: b37c429c300c2c6408680f111bf5d382,
+    type: 3}
+  SoundEffect: 

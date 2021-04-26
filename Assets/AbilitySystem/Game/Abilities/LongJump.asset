@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityTag: {fileID: 11400000, guid: d5390d425df60c243b59484939df39f4, type: 2}
   AppliedEffect: {fileID: 11400000, guid: d8be0ad9c8ab59b4db1fd2cf7b7df54f, type: 2}
-  Cost: {fileID: 11400000, guid: da8825924e09b944b80335f14f55a035, type: 2}
+  Cost: {fileID: 0}
   Cooldown: {fileID: 11400000, guid: d7488edca49bb7343a90fc8dace45bf8, type: 2}
   BlockedByTags:
   - {fileID: 11400000, guid: d5390d425df60c243b59484939df39f4, type: 2}
@@ -27,3 +27,4 @@ MonoBehaviour:
   TargetProjectileSystem: {fileID: 1512055025743005460, guid: 31193fe5ee2e98743986a5fbc91c1812,
     type: 3}
   SoundEffect: 
+  JumpDistance: 3

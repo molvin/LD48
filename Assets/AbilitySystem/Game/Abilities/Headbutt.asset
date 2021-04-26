@@ -18,6 +18,7 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   BlockedByTags:
   - {fileID: 11400000, guid: ddd72169f40352a4d8619a72929e60b2, type: 2}
+  - {fileID: 11400000, guid: e55f3714fe887024f849c3002ec2e022, type: 2}
   RequiredTags: []
   AbilityIndex: 0
   MomentOfExecution: 0
