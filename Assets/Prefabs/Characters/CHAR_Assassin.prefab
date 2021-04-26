@@ -45,9 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf7d5cf2b1b5447bb97f55982146fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageEffect: {fileID: 1487862404772226403, guid: 228499ef7afdc554297f45417f656a66,
+    type: 3}
+  DeathEffect: {fileID: 443631830879095119, guid: db6518b5b0cd5f54ea2427cc9b569456,
+    type: 3}
   Animator: {fileID: 4268954630575310276}
   GridPos: {x: 0, y: 0}
   IsAlive: 1
+  CurrentHealth: 0
   initiative: 0
   Role: 1
   Name: 
@@ -168,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1886001675
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1080825480604336155, guid: 6e1bffe6da64cb949a781e7d14fcdf21,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
