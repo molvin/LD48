@@ -33,7 +33,7 @@ public class TimelineHolder : MonoBehaviour
 
     public int GetNextSceneIndex()
     {
-        return 0;
+        return 1;
     }
 
     public LDBlock GetCurrentBlock()
