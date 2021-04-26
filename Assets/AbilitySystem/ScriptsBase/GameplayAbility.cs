@@ -182,7 +182,7 @@ namespace GameplayAbilitySystem
         }
         protected IEnumerator PlayParticleSystemOnSelf(AbilitySystem Owner)
         {
-            if (SelfProjectileSystem == null)
+            if (SelfProjectileSystem != null)
             {
                 Vector3 WorldPos = Owner.OwnerAgent.transform.position;
                 ParticleSystem Instance = Instantiate(SelfProjectileSystem, WorldPos, Quaternion.identity);
@@ -197,7 +197,7 @@ namespace GameplayAbilitySystem
         }
         protected IEnumerator PlayParticleSystemOnTarget(AbilitySystem Owner)
         {
-            if (TargetProjectileSystem == null)
+            if (TargetProjectileSystem != null)
             {
                 Vector3 WorldPos = Grid.CellToWorld((Vector3Int)Owner.CurrentTarget);
                 ParticleSystem Instance = Instantiate(TargetProjectileSystem, WorldPos, Quaternion.identity);
