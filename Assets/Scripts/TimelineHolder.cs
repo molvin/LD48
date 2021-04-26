@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class TimelineHolder : MonoBehaviour
 {
     [Tooltip("The scene you want to start att -1 = means the ticker chooses")]
-    public int SceenIndex;
+    public int SceenIndex = -1;
 
     private LDTimeLine m_ServerTimeLine;
-    private List<LDBlock> m_TimelineExtetion;
+    private List<LDBlock> m_TimelineExtetion = new List<LDBlock>();
     private int m_BranchingIndex = 0;
     public static TimelineHolder Instance;
 
@@ -35,29 +35,41 @@ public class TimelineHolder : MonoBehaviour
         m_DeathInputFrame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
 
         m_ServerTimeLine = Server.RequestTimeLine();
+
         if (m_ServerTimeLine.timeLine.Length <= 0)
         {
             m_ServerTimeLine.timeLine = new LDBlock[0];
             m_BranchingIndex = 0;
+            m_CurrentBlock.mods = new LDAttribute[0];
 
             m_CurrentBlock.branches = new int[0];
             m_CurrentBlock.characters = new LDCharacter[3];
             m_CurrentBlock.characters[0].role = (byte)CharacterRole.Assassin;
             m_CurrentBlock.characters[0].timeLine = new LDInputFrame[1];
             m_CurrentBlock.characters[0].timeLine[0] = m_DeathInputFrame;
+            m_CurrentBlock.characters[0].name = "Ezio";
+            m_CurrentBlock.characters[0].attributes = new LDAttribute[0];
 
             m_CurrentBlock.characters[1].role = (byte)CharacterRole.Barbarian;
             m_CurrentBlock.characters[1].timeLine = new LDInputFrame[2];
             m_CurrentBlock.characters[1].timeLine[0] = m_DeathInputFrame;
+            m_CurrentBlock.characters[1].name = "Barb";
+            m_CurrentBlock.characters[1].attributes = new LDAttribute[0];
 
             m_CurrentBlock.characters[2].role = (byte)CharacterRole.Necromancer;
             m_CurrentBlock.characters[2].timeLine = new LDInputFrame[3];
             m_CurrentBlock.characters[2].timeLine[0] = m_DeathInputFrame;
+            m_CurrentBlock.characters[2].name = "Bob";
+            m_CurrentBlock.characters[2].attributes = new LDAttribute[0];
         }  
+        else
+        {
+            m_CurrentBlock = m_ServerTimeLine.timeLine[0];
+        }
     }
     public void SaveCurrentBlock()
     {
-        if (GameStateManager.Instance.PlayerAgent)
+        if (!GameStateManager.Instance.PlayerAgent)
         {
             Debug.LogError("Character is not loaded");
             return;
@@ -87,12 +99,7 @@ public class TimelineHolder : MonoBehaviour
     public LDBlock GenerateNextRelevantBlock()
     {
         LDBlock temp_block = new LDBlock();
-        //If the sceen index is zero debug level
-        if (SceenIndex != -1)
-        {
-            temp_block.level = (ushort)SceenIndex;
-            return temp_block;
-        }
+
 
         //Select the first branch
         if (m_CurrentBlock.branches.Length > 0)
@@ -102,19 +109,21 @@ public class TimelineHolder : MonoBehaviour
         }
         else //If there are no branches then we create a new one
         {
-            temp_block.level = (ushort)Random.Range(1, SceneManager.sceneCountInBuildSettings);
+            temp_block.level = SceenIndex < 0 ? (ushort)Random.Range(1, SceneManager.sceneCountInBuildSettings) : (ushort)SceenIndex;
             temp_block.mods = m_CurrentBlock.mods;
-            foreach (LDCharacter character in m_CurrentBlock.characters)
+            temp_block.characters = m_CurrentBlock.characters;
+            for(int i = 0; i < m_CurrentBlock.characters.Length; i++)
             {
-                if(GameStateManager.Instance.PlayerAgent != null)
+                LDCharacter character = m_CurrentBlock.characters[i];
+
+                if (GameStateManager.Instance.PlayerAgent != null)
                 {
                     if ((byte)GameStateManager.Instance.PlayerAgent.Role == character.role)
                     {
                         LDCharacter current_character = GameStateManager.Instance.PlayerAgent.ToLDCharacter();
                         current_character.timeLine = new LDInputFrame[1];
                         current_character.timeLine[0] = m_DeathInputFrame;
-                        temp_block.characters = new LDCharacter[] { current_character };
-                        break;
+                        temp_block.characters[i] = current_character;
                     }
                 }
                 else

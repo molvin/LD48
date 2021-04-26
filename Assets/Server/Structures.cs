@@ -29,11 +29,6 @@ namespace GameStructure
         public byte role;
         public LDAttribute[] attributes;
         public LDInputFrame[] timeLine;
-
-        [SkipIndex]
-        public int Id;
-        [SkipIndex]
-        public int GridId;
     }
     [Writable]
     public struct LDAttribute
