@@ -95,15 +95,19 @@ public class RangedAbility : GameplayAbility
         {
             return false;
         }
+
         //Blocked by obsticle
-        Vector2Int direction = (TilePos - TargetPos);
-        if (direction.x != 0) direction.x = (int)Mathf.Sign(direction.x);
-        if (direction.y != 0) direction.y = (int)Mathf.Sign(direction.y);
-        if (FlagsAlongLine(TilePos, direction, Range, GridGenerator.BlockStatus.Obstacle) && CanBeBlockedByObstacle)
+        Vector2Int direction = ( TargetPos - TilePos);
+        int targetRange = (int)Vector2Int.Distance(TilePos, TargetPos);
+        if (direction.x != 0)
+            direction.x = (int)Mathf.Sign(direction.x);
+        if (direction.y != 0)
+            direction.y = (int)Mathf.Sign(direction.y);
+        if (FlagsAlongLine(TilePos, direction, targetRange, GridGenerator.BlockStatus.Obstacle) && CanBeBlockedByObstacle)
             return false;
 
         //Is in range
-        return Vector2Int.Distance(TilePos, TargetPos) <= Range;
+        return targetRange <= Range;
     }
    
 }
