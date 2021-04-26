@@ -39,6 +39,7 @@ public class GameStateAction : State
     {
         if(GameStateManager.Instance.ShouldEndTurn)
         {
+            GameStateManager.Instance.PlayerAgent.AppendInput(TypeTag.NoAction, new Vector2Int());
             GameStateManager.Instance.ShouldDoAction = false;
             return GameStateManager.Instance.EndTurnState;
         }
