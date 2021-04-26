@@ -91,7 +91,7 @@ namespace Testing
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Ticker.Tick();
+                //Ticker.Tick();
             }
         }
     }

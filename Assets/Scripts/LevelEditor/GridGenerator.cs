@@ -20,6 +20,7 @@ public class GridGenerator : MonoBehaviour
     public GridLayout Grid;
     public int xWidth;
     public int zWidth;
+    public float CellOffset = 0.4f;
 
     [HideInInspector]
     [SerializeField]
@@ -99,7 +100,7 @@ public class GridGenerator : MonoBehaviour
     }
     public Vector3 CellToWorld(Vector3Int cellPos)
     {
-        return Grid.CellToWorld(cellPos);
+        return Grid.CellToWorld(cellPos) + Vector3.forward * CellOffset;
     }
     public BlockStatus GetCellStatus(Vector2Int pos)
     {

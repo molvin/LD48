@@ -9,16 +9,6 @@ public class GameStateEndTurn : State
     protected override void Initialize() { }
     public override void Enter()
     {
-        //Add all enemies moves
-
-        EnemyAgent[] enemies = FindObjectsOfType<EnemyAgent>();
-
-        foreach(EnemyAgent enemy in enemies)
-        {
-            enemy.AddActions();
-        }
-
-       // Tick tick
     }
     public override void Tick()
     {
@@ -36,20 +26,18 @@ public class GameStateEndTurn : State
         if (!m_HasTicked)
             return null;
 
+        bool FirstTime = !GameStateManager.Instance.HasDoneAction;
+
         if (!GameStateManager.Instance.HasDoneAction)
         {
             GameStateManager.Instance.PlayerAgent.AppendInput(TypeTag.NoAction, new Vector2Int());
-            Ticker.Instance.Tick();
+            Ticker.Instance.TickCurrent(FirstTime);
         }
 
-        if (!GameStateManager.Instance.HasMoved)
-        {
-            GameStateManager.Instance.PlayerAgent.AppendInput(TypeTag.NoAction, new Vector2Int());
-            Ticker.Instance.Tick();
-        }
+        Ticker.Instance.CurrentDone();
+        Ticker.Instance.TickUntilPlayableTurn(false);
 
         GameStateManager.Instance.HasDoneAction = false;
-        GameStateManager.Instance.HasMoved      = false;
         GameStateManager.Instance.ShouldEndTurn = false;
         return GameStateManager.Instance.IdleState;
     }
