@@ -8,6 +8,8 @@ public class TimelineHolder : MonoBehaviour
     public LDTimeLine TimeLine;
     public static TimelineHolder Instance;
 
+    private LDBlock m_TestBlock;
+
     private void Awake()
     {
         if(Instance == null)
@@ -22,5 +24,20 @@ public class TimelineHolder : MonoBehaviour
         }
 
         TimeLine = Server.RequestTimeLine();
+
+        m_TestBlock.characters = new LDCharacter[3];
+        m_TestBlock.characters[0].role = (byte)CharacterRole.Assassin;
+        m_TestBlock.characters[1].role = (byte)CharacterRole.Barbarian;
+        m_TestBlock.characters[2].role = (byte)CharacterRole.Necromancer;
+    }
+
+    public int GetNextSceneIndex()
+    {
+        return 1;
+    }
+
+    public LDBlock GetCurrentBlock()
+    {
+        return m_TestBlock;
     }
 }

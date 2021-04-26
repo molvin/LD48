@@ -107,6 +107,6 @@ public class DashAttackAbility : GameplayAbility
         }
         OwnerAgent.transform.position = NewPos;
 
-        yield return PlayParticleSystem(Owner);
+        yield return PlayParticleSystemOnSelf(Owner);
     }
 }
