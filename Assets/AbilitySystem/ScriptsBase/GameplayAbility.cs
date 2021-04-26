@@ -24,6 +24,10 @@ namespace GameplayAbilitySystem
         public abstract void Activate(AbilitySystem Owner);
         public abstract bool IsTargetValid(AbilitySystem Owner);
 
+        protected bool IsInsideGrid(Vector2Int TargetPos)
+        {
+            return (TargetPos.x >= 0 && TargetPos.x < Grid.xWidth && TargetPos.y >= 0 && TargetPos.y < Grid.zWidth);
+        }
         protected void ApplyEffectToTarget(AbilitySystem Owner, AbilitySystem Target)
         {
             int? PowerModifier = null;
