@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9d378f6d93aa147a69171b7c71068c, type: 3}
   m_Name: ShadowstepTag
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 78bea9840716cf840a56aa2573123917, type: 3}
+  Icon: {fileID: 21300000, guid: 321c8341bfdbe8242b60904bd273f4c9, type: 3}
   Name: Shadowstep
   Description: 'Teleports to a tile next to an enemy '
   Targeting: 2
