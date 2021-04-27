@@ -1366,7 +1366,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.16
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6993158211089855647, guid: fe9d253d4df66b94189cd44ccfc89478, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe9d253d4df66b94189cd44ccfc89478, type: 3}
 --- !u!1001 &1193137229
 PrefabInstance:
@@ -1500,7 +1501,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CHAR_Necromancer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5574956523453946368, guid: 885b431b9701d7b4ebed8b66deafc902, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 885b431b9701d7b4ebed8b66deafc902, type: 3}
 --- !u!1 &1261820334
 GameObject:
@@ -1829,7 +1831,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8179132868894473882, guid: b100bb71ca2dc1741a50346c68439809, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b100bb71ca2dc1741a50346c68439809, type: 3}
 --- !u!1 &1541911918
 GameObject:

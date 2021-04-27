@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using static GridGenerator;
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(GridCellProperties))]
 [CanEditMultipleObjects]
+
 public class GridCellPropertiesEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -28,3 +29,4 @@ public class GridCellPropertiesEditor : Editor
         }
     }
 }
+#endif

@@ -50,7 +50,6 @@ public class Server
         try
         {
             // Create a TcpClient.
-            Int32 port = 13000;
             TcpClient client = new TcpClient(ipAdress, port);
             mem.Seek(0, SeekOrigin.Begin);
             // Send request message to server
