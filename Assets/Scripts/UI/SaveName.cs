@@ -28,12 +28,12 @@ public class SaveName : MonoBehaviour
             if (Name.Length > 1)
             {
                 PlayerPrefs.SetString(NameKey, Name);
-                SceneManager.LoadScene(1);
+                GameStateManager.Instance.LeaveMenu = true;
             }
         }
         else
         {
-            SceneManager.LoadScene(1);
+            GameStateManager.Instance.LeaveMenu = true;
         }
     }
 }

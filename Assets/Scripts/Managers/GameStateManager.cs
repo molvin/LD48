@@ -14,9 +14,10 @@ public class GameStateManager : MonoBehaviour
     public GameStateLoading LoadingState;
     public GameStateGameOver GameOverState;
     public GameStateEndTurn EndTurnState;
+    public GameStateMenuState MenuState;
     public bool IsScrumming = true;
     public bool IsWaitingForSelection;
-
+    public bool LeaveMenu = false;
     private StateMachine m_GameStateMachine;
 
     public Action<bool> OnHasDoneActionUpdate;
@@ -101,7 +102,7 @@ public class GameStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState, EndTurnState }, LoadingState);
+        m_GameStateMachine = new StateMachine(this, new State[] { ActionState, IdleState, LoadingState, EndTurnState, MenuState }, MenuState);
     }
 
     // Update is called once per frame

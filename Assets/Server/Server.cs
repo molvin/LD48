@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class Server
 {
-    static string ipAdress = "127.0.0.1";
+    static string ipAdress = "94.46.42.40";
     static int port = 13000;
     static byte[] buffer = new byte[65535];
     static MemoryStream mem = new MemoryStream();
