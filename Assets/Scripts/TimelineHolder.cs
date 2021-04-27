@@ -36,7 +36,7 @@ public class TimelineHolder : MonoBehaviour
 
         m_ServerTimeLine = Server.RequestTimeLine();
 
-        if (m_ServerTimeLine.timeLine.Length <= 0)
+        if (m_ServerTimeLine.timeLine == null || m_ServerTimeLine.timeLine.Length <= 0)
         {
             m_ServerTimeLine.timeLine = new LDBlock[0];
             m_BranchingIndex = 0;
@@ -109,7 +109,7 @@ public class TimelineHolder : MonoBehaviour
         }
         else //If there are no branches then we create a new one
         {
-            temp_block.level = SceenIndex < 0 ? (ushort)Random.Range(1, SceneManager.sceneCountInBuildSettings) : (ushort)SceenIndex;
+            temp_block.level = SceenIndex < 0 ? (ushort)Random.Range(2, SceneManager.sceneCountInBuildSettings) : (ushort)SceenIndex;
             temp_block.mods = m_CurrentBlock.mods;
             temp_block.characters = m_CurrentBlock.characters;
 

@@ -9,6 +9,7 @@ public class GameplayInputUI : MonoBehaviour
     private Canvas m_Canvas;
     [Header("Interaction Buttons")]
     [SerializeField] private GameObject m_CharacterSelectionWindow;
+    [SerializeField] private GameObject m_GamePlayUI;
     [SerializeField] private Button m_MoveActionButton;
     [SerializeField] private Button m_CharacterPortrait;
     [SerializeField] private Button m_EndTurnButton;
@@ -28,6 +29,7 @@ public class GameplayInputUI : MonoBehaviour
     private void Start()
     {
         m_CharacterSelectionWindow.gameObject.SetActive(false);
+        m_GamePlayUI.gameObject.SetActive(false);
         GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;
         GameStateManager.Instance.OnAvailableCharacter += CharacterTakeOver;
     }
@@ -71,6 +73,7 @@ public class GameplayInputUI : MonoBehaviour
 
     public void LoadAbilities(AbilitySystem ability_owner)
     {
+        m_GamePlayUI.gameObject.SetActive(true);
         Owner = ability_owner;
         List<TypeTag> type_tags = ability_owner.GetGrantedAbilityTypes();
 
