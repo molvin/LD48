@@ -44,18 +44,22 @@ public class GameStateLoading : State
             if (!m_WaitingForSelection)
             {
                 GameStateManager.Instance.Setup((CharacterRole)player_role);
+                FindObjectOfType<GameplayInputUI>().Setup();
                 m_WaitingForSelection = true;
+                return null;
             }
 
             //We did not want the character
             if(GameStateManager.Instance.PlayerAgent == null)
             {
+                Debug.Log("Dismissed Character");
                 Ticker.Instance.TickToNextCheckpoint(false);
                 return null;
             }
 
             SetUpCharacter((CharacterRole)player_role);
             GameStateManager.Instance.PlayerAgent.RemoveOneInput();
+            FindObjectOfType<GameplayInputUI>().LoadAbilities(GameStateManager.Instance.PlayerAgent.AbilitySystem);
             return GameStateManager.Instance.IdleState;
         }
 
@@ -81,8 +85,6 @@ public class GameStateLoading : State
         int current_frame = Ticker.Instance.GetCurrentTick;
         Ticker.Instance.Initialize();
         Ticker.Instance.Scrum(current_frame - 1);
-
-        FindObjectOfType<GameplayInputUI>().Setup();
     }
 
     protected override void Initialize() { }
