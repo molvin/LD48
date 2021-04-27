@@ -43,11 +43,13 @@ public class GridGenerator : MonoBehaviour
     }
     public void GenerateLevel()
     {
+
         if (!Application.isEditor)
         {
             Debug.LogWarning("You may not use this function outside of edit mode");
             return;
         }
+#if UNITY_EDITOR
         for (int x = 0; x < xWidth; x++)
         {
             for(int z = 0; z < zWidth; z++)
@@ -60,7 +62,7 @@ public class GridGenerator : MonoBehaviour
             }
         }
         CreateGridData();
-
+#endif
     }
     public void ResetLevel()
     {

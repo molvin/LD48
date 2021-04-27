@@ -28,6 +28,7 @@ public class GameplayInputUI : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         m_CharacterSelectionWindow.gameObject.SetActive(false);
         m_GamePlayUI.gameObject.SetActive(false);
         GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;

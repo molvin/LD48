@@ -114,8 +114,8 @@ public class TimelineHolder : MonoBehaviour
             temp_block.characters = m_CurrentBlock.characters;
 
             PlayableAgent[] player_agents = FindObjectsOfType<PlayableAgent>(true);
-
-            for (int i = 0; i < m_CurrentBlock.characters.Length; i++)
+            //Jag vet inte vad den här koden gör!?! x 100 /Daniel 2021
+           for (int i = 0; i < m_CurrentBlock.characters.Length; i++)
             {
                 LDCharacter character = m_CurrentBlock.characters[i];
 
