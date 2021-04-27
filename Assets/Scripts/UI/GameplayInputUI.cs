@@ -25,14 +25,20 @@ public class GameplayInputUI : MonoBehaviour
     private Dictionary<int, TypeTag> m_AbilityButtonMapping = new Dictionary<int, TypeTag>();
     private Dictionary<int, TypeTag> m_InventoryButtonMapping = new Dictionary<int, TypeTag>();
 
+    private void Start()
+    {
+        m_CharacterSelectionWindow.gameObject.SetActive(false);
+        GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;
+        GameStateManager.Instance.OnAvailableCharacter += CharacterTakeOver;
+    }
+
     public void Setup()
     {
         m_Canvas = GetComponent<Canvas>();
         if (!m_Canvas)
             Debug.LogAssertion("There is no canvas");
 
-        GameStateManager.Instance.OnHasDoneActionUpdate += UpdateActionButtons;
-        GameStateManager.Instance.OnAvailableCharacter += CharacterTakeOver;
+ 
 
         m_MoveActionButton.onClick.AddListener(delegate { SelectMove(); });
         m_CharacterPortrait.onClick.AddListener(delegate { ClickedCharacterPortrait(); });
@@ -55,14 +61,12 @@ public class GameplayInputUI : MonoBehaviour
             m_InventoryButtons[i].onClick.AddListener(delegate { SelectInventoryItem(j); });
 
         }
-
-        LoadAbilities(GameStateManager.Instance.PlayerAgent.AbilitySystem);
-        LoadInventory();
     }
 
     private void OnDestroy()
     {
         GameStateManager.Instance.OnHasDoneActionUpdate -= UpdateActionButtons;
+        GameStateManager.Instance.OnAvailableCharacter -= CharacterTakeOver;
     }
 
     public void LoadAbilities(AbilitySystem ability_owner)
@@ -159,16 +163,22 @@ public class GameplayInputUI : MonoBehaviour
 
     public void CharacterTakeOver(PlayableAgent player)
     {
+        m_CharacterSelectionWindow.gameObject.SetActive(true);
         temp_character = player;
     }
 
     public void SelectCharacter()
     {
+        Debug.Log("A button!!");
+        m_CharacterSelectionWindow.gameObject.SetActive(false);
         GameStateManager.Instance.PlayerAgent = temp_character;
+        GameStateManager.Instance.IsWaitingForSelection = false;
     }
 
     public void DismissCharacter()
     {
-
+        m_CharacterSelectionWindow.gameObject.SetActive(false);
+        GameStateManager.Instance.PlayerAgent = null;
+        GameStateManager.Instance.IsWaitingForSelection = false;
     }
 }

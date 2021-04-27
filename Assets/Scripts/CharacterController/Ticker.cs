@@ -141,6 +141,7 @@ public class Ticker : MonoBehaviour
             }
         }
     }
+    private int m_DismissedIndex = -1;
 
     public void TickToNextCheckpoint(bool Scrum)
     {
@@ -150,10 +151,13 @@ public class Ticker : MonoBehaviour
 
     // TODO: ADD PADDING FOR INPUT
 
+  
+
     private IEnumerator TickToNextCheckpoint(float TickTime)
     {
         CheckpointRole = null;
         m_IsTicking = true;
+        int character_index = 0;
         while(true)
         {
             if (!tickAgents.Any(a => a is EnemyAgent && a.IsAlive))
@@ -177,9 +181,10 @@ public class Ticker : MonoBehaviour
                 PlayableAgent Player = (PlayableAgent)CurrentAgent;
                 if (Player.IsAlive)
                 {
-                    if (Player.HasInput(CurrentTick) && Player.GetInput(CurrentTick).Is(TypeTag.DeathAction))
+                    if (Player.HasInput(CurrentTick) && Player.GetInput(CurrentTick).Is(TypeTag.DeathAction) && m_DismissedIndex < character_index)
                     {
                         //There is an open slot and you take it now
+                        m_DismissedIndex = character_index;
                         CheckpointRole = Player.Role;
                         m_IsTicking = false;
                         yield break;
@@ -194,11 +199,14 @@ public class Ticker : MonoBehaviour
                     {
                         Debug.Log("Player is Frozen");
                     }
+
+                    character_index++;
                 }
             }
             CurrentActor = (CurrentActor + 1) % tickAgents.Count;
             if (CurrentActor == 0)
             {
+                m_DismissedIndex = -1;
                 CurrentTick++;
             }
         }

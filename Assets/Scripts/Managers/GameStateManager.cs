@@ -80,6 +80,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (player.Role == role)
             {
+                IsWaitingForSelection = true;
                 OnAvailableCharacter?.Invoke(player);
                 Debug.Log("Found Player Agent");
                 break;
