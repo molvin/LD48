@@ -34,7 +34,7 @@ public class TimelineHolder : MonoBehaviour
         LDConversionTable LDConversionTable = LDConversionTable.Load();
         m_DeathInputFrame = new LDInputFrame { action = LDConversionTable.GameplayTagToLDID(TypeTag.DeathAction), cell = 0 };
 
-        m_ServerTimeLine = Server.RequestTimeLine();
+        m_ServerTimeLine = new Server().RequestTimeLine();
 
         if (m_ServerTimeLine.timeLine == null || m_ServerTimeLine.timeLine.Length <= 0)
         {
@@ -94,7 +94,7 @@ public class TimelineHolder : MonoBehaviour
             branchBlockIndex = m_BranchingIndex,
             timeLine = m_TimelineExtetion.ToArray()
         };
-        Server.PushTimeLine(temp);
+        new Server().PushTimeLine(temp);
     }
     public LDBlock GenerateNextRelevantBlock()
     {

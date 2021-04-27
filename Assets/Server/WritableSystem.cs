@@ -38,6 +38,74 @@ namespace Netkraft.Messaging
             //Do calculations for field members
             foreach (Type t in WritableTypes)
                 AddWritable(t);
+
+
+            MemoryStream mem = new MemoryStream();
+            //Int
+            int[] inttemp = new int[]{ 0 };
+            WriteArray<int>(mem, inttemp);
+            mem.Seek(0, SeekOrigin.Begin);
+            ReadArray<int>(mem);
+            mem.Seek(4, SeekOrigin.Begin);
+            ReadInternal<int>(mem);
+
+            //LDBLock
+            LDBlock[] temp = new LDBlock[]{
+                new LDBlock {
+                    level = 0,
+                    branches = new int[] { 1},
+                    characters = new LDCharacter[]{},
+                    mods = new LDAttribute[]{}
+                }
+            };
+            mem.Seek(0, SeekOrigin.Begin);
+            WriteArray<LDBlock>(mem, temp);
+            mem.Seek(0, SeekOrigin.Begin);
+            ReadArray<LDBlock>(mem);
+            mem.Seek(4, SeekOrigin.Begin);
+            ReadInternal<LDBlock>(mem);
+            //LDAttribute
+            LDAttribute[] temp1 = new LDAttribute[]{
+                new LDAttribute {
+                    type = 0,
+                    value = 0
+                }
+            };
+            mem.Seek(0, SeekOrigin.Begin);
+            WriteArray<LDAttribute>(mem, temp1);
+            mem.Seek(0, SeekOrigin.Begin);
+            ReadArray<LDAttribute>(mem);
+            mem.Seek(4, SeekOrigin.Begin);
+            ReadInternal<LDAttribute>(mem);
+            //LDInputFrame
+            LDInputFrame[] temp2 = new LDInputFrame[]{
+                new LDInputFrame {
+                    action = 0,
+                    cell = 0
+                }
+            };
+            mem.Seek(0, SeekOrigin.Begin);
+            WriteArray<LDInputFrame>(mem, temp2);
+            mem.Seek(0, SeekOrigin.Begin);
+            ReadArray<LDInputFrame>(mem);
+            mem.Seek(4, SeekOrigin.Begin);
+            ReadInternal<LDInputFrame>(mem);
+            //LDCharacter
+            LDCharacter[] temp3 = new LDCharacter[]{
+                new LDCharacter {
+                    attributes = temp1,
+                    color = 0,
+                    name = "",
+                    role = 0,
+                    timeLine = temp2
+                }
+            };
+            mem.Seek(0, SeekOrigin.Begin);
+            WriteArray<LDCharacter>(mem, temp3);
+            mem.Seek(0, SeekOrigin.Begin);
+            ReadArray<LDCharacter>(mem);
+            mem.Seek(4, SeekOrigin.Begin);
+            ReadInternal<LDCharacter>(mem);
         }
         private static bool TypeIsWritable(Type t)
         {
@@ -276,7 +344,7 @@ namespace Netkraft.Messaging
                 foreach (FieldInfo fi in metaData)
                     fi.SetValue(data, BinaryFunctions[fi.FieldType].reader(stream));
             }
-            catch (Exception e) { throw e; }
+            catch (Exception e) { }
             return (T)data;
         }
         private static void AddWritable(Type writableType)

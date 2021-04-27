@@ -14,7 +14,7 @@ public class Server
     static int port = 22001;
     static byte[] buffer = new byte[65535];
     static MemoryStream mem = new MemoryStream();
-    public static LDTimeLine RequestTimeLine()
+    public LDTimeLine RequestTimeLine()
     {
         LDTimeLine timeline = new LDTimeLine();
         try
@@ -44,7 +44,7 @@ public class Server
         catch (SocketException e){ Debug.Log($"SocketException: {e}");}
         return timeline;
     }
-    public static bool PushTimeLine(LDTimeLineBranchRequest branch)
+    public bool PushTimeLine(LDTimeLineBranchRequest branch)
     {
         bool success = false;
         try
@@ -73,4 +73,45 @@ public class Server
         catch (SocketException e) { Console.WriteLine("SocketException: {0}", e); }
         return success;
     }
+}
+
+[Writable]
+public struct LDTimeLine
+{
+    public LDBlock[] timeLine;
+}
+[Writable]
+public struct LDTimeLineBranchRequest
+{
+    public int branchBlockIndex;
+    public LDBlock[] timeLine;
+}
+[Writable]
+public struct LDBlock
+{
+    public ushort level;
+    public LDAttribute[] mods;
+    public LDCharacter[] characters;
+    public int[] branches;
+}
+[Writable]
+public struct LDCharacter
+{
+    public string name;
+    public byte color;
+    public byte role;
+    public LDAttribute[] attributes;
+    public LDInputFrame[] timeLine;
+}
+[Writable]
+public struct LDAttribute
+{
+    public byte type;
+    public ushort value;
+}
+[Writable]
+public struct LDInputFrame
+{
+    public byte action;
+    public ushort cell;
 }
