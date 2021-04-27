@@ -11,7 +11,7 @@ using UnityEngine;
 public class Server
 {
     static string ipAdress = "94.46.42.40";
-    static int port = 13000;
+    static int port = 22001;
     static byte[] buffer = new byte[65535];
     static MemoryStream mem = new MemoryStream();
     public static LDTimeLine RequestTimeLine()
